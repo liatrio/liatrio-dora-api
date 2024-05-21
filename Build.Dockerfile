@@ -12,10 +12,10 @@ RUN apk add --no-cache \
     musl-dev
 
 # Install Rust toolchain
-RUN rustup-init -y --default-toolchain stable && \
-    rustup target add x86_64-unknown-linux-musl && \
-    rm -rf /root/.cargo/registry && \
-    rm -rf /root/.cargo/git
+RUN rustup-init -y --default-toolchain stable
+RUN rustup target add x86_64-unknown-linux-musl
+RUN rm -rf /root/.cargo/registry
+RUN rm -rf /root/.cargo/git
 
 # Set environment variables
 ENV PATH="/root/.cargo/bin:${PATH}"
