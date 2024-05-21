@@ -7,10 +7,13 @@ RUN apk add --no-cache \
     git \
     openssl-dev \
     perl \
-    rustup
+    rustup \
+    pkgconfig \
+    musl-dev
 
 # Install Rust toolchain
 RUN rustup-init -y --default-toolchain stable && \
+    rustup target add x86_64-unknown-linux-musl && \
     rm -rf /root/.cargo/registry && \
     rm -rf /root/.cargo/git
 
@@ -20,4 +23,4 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 WORKDIR /app
 COPY . .
 
-CMD ["cargo", "build", "--release"]
+CMD ["cargo", "build", "--release", "--target", "x86_64-unknown-linux-musl"]
