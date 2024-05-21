@@ -18,6 +18,10 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y pkg-config libssl-dev musl-tools
 
+      - name: Install musl-cross
+        run: |
+          sudo apt-get install -y musl musl-dev musl-tools musl-cross
+
       - name: Install musl OpenSSL development headers
         run: |
           mkdir -p /tmp/local/musl/include/openssl
