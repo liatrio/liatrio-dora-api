@@ -21,6 +21,7 @@ jobs:
       - name: Install musl OpenSSL development headers
         run: |
           mkdir -p /tmp/local/musl/include/openssl
+          mkdir -p /tmp/local/musl/lib
           cp -r /usr/include/openssl/* /tmp/local/musl/include/openssl/
           cp /usr/lib/x86_64-linux-gnu/libssl.a /tmp/local/musl/lib/
           cp /usr/lib/x86_64-linux-gnu/libcrypto.a /tmp/local/musl/lib/
