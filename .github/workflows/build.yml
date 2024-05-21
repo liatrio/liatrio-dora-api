@@ -39,6 +39,7 @@ jobs:
           OPENSSL_DIR: "/tmp/local/musl"
           OPENSSL_INCLUDE_DIR: "/tmp/local/musl/include"
           PKG_CONFIG_ALLOW_CROSS: "1"
+          OPENSSL_STATIC: "1"
           CC: "musl-gcc"
         run: |
           rustup target add x86_64-unknown-linux-musl
