@@ -1,0 +1,44 @@
+name: "Release"
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - "README.md"
+      - "LICENSE"
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    concurrency: release
+    permissions:
+      id-token: write
+      contents: write
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        persist-credentials: false
+        fetch-depth: 0
+
+    - name: Get release version
+      id: release_version
+      uses: python-semantic-release/python-semantic-release@master
+      with:
+        root_options: '-vv --noop'
+        push: false
+        force: false
+        vcs_release: false
+        commit: false
+
+    - name: update manifest version
+      run: |
+        echo "new version: ${{ steps.release_version.outputs.version }}"
+        cd manifests/base 
+        kustomize edit set image "ghcr.io/liatrio/liatrio-dora-api:v${{ steps.release_version.outputs.version }}"
+        git add kustomization.yaml
+
+    - name: Python Semantic Release
+      uses: python-semantic-release/python-semantic-release@master
+      with:
+        github_token: ${{ secrets.LIATRIO_BOT_PRIVATE_REPO_ACCESS_PAT }}
