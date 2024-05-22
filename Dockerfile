@@ -1,19 +1,34 @@
-# Use the official Alpine base image
-FROM alpine:3.19.1
+FROM docker.io/rust:alpine as build
 
-# Install necessary runtime packages
+# Install required packages
 RUN apk add --no-cache \
-    libgcc \
-    openssl
+    build-base \
+    curl \
+    git \
+    openssl-dev \
+    perl \
+    rustup \
+    pkgconfig \
+    musl-dev \
+    clang
 
-# Create a new directory for the application
+# Install Rust toolchain
+RUN rustup-init -y --default-toolchain stable
+RUN rm -rf /root/.cargo/registry
+RUN rm -rf /root/.cargo/git
+
+# Set environment variables
+ENV PATH="/root/.cargo/bin:${PATH}"
+
 WORKDIR /app
+COPY . .
 
-# Copy the pre-built binary from the build stage
-COPY liatrio-dora-api .
+RUN cargo build --release
 
-# Expose the port the app runs on
+FROM alpine:latest
+
 EXPOSE 3000
+WORKDIR /app
+COPY --from=build /app/target/release/liatrio-dora-api /app
 
-# Run the application
-CMD ["./liatrio-dora-api"]
+ENTRYPOINT ["/app/liatrio-dora-api"]
