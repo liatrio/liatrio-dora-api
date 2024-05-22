@@ -1,5 +1,5 @@
 use axum::{
-    routing::post,
+    routing::{post, get},
     Router,
 };
 use helpers::error::AppError;
@@ -17,7 +17,8 @@ async fn main() -> Result<(), AppError> {
         .route("/deployment_frequency", post(routes::deployment_frequency::handle_request))
         .route("/change_lead_time", post(routes::change_lead_time::handle_request))
         .route("/change_failure_rate", post(routes::change_failure_rate::handle_request))
-        .route("/recover_time", post(routes::recover_time::handle_request));
+        .route("/recover_time", post(routes::recover_time::handle_request))
+        .route("/health", get(routes::health::handle_request));
 
     let port = env::var("PORT")?;
 
