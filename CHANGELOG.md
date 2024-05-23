@@ -6,6 +6,12 @@
 
 ### Unknown
 
+* force deploy ([`29157ab`](https://github.com/liatrio/liatrio-dora-api/commit/29157ab1c0a5a8951ae4a7ebb9115ed348c7476d))
+
+* use release tag as docker tag ([`003214b`](https://github.com/liatrio/liatrio-dora-api/commit/003214bbada20588eb8d2d4e507c95fad7982f82))
+
+* fix build workflow error ([`27e203b`](https://github.com/liatrio/liatrio-dora-api/commit/27e203bbc00719ba496a250652e7341e91a75704))
+
 * Update github token ([`db49379`](https://github.com/liatrio/liatrio-dora-api/commit/db493799257dde19d9cd2e942a98da100cd47aeb))
 
 * force release ([`2114935`](https://github.com/liatrio/liatrio-dora-api/commit/21149351b389d58ce968f18e98ce045b13462314))
