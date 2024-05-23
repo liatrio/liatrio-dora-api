@@ -1,8 +1,10 @@
 name: Build and Deploy Docker Image
 
 on:
-  tags:
-    - '*'
+  push:
+    tags:
+      - '*'
+  workflow_dispatch:
 
 jobs:
   deploy:
