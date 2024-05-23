@@ -41,4 +41,4 @@ jobs:
     - name: Python Semantic Release
       uses: python-semantic-release/python-semantic-release@master
       with:
-        github_token: ${{ secrets.LIATRIO_BOT_PRIVATE_REPO_ACCESS_PAT }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}
