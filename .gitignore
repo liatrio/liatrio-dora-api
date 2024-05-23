@@ -2,4 +2,3 @@ target/
 notes/
 .env
 docker-compose.yml
- 
