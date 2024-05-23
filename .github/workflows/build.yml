@@ -28,9 +28,11 @@ jobs:
         id: tag
         run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
 
-      - name: Extract tag
-        id: extract_tag
-        run: echo "tag_name=${GITHUB_REF##*/}" >> $GITHUB_OUTPUT
+      - name: Find nearest tag
+        id: find_tag
+        run: |
+          tag_name=$(git describe --tags --abbrev=0)
+          echo "tag_name=${tag_name}" >> $GITHUB_OUTPUT
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
@@ -40,6 +42,6 @@ jobs:
           push: true
           tags: |
             ghcr.io/${{ github.repository_owner }}/liatrio-dora-api:latest
-            ghcr.io/${{ github.repository_owner }}/liatrio-dora-api:${{ steps.extract_tag.outputs.tag_name }}
+            ghcr.io/${{ github.repository_owner }}/liatrio-dora-api:${{ steps.find_tag.outputs.tag_name }}
             ghcr.io/${{ github.repository_owner }}/liatrio-dora-api:${{ github.ref_name }}
             ghcr.io/${{ github.repository_owner }}/liatrio-dora-api:${{ steps.tag.outputs.sha_short }}
