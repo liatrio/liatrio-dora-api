@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: liatrio-dora-api
+  labels:
+    app: liatrio-dora-api
+  annotations:
+    reloader.stakater.com/auto: 'true'
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: liatrio-dora-api
+  template:
+    metadata:
+      labels:
+        app: liatrio-dora-api
+      annotations:
+        instrumentation.opentelemetry.io/inject-rust: "true"
+    spec:
+      imagePullSecrets:
+        - name: ghcr-token
+      containers:
+        - name: liatrio-dora-api
+          image: ghcr.io/liatrio/liatrio-dora-api:latest
+          ports:
+            - name: http
+              containerPort: 3000
+          envFrom:
+            - secretRef:
+                name: dora-api-secrets-dev
+          env:
+            - name: PORT
+              value: 3000
+          readinessProbe:
+            failureThreshold: 6
+            httpGet:
+              path: /health
+              port: 3000
+              scheme: HTTP
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            successThreshold: 2
+            timeoutSeconds: 2
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /health
+              port: 3000
+              scheme: HTTP
+            initialDelaySeconds: 60
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 2
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: liatrio-dora-api
+  labels:
+    app: liatrio-dora-api
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 80
+      targetPort: 3000
+      protocol: TCP
+  selector:
+    app: liatrio-dora-api

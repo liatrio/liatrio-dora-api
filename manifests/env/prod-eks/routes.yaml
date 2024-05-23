@@ -1,0 +1,19 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: private-route
+spec:
+  parentRefs:
+    - name: private-gateway
+      namespace: ingress-system
+      sectionName: https
+  hostnames:
+    - 'liatrio-dora-api.prod.k8s-platform-v3.liatr.io'
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: liatrio-dora-api
+          port: 80
