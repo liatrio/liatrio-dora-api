@@ -2,6 +2,13 @@
 
 
 
+## v0.1.0 (2024-05-24)
+
+### Feature
+
+* feat(n/a): force minor version bump ([`b598608`](https://github.com/liatrio/liatrio-dora-api/commit/b5986088aa34d4a1db2caa659efa4b9f677defb2))
+
+
 ## v0.0.0 (2024-05-24)
 
 ### Unknown
