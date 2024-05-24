@@ -6,6 +6,8 @@ on:
     paths-ignore:
       - "README.md"
       - "LICENSE"
+      - "CHANGELOG.md"
+      - "manifests/base/kustomization.yaml"
     tags-ignore:
       - '*'
 
