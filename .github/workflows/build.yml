@@ -16,9 +16,6 @@ jobs:
         with:
           fetch-depth: 1
 
-      - name: Fetch all tags
-        run: git fetch --tags
-
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
 
@@ -33,12 +30,6 @@ jobs:
         id: tag
         run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
 
-      - name: Find nearest tag
-        id: find_tag
-        run: |
-          tag_name=$(git describe --tags --abbrev=0)
-          echo "tag_name=${tag_name}" >> $GITHUB_OUTPUT
-
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
         with:
@@ -47,6 +38,5 @@ jobs:
           push: true
           tags: |
             ghcr.io/${{ github.repository_owner }}/liatrio-dora-api:latest
-            ghcr.io/${{ github.repository_owner }}/liatrio-dora-api:${{ steps.find_tag.outputs.tag_name }}
             ghcr.io/${{ github.repository_owner }}/liatrio-dora-api:${{ github.ref_name }}
             ghcr.io/${{ github.repository_owner }}/liatrio-dora-api:${{ steps.tag.outputs.sha_short }}
