@@ -28,7 +28,7 @@ spec:
               containerPort: 3000
           envFrom:
             - secretRef:
-                name: dora-api-secrets-dev
+                name: dora-api-secrets
           env:
             - name: PORT
               value: "3000"
