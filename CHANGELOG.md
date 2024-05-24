@@ -2,6 +2,13 @@
 
 
 
+## v0.1.4 (2024-05-24)
+
+### Fix
+
+* fix(workflow): prevent looped workflow triggers of the release pipeline ([`c860a04`](https://github.com/liatrio/liatrio-dora-api/commit/c860a044f7722c9c97929479122787d7c0055c10))
+
+
 ## v0.1.3 (2024-05-24)
 
 ### Fix
