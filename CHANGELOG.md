@@ -2,6 +2,13 @@
 
 
 
+## v0.1.3 (2024-05-24)
+
+### Fix
+
+* fix(workflow): prevent workflow loop on tag push ([`6ae0a2c`](https://github.com/liatrio/liatrio-dora-api/commit/6ae0a2c6d265706cdd8a6c24314818db1d7b7f54))
+
+
 ## v0.1.2 (2024-05-24)
 
 ### Fix
