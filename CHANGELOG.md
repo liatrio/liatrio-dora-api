@@ -2,6 +2,13 @@
 
 
 
+## v0.1.1 (2024-05-24)
+
+### Fix
+
+* fix(manifest): use correct secret ref name ([`851133e`](https://github.com/liatrio/liatrio-dora-api/commit/851133e56f79d829181923ace3e190af6236dd1c))
+
+
 ## v0.1.0 (2024-05-24)
 
 ### Feature
