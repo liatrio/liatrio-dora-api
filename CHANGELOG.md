@@ -2,6 +2,13 @@
 
 
 
+## v0.1.2 (2024-05-24)
+
+### Fix
+
+* fix(token): use a PAT token so the builds can trigger properly ([`35abbe9`](https://github.com/liatrio/liatrio-dora-api/commit/35abbe9c3239d19b84b615239a0209ef093196d9))
+
+
 ## v0.1.1 (2024-05-24)
 
 ### Fix
