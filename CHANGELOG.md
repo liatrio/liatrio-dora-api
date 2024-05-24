@@ -6,6 +6,8 @@
 
 ### Fix
 
+* fix(workflow): use the embedded gitref for tagging ([`32ab524`](https://github.com/liatrio/liatrio-dora-api/commit/32ab524914a9bfc3e142b2dae50878604c3a8659))
+
 * fix(workflow): prevent workflow loop on tag push ([`6ae0a2c`](https://github.com/liatrio/liatrio-dora-api/commit/6ae0a2c6d265706cdd8a6c24314818db1d7b7f54))
 
 
