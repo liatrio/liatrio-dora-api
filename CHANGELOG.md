@@ -2,9 +2,17 @@
 
 
 
-## v0.0.0 (2024-05-23)
+## v0.0.0 (2024-05-24)
 
 ### Unknown
+
+* force build&#39; ([`052b73f`](https://github.com/liatrio/liatrio-dora-api/commit/052b73f8ba289479fc03788a07df29558cb1a410))
+
+* fetch tags ([`f03cb51`](https://github.com/liatrio/liatrio-dora-api/commit/f03cb51d14090d95fd82493261b1928b23ecd2bb))
+
+* fetch tags ([`21fadae`](https://github.com/liatrio/liatrio-dora-api/commit/21fadae5fea4753621d641ad98a70947fe502f98))
+
+* find tag a different way ([`52f5ed8`](https://github.com/liatrio/liatrio-dora-api/commit/52f5ed82d705ad320f08fbc054c82b454c1db41f))
 
 * force deploy ([`29157ab`](https://github.com/liatrio/liatrio-dora-api/commit/29157ab1c0a5a8951ae4a7ebb9115ed348c7476d))
 
