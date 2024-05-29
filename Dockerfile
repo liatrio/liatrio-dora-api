@@ -31,4 +31,4 @@ EXPOSE 3000
 WORKDIR /app
 COPY --from=build /app/target/release/liatrio-dora-api /app
 
-ENTRYPOINT ["liatrio-dora-api"]
+ENTRYPOINT ["./liatrio-dora-api"]
