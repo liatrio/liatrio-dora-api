@@ -2,6 +2,13 @@
 
 
 
+## v0.1.5 (2024-05-29)
+
+### Fix
+
+* fix(Docker): invalid entry point ([`7d65e0b`](https://github.com/liatrio/liatrio-dora-api/commit/7d65e0b0bd67b46bcfc324496b05fe5884e4a0c8))
+
+
 ## v0.1.4 (2024-05-24)
 
 ### Fix
