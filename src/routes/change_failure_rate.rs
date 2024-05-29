@@ -4,7 +4,7 @@ use axum::{
   response::Json
 };
 
-use crate::helpers::loki::query;
+// use crate::helpers::loki::query;
 
 #[derive(Deserialize, Debug)]
 pub struct ChangeFailureRateRequest {
@@ -16,7 +16,7 @@ pub struct ChangeFailureRateResponse {
 
 }
 
-pub async fn handle_request(Json(data): Json<ChangeFailureRateRequest>) -> Result<Json<ChangeFailureRateResponse>, StatusCode> {
+pub async fn handle_request(Json(_data): Json<ChangeFailureRateRequest>) -> Result<Json<ChangeFailureRateResponse>, StatusCode> {
   let response : ChangeFailureRateResponse = ChangeFailureRateResponse{};
 
   Ok(Json(response))
