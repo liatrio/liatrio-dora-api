@@ -2,6 +2,21 @@
 
 
 
+## v0.1.6 (2024-05-29)
+
+### Chore
+
+* chore: fix warnings ([`84ed448`](https://github.com/liatrio/liatrio-dora-api/commit/84ed448ab2579afb4047cf49af5b8d84eeac5f5a))
+
+### Fix
+
+* fix(addr): Use 0.0.0.0 instead of 127.0.0.1 ([`e80b283`](https://github.com/liatrio/liatrio-dora-api/commit/e80b28345a3c964839e94c0e3399b4401f5c9e25))
+
+### Unknown
+
+* feature(df): implement df loki query ([`6ac2828`](https://github.com/liatrio/liatrio-dora-api/commit/6ac2828bccb96d93125a8ec3c4e6122f4332eafc))
+
+
 ## v0.1.5 (2024-05-29)
 
 ### Fix
