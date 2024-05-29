@@ -22,7 +22,7 @@ async fn main() -> Result<(), AppError> {
 
     let port = env::var("PORT")?;
 
-    let listener = tokio::net::TcpListener::bind(format!("127.0.0.1:{port}"))
+    let listener = tokio::net::TcpListener::bind(format!("0.0.0.0:{port}"))
         .await?;
 
     println!("listening on {}", listener.local_addr().unwrap());
