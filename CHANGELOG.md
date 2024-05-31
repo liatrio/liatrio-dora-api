@@ -2,6 +2,13 @@
 
 
 
+## v0.1.7 (2024-05-31)
+
+### Fix
+
+* fix: swap to ipv6 ([`56fc383`](https://github.com/liatrio/liatrio-dora-api/commit/56fc3838fccce4758570bf1c5140cb1617fc4d79))
+
+
 ## v0.1.6 (2024-05-29)
 
 ### Chore
