@@ -2,6 +2,13 @@
 
 
 
+## v0.2.0 (2024-05-31)
+
+### Feature
+
+* feat: implemenet CLT and refactor ([`52c95c1`](https://github.com/liatrio/liatrio-dora-api/commit/52c95c1be0df80876db516219e95cbfdc67ab30a))
+
+
 ## v0.1.7 (2024-05-31)
 
 ### Fix
