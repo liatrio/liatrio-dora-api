@@ -1,2 +1,3 @@
 pub mod loki;
-pub mod error;
+pub mod common;
+pub mod queries;

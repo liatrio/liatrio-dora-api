@@ -1,96 +1,114 @@
-use std::env;
 use anyhow::Result;
 use chrono::{DateTime, Utc};
-use serde::{Deserialize, Serialize, Deserializer};
+use serde::{Deserialize, Serialize};
+use std::env;
 
-use crate::helpers::error::AppError;
-
-#[derive(Serialize, Debug)]
+#[derive(Serialize, Debug, Clone)]
 pub struct QueryParams {
   pub query: String,
   pub start: String,
-  pub end: String
-}
-
-#[derive(Deserialize, Debug, Clone)]
-pub struct QueryResultDataEntryStream {
-  pub action: Option<String>,
-  pub created_at: Option<DateTime<Utc>>,
-  pub environment_name: Option<String>,
-  pub merged_sha: Option<String>,
-  pub merged_at: Option<DateTime<Utc>>,
-  pub repository_name: Option<String>,
-  pub service_name: Option<String>,
-  pub team_name: Option<String>,
-  pub topics: Option<Vec<String>>,
-  pub deployment_environment: Option<String>,
-  pub deployment_state: Option<String>,
-}
-
-fn deserialize_inner<'de, D>(deserializer: D) -> Result<QueryResultDataEntryValue, D::Error>
-where
-    D: Deserializer<'de>,
-{
-    let s: String = Deserialize::deserialize(deserializer)?;
-    serde_json::from_str(&s).map_err(serde::de::Error::custom)
-}
-
-#[derive(Deserialize, Debug, Clone)]
-pub struct QueryResultDataEntryValueBodyDeployment {
-  pub created_at: Option<DateTime<Utc>>
-}
-
-#[derive(Deserialize, Debug, Clone)]
-pub struct QueryResultDataEntryValueBody {
-  pub deployment: QueryResultDataEntryValueBodyDeployment
-}
-
-#[derive(Deserialize, Debug, Clone)]
-pub struct QueryResultDataEntryValue {
-  pub body: QueryResultDataEntryValueBody
-}
-
-#[derive(Deserialize, Debug, Clone)]
-pub struct QueryResultDataEntryValues {
-  pub timestamp: String,
-  #[serde(deserialize_with = "deserialize_inner")]
-  pub data: QueryResultDataEntryValue
-}
-
-
-#[derive(Deserialize, Debug, Clone)]
-pub struct QueryResultDataEntry {
-  pub stream: QueryResultDataEntryStream,
-  pub values: Vec<QueryResultDataEntryValues>
-}
-
-#[derive(Deserialize, Debug, Clone)]
-pub struct QueryResultData {
-  #[serde(rename = "resultType")]
-  pub result_type: String,
-  pub result: Vec<QueryResultDataEntry>
+  pub end: String,
 }
 
 #[derive(Deserialize, Debug)]
-pub struct QueryResult {
+pub struct QueryResponse {
   pub status: String,
-  pub data: QueryResultData
+  pub data: Data,
 }
 
-pub async fn query(data: QueryParams) -> Result<QueryResult, AppError> {
-  let client = reqwest::Client::new();
-  let url = env::var("LOKI_URL")?;
-  let user = env::var("LOKI_USER")?;
-  let password = env::var("LOKI_TOKEN")?;
+#[derive(Deserialize, Debug)]
+pub struct Data {
+  #[serde(rename = "resultType")]
+  pub result_type: String,
+  pub result: Vec<ResultItem>,
+}
 
-  let response = client
-    .get(url)
-    .query(&data)
-    .basic_auth(user, Some(password))
-    .send()
-    .await?;
-  
-  let data: QueryResult = response.json().await?;
+#[derive(Deserialize, Debug)]
+pub struct ResultItem {
+  pub stream: Stream,
+  pub values: Vec<ValueItem>,
+}
 
-  return Ok(data);
+#[derive(Deserialize, Debug)]
+pub struct Stream {
+  pub action: Option<String>,
+  pub created_at: Option<DateTime<Utc>>,
+  pub environment_name: Option<String>,
+  pub repository_name: Option<String>,
+  pub service_name: Option<String>,
+  pub team_name: Option<String>,
+  pub merge_sha: Option<String>,
+  pub merged_at: Option<DateTime<Utc>>,
+  pub deployment_state: Option<String>,
+}
+
+#[derive(Debug)]
+pub struct ValueItem {
+  pub timestamp: String,
+  pub json_data: JsonData,
+}
+
+#[derive(Deserialize, Debug)]
+pub struct JsonData {
+  pub body: Body,
+}
+
+#[derive(Deserialize, Debug)]
+pub struct Body {
+  pub number: Option<u32>,
+  pub pull_request: Option<PullRequest>,
+  pub deployment: Option<Deployment>,
+}
+
+#[derive(Deserialize, Debug)]
+pub struct PullRequest {
+  pub title: String,
+  pub user: User,
+}
+
+#[derive(Deserialize, Debug)]
+pub struct Deployment {
+  pub created_at: DateTime<Utc>,
+  pub sha: String,
+}
+
+#[derive(Deserialize, Debug)]
+pub struct User {
+  pub login: String,
+}
+
+impl<'de> Deserialize<'de> for ValueItem {
+    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+    where
+        D: serde::Deserializer<'de>,
+    {
+        let vec: Vec<String> = Vec::deserialize(deserializer)?;
+        if vec.len() != 2 {
+            return Err(serde::de::Error::custom("Expected a tuple of two elements"));
+        }
+        let json_data: JsonData =
+            serde_json::from_str(&vec[1]).map_err(serde::de::Error::custom)?;
+        Ok(ValueItem {
+            timestamp: vec[0].clone(),
+            json_data,
+        })
+    }
+}
+
+pub async fn query(data: QueryParams) -> Result<QueryResponse> {
+    let client = reqwest::Client::new();
+    let url = env::var("LOKI_URL")?;
+    let user = env::var("LOKI_USER")?;
+    let password = env::var("LOKI_TOKEN")?;
+
+    let response = client
+        .get(url)
+        .query(&data)
+        .basic_auth(user, Some(password))
+        .send()
+        .await?;
+
+    let data: QueryResponse = response.json().await?;
+
+    return Ok(data);
 }
