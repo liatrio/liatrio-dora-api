@@ -2,7 +2,7 @@ use axum::{
     routing::{post, get},
     Router,
 };
-use helpers::error::AppError;
+use anyhow::Result;
 use std::env;
 use dotenv::dotenv;
 
@@ -10,7 +10,7 @@ mod helpers;
 mod routes;
 
 #[tokio::main]
-async fn main() -> Result<(), AppError> {
+async fn main() -> Result<()> {
     dotenv().ok();
 
     let app = Router::new()
@@ -21,8 +21,9 @@ async fn main() -> Result<(), AppError> {
         .route("/health", get(routes::health::handle_request));
 
     let port = env::var("PORT")?;
+    let addr = format!("[::]:{port}").parse::<std::net::SocketAddr>().unwrap();
 
-    let listener = tokio::net::TcpListener::bind(format!("0.0.0.0:{port}"))
+    let listener = tokio::net::TcpListener::bind(addr)
         .await?;
 
     println!("listening on {}", listener.local_addr().unwrap());
