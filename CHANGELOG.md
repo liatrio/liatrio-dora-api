@@ -2,6 +2,13 @@
 
 
 
+## v0.2.1 (2024-06-04)
+
+### Fix
+
+* fix: add readme, update cfr and rt skeletons ([`e578085`](https://github.com/liatrio/liatrio-dora-api/commit/e578085aab920b747868c09797ea5fd3a17058a4))
+
+
 ## v0.2.0 (2024-05-31)
 
 ### Feature
