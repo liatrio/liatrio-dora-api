@@ -1,5 +1,4 @@
-use std::{collections::HashMap, ops::Deref};
-
+use std::collections::HashMap;
 use chrono::{DateTime, Utc};
 use serde::Serialize;
 use axum::{
@@ -76,7 +75,10 @@ async fn organize_data(request: DataRequest) -> Result<Vec<ChangeFailureRateReco
 
       grouped_deploys
     }
-    Err(e) => return Err(e)
+    Err(e) => {
+      println!("D: {e}");
+      return Err(e);
+    }
   };
 
   let issue_data = match issue_data_result {
@@ -85,10 +87,10 @@ async fn organize_data(request: DataRequest) -> Result<Vec<ChangeFailureRateReco
 
       for r in id.data.result {
         for b in r.values {
-          let rn = r.stream.repository_name.clone().unwrap();
+          let rn = b.json_data.body.repository.unwrap().name;
 
           let ie = IssueEntry {
-            created_at: b.json_data.body.deployment.unwrap().created_at
+            created_at: b.json_data.body.issue.unwrap().created_at
           };
 
           grouped_issues.entry(rn.clone())
@@ -103,7 +105,10 @@ async fn organize_data(request: DataRequest) -> Result<Vec<ChangeFailureRateReco
 
       grouped_issues
     }
-    Err(e) => return Err(e)
+    Err(e) => {
+      println!("I: {e}");
+      return Err(e);
+    }
   };
 
   let mut result: Vec<ChangeFailureRateRecord> = [].to_vec();

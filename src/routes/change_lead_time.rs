@@ -118,7 +118,7 @@ async fn organize_data(request: DataRequest) -> Result<Vec<ChangeLeadTimeRecord>
     }
   }
   
-  let mut records = grouped_prs_by_sha.into_values()
+  let records = grouped_prs_by_sha.into_values()
     .filter(|f| f.dev_deployed_at != min_utc_datetime)
     .collect();
 
