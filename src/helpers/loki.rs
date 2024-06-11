@@ -58,6 +58,13 @@ pub struct Body {
   pub number: Option<u32>,
   pub pull_request: Option<PullRequest>,
   pub deployment: Option<Deployment>,
+  pub issue: Option<Issue>,
+}
+
+#[derive(Deserialize, Debug)]
+pub struct Issue {
+  pub created_at: DateTime<Utc>,
+  pub closed_at: DateTime<Utc>,
 }
 
 #[derive(Deserialize, Debug)]
