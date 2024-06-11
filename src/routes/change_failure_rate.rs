@@ -16,7 +16,6 @@ use crate::helpers::{
 #[derive(Serialize, Debug, Clone)]
 pub struct ChangeFailureRateRecord {
   created_at: DateTime<Utc>,
-  state: String,
   repository: String,
   team: String
 }
@@ -144,8 +143,7 @@ async fn organize_data(request: DataRequest) -> Result<Vec<ChangeFailureRateReco
         let nr = ChangeFailureRateRecord {
           repository: de.repository.clone(),
           team: de.team.clone(),
-          created_at: de.created_at,
-          state: de.status.clone()
+          created_at: de.created_at
         };
 
         result.push(nr);
