@@ -160,16 +160,6 @@ async fn organize_data(request: DataRequest) -> Result<Vec<RecoverTimeRecord>> {
         result.push(record);
         
         record = Default::default();
-      } else if failed == false && on_failure == false {
-        let success_record = RecoverTimeRecord {
-          team: de.team.clone(),
-          repository: de.repository.clone(),
-          created_at: de.created_at,
-          failed: false,
-          ..Default::default()
-        };
-
-        result.push(success_record);
       }
     }
   }
