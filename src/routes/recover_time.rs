@@ -17,7 +17,6 @@ use crate::helpers::{
 pub struct RecoverTimeRecord {
   repository: String,
   team: String,
-  failed: bool,
   created_at: DateTime<Utc>,
   fixed_at: DateTime<Utc>
 }
@@ -150,7 +149,6 @@ async fn organize_data(request: DataRequest) -> Result<Vec<RecoverTimeRecord>> {
           team: de.team.clone(),
           repository: de.repository.clone(),
           created_at: de.created_at,
-          failed: true,
           ..Default::default()
         };
       } else if on_failure == true && failed == false {
@@ -160,16 +158,6 @@ async fn organize_data(request: DataRequest) -> Result<Vec<RecoverTimeRecord>> {
         result.push(record);
         
         record = Default::default();
-      } else if failed == false && on_failure == false {
-        let success_record = RecoverTimeRecord {
-          team: de.team.clone(),
-          repository: de.repository.clone(),
-          created_at: de.created_at,
-          failed: false,
-          ..Default::default()
-        };
-
-        result.push(success_record);
       }
     }
   }
