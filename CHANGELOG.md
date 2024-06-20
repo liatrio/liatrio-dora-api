@@ -1,6 +1,44 @@
 # CHANGELOG
 
+## v0.2.2 (2024-06-20)
 
+### Fix
+
+* fix: update readme ([`f21a2ea`](https://github.com/liatrio/liatrio-dora-api/commit/f21a2eaa61cf2a249df0db2a604836d4d428f328))
+
+### Unknown
+
+* Condense API Endpoints (#11)
+
+* feat: implementing CFR
+
+* fix: adjust for missing repo name
+
+* fix: don&#39;t include state, it&#39;s not necessary
+
+* implementing RT
+
+* fix: add unified data endpoint that supplies all data from the other 4
+
+---------
+
+Co-authored-by: Eliot Eikenberry &lt;wolftousen@Tundria.local&gt; ([`388ff58`](https://github.com/liatrio/liatrio-dora-api/commit/388ff58d60da1eecbc08bae8375ba68f7dd43e4e))
+
+* Implementing CFR and RT (#9)
+
+* feat: implementing CFR
+
+* fix: adjust for missing repo name
+
+* fix: don&#39;t include state, it&#39;s not necessary
+
+* implementing RT
+
+---------
+
+Co-authored-by: Eliot Eikenberry &lt;wolftousen@Tundria.local&gt; ([`f3553be`](https://github.com/liatrio/liatrio-dora-api/commit/f3553bed2f5a8ab8f24b0297d2c187efdd5322c0))
+
+* Add catalog-info.yaml config file (#8) ([`4fd3a9b`](https://github.com/liatrio/liatrio-dora-api/commit/4fd3a9bb1349bcbbe61389bcd603330d259db24c))
 
 ## v0.2.1 (2024-06-04)
 
@@ -8,20 +46,17 @@
 
 * fix: add readme, update cfr and rt skeletons ([`e578085`](https://github.com/liatrio/liatrio-dora-api/commit/e578085aab920b747868c09797ea5fd3a17058a4))
 
-
 ## v0.2.0 (2024-05-31)
 
 ### Feature
 
 * feat: implemenet CLT and refactor ([`52c95c1`](https://github.com/liatrio/liatrio-dora-api/commit/52c95c1be0df80876db516219e95cbfdc67ab30a))
 
-
 ## v0.1.7 (2024-05-31)
 
 ### Fix
 
 * fix: swap to ipv6 ([`56fc383`](https://github.com/liatrio/liatrio-dora-api/commit/56fc3838fccce4758570bf1c5140cb1617fc4d79))
-
 
 ## v0.1.6 (2024-05-29)
 
@@ -37,20 +72,17 @@
 
 * feature(df): implement df loki query ([`6ac2828`](https://github.com/liatrio/liatrio-dora-api/commit/6ac2828bccb96d93125a8ec3c4e6122f4332eafc))
 
-
 ## v0.1.5 (2024-05-29)
 
 ### Fix
 
 * fix(Docker): invalid entry point ([`7d65e0b`](https://github.com/liatrio/liatrio-dora-api/commit/7d65e0b0bd67b46bcfc324496b05fe5884e4a0c8))
 
-
 ## v0.1.4 (2024-05-24)
 
 ### Fix
 
 * fix(workflow): prevent looped workflow triggers of the release pipeline ([`c860a04`](https://github.com/liatrio/liatrio-dora-api/commit/c860a044f7722c9c97929479122787d7c0055c10))
-
 
 ## v0.1.3 (2024-05-24)
 
@@ -60,13 +92,11 @@
 
 * fix(workflow): prevent workflow loop on tag push ([`6ae0a2c`](https://github.com/liatrio/liatrio-dora-api/commit/6ae0a2c6d265706cdd8a6c24314818db1d7b7f54))
 
-
 ## v0.1.2 (2024-05-24)
 
 ### Fix
 
 * fix(token): use a PAT token so the builds can trigger properly ([`35abbe9`](https://github.com/liatrio/liatrio-dora-api/commit/35abbe9c3239d19b84b615239a0209ef093196d9))
-
 
 ## v0.1.1 (2024-05-24)
 
@@ -74,13 +104,11 @@
 
 * fix(manifest): use correct secret ref name ([`851133e`](https://github.com/liatrio/liatrio-dora-api/commit/851133e56f79d829181923ace3e190af6236dd1c))
 
-
 ## v0.1.0 (2024-05-24)
 
 ### Feature
 
 * feat(n/a): force minor version bump ([`b598608`](https://github.com/liatrio/liatrio-dora-api/commit/b5986088aa34d4a1db2caa659efa4b9f677defb2))
-
 
 ## v0.0.0 (2024-05-24)
 
