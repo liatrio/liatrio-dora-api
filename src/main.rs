@@ -18,6 +18,7 @@ async fn main() -> Result<()> {
         .route("/change_lead_time", post(routes::change_lead_time::handle_request))
         .route("/change_failure_rate", post(routes::change_failure_rate::handle_request))
         .route("/recover_time", post(routes::recover_time::handle_request))
+        .route("/data", post(routes::data::handle_request))
         .route("/health", get(routes::health::handle_request));
 
     let port = env::var("PORT")?;
