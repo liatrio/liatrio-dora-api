@@ -4,7 +4,6 @@ on:
     branches:
       - main
     paths-ignore:
-      - "README.md"
       - "LICENSE"
       - "CHANGELOG.md"
       - "manifests/base/kustomization.yaml"

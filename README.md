@@ -11,15 +11,12 @@ This API is currently deployed to our K8s v3 Platform and can be accessed at thi
 There are currently 5 endpoints defined and used by their respective react components:
 
 * health
-  * This is currently fully functional
 * deployment_frequency
-  * This is currently fully functional
 * change_lead_time
-  * This is currently fully functional
 * change_failure_rate
-  * This is still a skeleton
 * recover_time
-  * This is still a skeleton
+* data
+  * this is a combination of the above 4 endpoints
 
 # Local Dev
 
