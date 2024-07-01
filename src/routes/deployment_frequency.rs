@@ -14,7 +14,7 @@ use crate::helpers::queries::gather_deploy_data;
 pub struct DeploymentFrequencyRecord {
   created_at: DateTime<Utc>,
   environment: String,
-  state: String,
+  status: bool,
   repository: String,
   team: String
 }
@@ -31,7 +31,7 @@ fn trim_data(query_response: QueryResponse) -> Vec<DeploymentFrequencyRecord> {
         created_at: v.json_data.body.deployment.as_ref().unwrap().created_at,
         environment: m.stream.environment_name.clone().unwrap(),
         repository: m.stream.repository_name.clone().unwrap(),
-        state: query_response.status.clone(),
+        status: query_response.status == "success",
         team: m.stream.team_name.clone().unwrap()
       }  
     }).collect::<Vec<_>>()
