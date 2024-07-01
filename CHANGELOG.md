@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.2.3 (2024-07-01)
+
+### Fix
+
+* fix: update df to use same naming as everything else ([`036a144`](https://github.com/liatrio/liatrio-dora-api/commit/036a1448d45afbb6d62aa443bbef44d40f4acb78))
+
 ## v0.2.2 (2024-06-20)
 
 ### Fix
