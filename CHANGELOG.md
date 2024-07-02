@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.2.4 (2024-07-02)
+
+### Fix
+
+* fix: update issue query to go off opened rather than labeled ([`84a2b4a`](https://github.com/liatrio/liatrio-dora-api/commit/84a2b4a85a3f97f3f40f746434be70ecf94e88e0))
+
 ## v0.2.3 (2024-07-01)
 
 ### Fix
