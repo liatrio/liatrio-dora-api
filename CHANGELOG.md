@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.2.5 (2024-07-02)
+
+### Fix
+
+* fix: focus on dev fttb, don&#39;t rely on pr open ([`37311e9`](https://github.com/liatrio/liatrio-dora-api/commit/37311e970a29a1d1c4a1822eb6ecf87e3ffc8a45))
+
 ## v0.2.4 (2024-07-02)
 
 ### Fix
