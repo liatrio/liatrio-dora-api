@@ -48,7 +48,7 @@ async fn organize_data(request: DataRequest) -> Result<Vec<RecoverTimeRecord>> {
       let mut grouped_deploys: HashMap<String, Vec<DeployEntry>> = HashMap::new();
 
       for r in dd.data.result {
-        if r.stream.environment_name.unwrap().to_lowercase() != "prod" {
+        if r.stream.environment_name.unwrap().to_lowercase() != "dev" {
           continue;
         }
 

@@ -9,8 +9,8 @@ use anyhow::Result;
 
 use crate::helpers::{
   common::DataRequest,
-  queries::{gather_deploy_data, gather_issue_data, gather_merge_data, gather_opened_data},
-  loki::{QueryResponse, ResultItem},
+  queries::{gather_deploy_data, gather_issue_data, gather_merge_data},
+  loki::QueryResponse,
 };
 
 #[derive(Serialize, Debug, Clone, Default)]
@@ -21,7 +21,6 @@ pub struct Record {
   user: String,
   sha: String,
   status: bool,
-  opened_at: DateTime<Utc>,
   merged_at: DateTime<Utc>,
   created_at: DateTime<Utc>,
   fixed_at: DateTime<Utc>
@@ -112,65 +111,40 @@ async fn sort_issue_data(data: Result<QueryResponse>) -> Result<HashMap<String, 
 }
 
 #[derive(Serialize, Debug, Clone, Default)]
-pub struct OpenMergeEntry {
+pub struct MergeEntry {
   sha: String,
-  opened_at: DateTime<Utc>,
   merged_at: DateTime<Utc>,
   user: String,
   title: String,
 }
 
-fn fill_open_merge(record: &mut OpenMergeEntry, entry: &ResultItem) {
-  match &entry.stream.merged_at {
-    Some(ma) => {
-      record.merged_at = ma.clone();
-      record.sha = entry.stream.merge_sha.as_ref().unwrap().to_string();
-    }
-    None => {}
-  }
-  match entry.stream.created_at {
-    Some(ca) => record.opened_at = ca,
-    None => {}
-  }
+fn sort_merge_data(merge_data: Result<QueryResponse>) -> HashMap<String, MergeEntry> {
+  let mut records_by_sha: HashMap<String, MergeEntry> = HashMap::new();
 
-  match &entry.values[0].json_data.body.pull_request {
-    Some(pr) => {
-      record.user = pr.user.login.clone();
-      record.title = pr.title.clone();
-    },
-    None => {}
-  }
-}
+  match merge_data {
+    Ok(entry) => {
+      for result in entry.data.result {
+        for value in result.values {
+          
+          let sha = result.stream.merge_sha.as_ref().unwrap().to_string();
+          let pr = value.json_data.body.pull_request.unwrap();
 
-fn sort_open_merge_data(merge_data: Result<QueryResponse>, open_data: Result<QueryResponse>) -> HashMap<String, OpenMergeEntry> {
-  let mut grouped_prs_by_nbr: HashMap<u32, OpenMergeEntry> = HashMap::new();
-  let mut grouped_prs_by_sha: HashMap<String, OpenMergeEntry> = HashMap::new();
+          let record = MergeEntry { 
+            user: pr.user.login.clone(),
+            title: pr.title.clone(),
+            merged_at: result.stream.merged_at.unwrap().clone(),
+            sha: sha.clone()
+          };
 
-  for a in &[merge_data, open_data] {
-    for s in a {
-      for t in &s.data.result {
-        for v in &t.values {
-          grouped_prs_by_nbr.entry(v.json_data.body.number.unwrap()).and_modify(|e| {
-            fill_open_merge(e, t);
-          }).or_insert_with(|| {
-            let mut record: OpenMergeEntry = Default::default();
-
-            fill_open_merge(&mut record, t);
-
-            record
-          });
+          records_by_sha.entry(sha)
+            .or_insert(record);
         }
       }
     }
+    Err(_) => {}
   }
 
-  grouped_prs_by_nbr.into_values()
-    .filter(|f| f.sha != "".to_string())
-    .for_each(|m| {
-      grouped_prs_by_sha.entry(m.sha.clone()).or_insert(m);
-    });
-
-  return grouped_prs_by_sha;
+  return records_by_sha;
 }
 
 fn link_issues_to_deployes(deploy_data: &mut HashMap<String, Vec<Record>>, issue_data: &HashMap<String, Vec<IssueEntry>>) {
@@ -218,16 +192,15 @@ fn link_issues_to_deployes(deploy_data: &mut HashMap<String, Vec<Record>>, issue
   }
 }
 
-fn link_open_and_merge_to_deploys(deploy_by_sha: &mut HashMap<String, Vec<Record>>, open_data_result: Result<QueryResponse>, merge_data_result: Result<QueryResponse>) {
-  let open_merge_data = sort_open_merge_data(merge_data_result, open_data_result);
+fn link_merge_to_deploys(deploy_by_sha: &mut HashMap<String, Vec<Record>>, merge_data_result: Result<QueryResponse>) {
+  let merge_data = sort_merge_data(merge_data_result);
 
-  for omd in open_merge_data.iter() {
-    deploy_by_sha.entry(omd.0.to_string()).and_modify(|e| {
+  for merge_entry in merge_data.iter() {
+    deploy_by_sha.entry(merge_entry.0.to_string()).and_modify(|e| {
       for d in e {
-        d.opened_at = omd.1.opened_at;
-        d.merged_at = omd.1.merged_at;
-        d.title = omd.1.title.clone();
-        d.user = omd.1.user.clone();
+        d.merged_at = merge_entry.1.merged_at;
+        d.title = merge_entry.1.title.clone();
+        d.user = merge_entry.1.user.clone();
       }
     }).or_default();
   }
@@ -237,9 +210,8 @@ async fn organize_data(request: DataRequest) -> Result<Vec<Record>> {
   let deploy_data_task = gather_deploy_data(&request);
   let issue_data_task = gather_issue_data(&request);
   let merge_data_task = gather_merge_data(&request);
-  let open_data_task = gather_opened_data(&request);
   
-  let (deploy_data_result, issue_data_result, merge_data_result, open_data_result) = tokio::join!(deploy_data_task, issue_data_task, merge_data_task, open_data_task);
+  let (deploy_data_result, issue_data_result, merge_data_result) = tokio::join!(deploy_data_task, issue_data_task, merge_data_task);
 
   let mut deploy_data = sort_deploy_data(deploy_data_result).await?;
   let issue_data = sort_issue_data(issue_data_result).await?;
@@ -257,7 +229,7 @@ async fn organize_data(request: DataRequest) -> Result<Vec<Record>> {
     }
   }
 
-  link_open_and_merge_to_deploys(&mut deploy_by_sha, open_data_result, merge_data_result);
+  link_merge_to_deploys(&mut deploy_by_sha, merge_data_result);
 
   let mut all_deploys = Vec::new();
 

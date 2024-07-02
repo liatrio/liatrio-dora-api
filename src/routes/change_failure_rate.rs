@@ -49,7 +49,7 @@ async fn organize_data(request: DataRequest) -> Result<Vec<ChangeFailureRateReco
       let mut grouped_deploys: HashMap<String, Vec<DeployEntry>> = HashMap::new();
 
       for r in dd.data.result {
-        if r.stream.environment_name.unwrap().to_lowercase() != "prod" {
+        if r.stream.environment_name.unwrap().to_lowercase() != "dev" {
           continue;
         }
 
@@ -76,7 +76,6 @@ async fn organize_data(request: DataRequest) -> Result<Vec<ChangeFailureRateReco
       grouped_deploys
     }
     Err(e) => {
-      println!("D: {e}");
       return Err(e);
     }
   };
@@ -106,7 +105,6 @@ async fn organize_data(request: DataRequest) -> Result<Vec<ChangeFailureRateReco
       grouped_issues
     }
     Err(e) => {
-      println!("I: {e}");
       return Err(e);
     }
   };
