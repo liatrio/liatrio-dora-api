@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.2.6 (2024-07-03)
+
+### Fix
+
+* fix: fixed_at was being applied to wrong recordd ([`169a6c7`](https://github.com/liatrio/liatrio-dora-api/commit/169a6c7e6cce668b2c84d6be5535430f8bf0eb9c))
+
 ## v0.2.5 (2024-07-02)
 
 ### Fix
