@@ -147,22 +147,23 @@ fn sort_merge_data(merge_data: Result<QueryResponse>) -> HashMap<String, MergeEn
   return records_by_sha;
 }
 
-fn link_issues_to_deployes(deploy_data: &mut HashMap<String, Vec<Record>>, issue_data: &HashMap<String, Vec<IssueEntry>>) {
-  let mut on_failure = false;
-
-  for deploy_set in deploy_data.values_mut() {
-    let len = deploy_set.len();
+fn find_failures(deploy_data: &mut HashMap<String, Vec<Record>>, issue_data: &HashMap<String, Vec<IssueEntry>>) -> Vec<(String, usize, DateTime<Utc>)> {
+  let mut on_failure: Option<(String, usize)> = None;
+  let mut failures: Vec<(String, usize, DateTime<Utc>)> = [].to_vec();
+  
+  for (key, values) in deploy_data.iter_mut() {
+    let len = values.len();
 
     for idx in 0..len {
       let mut failed = false;
       
       let next_deploy = if idx + 1 < len {
-        deploy_set[idx + 1].created_at
+        values[idx + 1].created_at
       } else {
         DateTime::<Utc>::MAX_UTC
       };
 
-      let deploy = &mut deploy_set[idx];
+      let deploy = &mut values[idx];
 
       if deploy.status {
         let deploy_issue_count = match issue_data.get(&deploy.repository) {
@@ -182,11 +183,26 @@ fn link_issues_to_deployes(deploy_data: &mut HashMap<String, Vec<Record>>, issue
         failed = true;
       }
 
-      if failed && !on_failure {
-        on_failure = true;
-      } else if on_failure && !failed {
-        on_failure = false;
-        deploy.fixed_at = deploy.created_at;
+      if failed && on_failure.is_none() {
+        on_failure = Some((key.to_string(), idx));
+      } else if on_failure.is_some() && !failed {
+        let failure = on_failure.unwrap();
+        failures.push((failure.0, failure.1, deploy.created_at));
+        on_failure = None;
+      }
+    }
+  }
+
+  return failures;
+}
+
+fn link_issues_to_deployes(deploy_data: &mut HashMap<String, Vec<Record>>, issue_data: &HashMap<String, Vec<IssueEntry>>) {
+  let failures = find_failures(deploy_data, issue_data);
+  
+  for entry in failures {
+    if let Some(deploy_set) = deploy_data.get_mut(&entry.0) {
+      if let Some(failure_record) = deploy_set.get_mut(entry.1) {
+        failure_record.fixed_at = entry.2;
       }
     }
   }
