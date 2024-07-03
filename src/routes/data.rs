@@ -198,7 +198,7 @@ fn find_failures(deploy_data: &mut HashMap<String, Vec<Record>>, issue_data: &Ha
 
 fn link_issues_to_deployes(deploy_data: &mut HashMap<String, Vec<Record>>, issue_data: &HashMap<String, Vec<IssueEntry>>) {
   let failures = find_failures(deploy_data, issue_data);
-  
+
   for entry in failures {
     if let Some(deploy_set) = deploy_data.get_mut(&entry.0) {
       if let Some(failure_record) = deploy_set.get_mut(entry.1) {
@@ -249,8 +249,8 @@ async fn organize_data(request: DataRequest) -> Result<Vec<Record>> {
 
   let mut all_deploys = Vec::new();
 
-  for deploy_set in deploy_data.values() {
-      all_deploys.extend(deploy_set.clone());
+  for deploy_set in deploy_by_sha.values() {
+    all_deploys.extend(deploy_set.clone());
   }
 
   Ok(all_deploys)
