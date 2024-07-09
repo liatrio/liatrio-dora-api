@@ -21,6 +21,7 @@ pub struct Record {
   user: String,
   sha: String,
   status: bool,
+  post_failure: bool,
   merged_at: DateTime<Utc>,
   created_at: DateTime<Utc>,
   fixed_at: DateTime<Utc>
@@ -176,7 +177,7 @@ fn find_failures(deploy_data: &mut HashMap<String, Vec<Record>>, issue_data: &Ha
         };
 
         if deploy_issue_count > 0 {
-          deploy.status = false;
+          deploy.post_failure = true;
           failed = true;
         }
       } else {
