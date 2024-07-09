@@ -8,15 +8,12 @@ Currently, this API only supports querying Loki DB which contains records gather
 
 This API is currently deployed to our K8s v3 Platform and can be accessed at this [URL](http://liatrio-dora-api.dev.k8s-platform-v3.liatr.io) while signed into TailScale.
 
-There are currently 5 endpoints defined and used by their respective react components:
+There are currently 2 endpoints defined:
 
 * health
-* deployment_frequency
-* change_lead_time
-* change_failure_rate
-* recover_time
+  * Use for standard health checks
 * data
-  * this is a combination of the above 4 endpoints
+  * This returns all the data necessary for a given start/end time frame and set or repositories and or team.
 
 # Local Dev
 

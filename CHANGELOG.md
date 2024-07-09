@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.2.7 (2024-07-03)
+
+### Fix
+
+* fix: use correct data for final send ([`85ce4a7`](https://github.com/liatrio/liatrio-dora-api/commit/85ce4a7f8b98105e458b7e4ea84f3d45f28f510d))
+
 ## v0.2.6 (2024-07-03)
 
 ### Fix
