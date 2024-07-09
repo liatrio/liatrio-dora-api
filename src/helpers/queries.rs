@@ -19,7 +19,7 @@ pub async fn gather_deploy_data(request: &DataRequest) -> Result<QueryResponse> 
 }
 
 pub async fn gather_issue_data(request: &DataRequest) -> Result<QueryResponse> {
-  let query_params = fill_query_params(request, Some(r#"action="opened""#), Some("|= `incident`"));
+  let query_params = fill_query_params(request, Some(r#"action~="closed|opened""#), Some("|= `incident`"));
   
   let query_result = query(query_params).await?;
 

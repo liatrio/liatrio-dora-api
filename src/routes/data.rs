@@ -77,7 +77,8 @@ async fn sort_deploy_data(data: Result<QueryResponse>) -> Result<HashMap<String,
 
 #[derive(Serialize, Debug, Clone, Default)]
 pub struct IssueEntry {
-  created_at: DateTime<Utc>
+  created_at: DateTime<Utc>,
+  closed_at: Option<DateTime<Utc>>
 }
 
 async fn sort_issue_data(data: Result<QueryResponse>) -> Result<HashMap<String, Vec<IssueEntry>>> {
@@ -85,12 +86,14 @@ async fn sort_issue_data(data: Result<QueryResponse>) -> Result<HashMap<String, 
     Ok(id) => {
       let mut grouped_issues: HashMap<String, Vec<IssueEntry>> = HashMap::new();
 
-      for r in id.data.result {
-        for b in r.values {
-          let rn = b.json_data.body.repository.unwrap().name;
+      for result in id.data.result {
+        for value in result.values {
+          let rn = value.json_data.body.repository.unwrap().name;
+          let issue = value.json_data.body.issue.unwrap();
 
           let ie = IssueEntry {
-            created_at: b.json_data.body.issue.unwrap().created_at
+            created_at: issue.created_at,
+            closed_at: issue.closed_at
           };
 
           grouped_issues.entry(rn.clone())
