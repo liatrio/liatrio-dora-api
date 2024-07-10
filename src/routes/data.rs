@@ -17,14 +17,14 @@ use crate::helpers::{
 pub struct Record {
   repository: String,
   team: String,
-  title: String,
-  user: String,
+  title: Option<String>,
+  user: Option<String>,
   sha: String,
   status: bool,
-  post_failure: bool,
-  merged_at: DateTime<Utc>,
+  failed_at: Option<DateTime<Utc>>,
+  merged_at: Option<DateTime<Utc>>,
   created_at: DateTime<Utc>,
-  fixed_at: DateTime<Utc>
+  fixed_at: Option<DateTime<Utc>>,
 }
 
 #[derive(Serialize, Debug, Default)]
@@ -151,9 +151,9 @@ fn sort_merge_data(merge_data: Result<QueryResponse>) -> HashMap<String, MergeEn
   return records_by_sha;
 }
 
-fn find_failures(deploy_data: &mut HashMap<String, Vec<Record>>, issue_data: &HashMap<String, Vec<IssueEntry>>) -> Vec<(String, usize, DateTime<Utc>)> {
+fn find_failures(deploy_data: &mut HashMap<String, Vec<Record>>, issue_data: &HashMap<String, Vec<IssueEntry>>) -> Vec<(String, usize, Option<DateTime<Utc>>)> {
   let mut on_failure: Option<(String, usize)> = None;
-  let mut failures: Vec<(String, usize, DateTime<Utc>)> = [].to_vec();
+  let mut failures: Vec<(String, usize, Option<DateTime<Utc>>)> = [].to_vec();
   
   for (key, values) in deploy_data.iter_mut() {
     let len = values.len();
@@ -168,30 +168,42 @@ fn find_failures(deploy_data: &mut HashMap<String, Vec<Record>>, issue_data: &Ha
       };
 
       let deploy = &mut values[idx];
+      let mut deploy_issues: Vec<&IssueEntry> = [].to_vec();
 
       if deploy.status {
-        let deploy_issue_count = match issue_data.get(&deploy.repository) {
+        match issue_data.get(&deploy.repository) {
           Some(ies) => {
-            ies.iter().filter(|e| {
+            deploy_issues = ies.iter().filter(|e| {
               e.created_at >= deploy.created_at && e.created_at < next_deploy
-            }).count()
+            }).collect()
           },
-          None => 0
-        };
-
-        if deploy_issue_count > 0 {
-          deploy.post_failure = true;
-          failed = true;
+          None => {}
         }
       } else {
+        deploy.failed_at = Some(deploy.created_at);
+        failed = true;
+      }      
+
+      if deploy_issues.len() > 0 {
+        let opened_at = deploy_issues.iter().filter_map(|entry| Some(entry.created_at)).min();
+
+        deploy.failed_at = opened_at;
         failed = true;
       }
 
+      
       if failed && on_failure.is_none() {
         on_failure = Some((key.to_string(), idx));
       } else if on_failure.is_some() && !failed {
         let failure = on_failure.unwrap();
-        failures.push((failure.0, failure.1, deploy.created_at));
+        let mut closed_at = Some(deploy.created_at);
+
+        if deploy_issues.len() > 0 {
+          closed_at = deploy_issues.iter().filter_map(|entry| entry.closed_at).max();
+        }
+
+        failures.push((failure.0, failure.1, closed_at));
+        
         on_failure = None;
       }
     }
@@ -218,9 +230,9 @@ fn link_merge_to_deploys(deploy_by_sha: &mut HashMap<String, Vec<Record>>, merge
   for merge_entry in merge_data.iter() {
     deploy_by_sha.entry(merge_entry.0.to_string()).and_modify(|e| {
       for d in e {
-        d.merged_at = merge_entry.1.merged_at;
-        d.title = merge_entry.1.title.clone();
-        d.user = merge_entry.1.user.clone();
+        d.merged_at = Some(merge_entry.1.merged_at);
+        d.title = Some(merge_entry.1.title.clone());
+        d.user = Some(merge_entry.1.user.clone());
       }
     }).or_default();
   }
