@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## v0.2.8 (2024-07-10)
+
+### Fix
+
+* fix: force version bump ([`4304ff4`](https://github.com/liatrio/liatrio-dora-api/commit/4304ff44e01a8629dfdf6e9fb9e0c6bdcce5bd69))
+
+### Unknown
+
+* Adjust failed flag (#13)
+
+* fix: Adjust failed flag to be separate from status
+
+* fix: include issue closed dates
+
+* fix: Make dates optional instead of defaulting to min, fix fail tracking ([`e8650e6`](https://github.com/liatrio/liatrio-dora-api/commit/e8650e64ac8fdc72da21767dd86e92e56abeba90))
+
+* Update README.md ([`3676b2d`](https://github.com/liatrio/liatrio-dora-api/commit/3676b2d271bc149e9bc0fcac781297ae33bd4f1d))
+
 ## v0.2.7 (2024-07-03)
 
 ### Fix
