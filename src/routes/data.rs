@@ -16,7 +16,7 @@ use crate::helpers::{
 #[derive(Serialize, Debug, Clone, Default)]
 pub struct Record {
   repository: String,
-  team: String,
+  team: String, 
   title: Option<String>,
   user: Option<String>,
   sha: String,
