@@ -186,9 +186,10 @@ fn find_failures(deploy_data: &mut HashMap<String, Vec<Record>>, issue_data: &Ha
 
       if deploy_issues.len() > 0 {
         let opened_at = deploy_issues.iter().filter_map(|entry| Some(entry.created_at)).min();
+        let closed_at = deploy_issues.iter().filter_map(|entry| entry.closed_at).max();
 
         deploy.failed_at = opened_at;
-        failed = true;
+        deploy.fixed_at = closed_at;
       }
 
       
@@ -196,13 +197,9 @@ fn find_failures(deploy_data: &mut HashMap<String, Vec<Record>>, issue_data: &Ha
         on_failure = Some((key.to_string(), idx));
       } else if on_failure.is_some() && !failed {
         let failure = on_failure.unwrap();
-        let mut closed_at = Some(deploy.created_at);
+        let fixed_at = Some(deploy.created_at);
 
-        if deploy_issues.len() > 0 {
-          closed_at = deploy_issues.iter().filter_map(|entry| entry.closed_at).max();
-        }
-
-        failures.push((failure.0, failure.1, closed_at));
+        failures.push((failure.0, failure.1, fixed_at));
         
         on_failure = None;
       }
