@@ -6,4 +6,4 @@ resources:
 
 images:
 - name: ghcr.io/liatrio/liatrio-dora-api
-  newTag: v0.2.8
+  newTag: v0.2.9

@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.2.9 (2024-07-11)
+
+### Fix
+
+* fix: issue failed/fixed dates were incorrect, query was broken ([`5f14361`](https://github.com/liatrio/liatrio-dora-api/commit/5f14361cd7dec68b0a7772c206ca9ab18bd9541c))
+
 ## v0.2.8 (2024-07-10)
 
 ### Fix
