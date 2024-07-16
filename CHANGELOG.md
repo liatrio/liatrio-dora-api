@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.3.0 (2024-07-16)
+
+### Feature
+
+* feat: add caching to the data endpoint ([`d8062d2`](https://github.com/liatrio/liatrio-dora-api/commit/d8062d21048b5977e6265642c6fed112bf26732c))
+
 ## v0.2.9 (2024-07-11)
 
 ### Fix
