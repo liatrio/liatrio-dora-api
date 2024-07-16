@@ -13,3 +13,4 @@ dotenv = "0.15.0"
 anyhow = "1.0.86"
 openssl = { version = "0.10", features = ["vendored"] }
 chrono = { version = "0.4.38", features = ["serde"] }
+dashmap = "6.0.1"

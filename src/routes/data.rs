@@ -1,10 +1,12 @@
-use std::collections::HashMap;
+use std::{collections::HashMap, sync::Arc};
 use chrono::{DateTime, Utc};
 use serde::Serialize;
 use axum::{
   http::StatusCode,
-  response::Json
+  response::Json,
+  extract::Extension
 };
+use dashmap::DashMap;
 use anyhow::Result;
 
 use crate::helpers::{
@@ -12,6 +14,8 @@ use crate::helpers::{
   queries::{gather_deploy_data, gather_issue_data, gather_merge_data},
   loki::QueryResponse,
 };
+
+type Cache = Arc<DashMap<String, DataResponse>>;
 
 #[derive(Serialize, Debug, Clone, Default)]
 pub struct Record {
@@ -27,7 +31,7 @@ pub struct Record {
   fixed_at: Option<DateTime<Utc>>,
 }
 
-#[derive(Serialize, Debug, Default)]
+#[derive(Serialize, Debug, Default, Clone)]
 pub struct DataResponse {
   records: Vec<Record>
 }
@@ -269,7 +273,13 @@ async fn organize_data(request: DataRequest) -> Result<Vec<Record>> {
   Ok(all_deploys)
 }
 
-pub async fn handle_request(Json(request): Json<DataRequest>) -> Result<Json<DataResponse>, StatusCode> {
+pub async fn handle_request(Extension(cache): Extension<Cache>, Json(request): Json<DataRequest>) -> Result<Json<DataResponse>, StatusCode> {
+  let request_key = format!("{:?}", request);
+
+  if let Some(cached_response) = cache.get(&request_key) {
+    return Ok(Json(cached_response.clone()));
+  }
+
   let mut response : DataResponse = Default::default();
 
   let data = organize_data(request).await;
@@ -277,9 +287,11 @@ pub async fn handle_request(Json(request): Json<DataRequest>) -> Result<Json<Dat
   match data {
     Ok(d) => {
       response.records = d;
-
+      cache.insert(request_key, response.clone());
       Ok(Json(response))
     },
     Err(_) => Err(StatusCode::INTERNAL_SERVER_ERROR),
   }
 }
+
+pub type DataCache = Arc<DashMap<String, DataResponse>>;
