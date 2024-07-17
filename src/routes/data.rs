@@ -246,8 +246,18 @@ async fn organize_data(request: DataRequest) -> Result<Vec<Record>> {
   
   let (deploy_data_result, issue_data_result, merge_data_result) = tokio::join!(deploy_data_task, issue_data_task, merge_data_task);
 
-  let mut deploy_data = sort_deploy_data(deploy_data_result).await?;
-  let issue_data = sort_issue_data(issue_data_result).await?;
+  let deploy_data_result = sort_deploy_data(deploy_data_result).await;
+  let issue_data_result = sort_issue_data(issue_data_result).await;
+
+  let mut deploy_data = match deploy_data_result {
+    Ok(value) => value,
+    Err(e) => return Err(e.into())
+  };
+
+  let issue_data = match issue_data_result {
+    Ok(value) => value,
+    Err(e) => return Err(e.into())
+  };
 
   link_issues_to_deployes(&mut deploy_data, &issue_data);  
 
@@ -290,7 +300,10 @@ pub async fn handle_request(Extension(cache): Extension<Cache>, Json(request): J
       cache.insert(request_key, response.clone());
       Ok(Json(response))
     },
-    Err(_) => Err(StatusCode::INTERNAL_SERVER_ERROR),
+    Err(e) => {
+      println!("Error Occured: {}",  e.to_string());
+      Err(StatusCode::INTERNAL_SERVER_ERROR)
+    },
   }
 }
 
