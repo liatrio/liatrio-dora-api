@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## v0.3.1 (2024-07-17)
+
+### Fix
+
+* fix: Allow no auth (#14)
+
+* fix: allow for no auth when talking to loki
+
+* fix: if an error occurs, log it ([`dedc733`](https://github.com/liatrio/liatrio-dora-api/commit/dedc7331896c5db37cf6839902f9101658995dde))
+
 ## v0.3.0 (2024-07-16)
 
 ### Feature
