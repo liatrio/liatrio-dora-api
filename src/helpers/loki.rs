@@ -114,12 +114,19 @@ pub async fn query(data: QueryParams) -> Result<QueryResponse> {
     let user = env::var("LOKI_USER")?;
     let password = env::var("LOKI_TOKEN")?;
 
-    let response = client
+    let response = match user.as_str() {
+      "" => client
+        .get(url)
+        .query(&data)
+        .send()
+        .await?,
+      _ => client
         .get(url)
         .query(&data)
         .basic_auth(user, Some(password))
         .send()
-        .await?;
+        .await?
+    };
 
     let data: QueryResponse = response.json().await?;
 
