@@ -1,5 +1,6 @@
-use anyhow::Result;
+use anyhow::{anyhow, Result};
 use chrono::{DateTime, Utc};
+use reqwest::{Response, Error};
 use serde::{Deserialize, Serialize};
 use std::env;
 
@@ -108,27 +109,50 @@ impl<'de> Deserialize<'de> for ValueItem {
     }
 }
 
-pub async fn query(data: QueryParams) -> Result<QueryResponse> {
-    let client = reqwest::Client::new();
-    let url = env::var("LOKI_URL")?;
-    let user = env::var("LOKI_USER")?;
-    let password = env::var("LOKI_TOKEN")?;
+async fn get_response(url: String, user: String, password: String, data: QueryParams) -> Result<Response, Error> {
+  let client = reqwest::Client::new();
 
-    let response = match user.as_str() {
-      "" => client
-        .get(url)
-        .query(&data)
-        .send()
-        .await?,
-      _ => client
-        .get(url)
-        .query(&data)
-        .basic_auth(user, Some(password))
-        .send()
-        .await?
+  match user.as_str() {
+    "" => client
+      .get(url)
+      .query(&data)
+      .send()
+      .await,
+    _ => client
+      .get(url)
+      .query(&data)
+      .basic_auth(user, Some(password))
+      .send()
+      .await
+  }
+}
+
+pub async fn query(data: QueryParams) -> Result<QueryResponse> {
+    let url_var = env::var("LOKI_URL");
+    let user_var = env::var("LOKI_USER");
+    let password_var = env::var("LOKI_TOKEN");
+
+    let url = match url_var {
+      Ok(value) => value,
+      Err(e) => return Err(anyhow!(format!("{}: LOKI_URL", e.to_string())))
     };
 
-    let data: QueryResponse = response.json().await?;
+    let user = user_var.unwrap_or("".to_string());
+    let password = password_var.unwrap_or("".to_string());
 
-    return Ok(data);
+    let response_result = get_response(url, user, password, data).await;
+
+    match response_result {
+      Ok(response) => {
+        let parse_result: Result<QueryResponse, Error> = response.json().await;
+
+        match parse_result {
+          Ok(value) => return Ok(value),
+          Err(e) => return Err(e.into())
+        }
+      },
+      Err(e) => {
+        return Err(e.into())
+      }
+    }
 }
