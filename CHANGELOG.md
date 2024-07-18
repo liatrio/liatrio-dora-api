@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.3.8 (2024-07-18)
+
+### Fix
+
+* fix: add otel ([`1647e62`](https://github.com/liatrio/liatrio-dora-api/commit/1647e62c1f11fb3b3010e025e43fc6db8ec74376))
+
 ## v0.3.7 (2024-07-18)
 
 ### Fix
