@@ -31,11 +31,16 @@ pub fn fill_query_params<Q: AsRef<str>, F: AsRef<str>>(request: &DataRequest, qu
     .as_ref()
     .map_or("".to_string(), |f| f.as_ref().to_string());
 
+  let query = match unwrapped_filter.as_str() {
+    "" => format!(r#"{{{}{}{}}}"#, unwrapped_query, team_query, repo_query),
+    _ => format!(r#"{{{}{}{}}} {}"#, unwrapped_query, team_query, repo_query, unwrapped_filter)
+  };
+
   let params = QueryParams {
     start: request.start.timestamp_nanos_opt().unwrap().to_string(),
     end: request.end.timestamp_nanos_opt().unwrap().to_string(),
-    query: format!(r#"{{{}{}{}}} {}"#, unwrapped_query, team_query, repo_query, unwrapped_filter)
+    query: query
   };
-println!("Param str: {:?}", params);
+
   return params;
 }
