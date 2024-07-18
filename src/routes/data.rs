@@ -240,12 +240,10 @@ fn link_merge_to_deploys(deploy_by_sha: &mut HashMap<String, Vec<Record>>, merge
 }
 
 async fn organize_data(request: DataRequest) -> Result<Vec<Record>> {  
-  let deploy_data_task = gather_deploy_data(&request);
-  let issue_data_task = gather_issue_data(&request);
-  let merge_data_task = gather_merge_data(&request);
+  let deploy_data_result = gather_deploy_data(&request).await;
+  let issue_data_result = gather_issue_data(&request).await;
+  let merge_data_result = gather_merge_data(&request).await;
   
-  let (deploy_data_result, issue_data_result, merge_data_result) = tokio::join!(deploy_data_task, issue_data_task, merge_data_task);
-
   let deploy_data_result = sort_deploy_data(deploy_data_result).await;
   let issue_data_result = sort_issue_data(issue_data_result).await;
 

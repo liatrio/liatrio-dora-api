@@ -36,6 +36,6 @@ pub fn fill_query_params<Q: AsRef<str>, F: AsRef<str>>(request: &DataRequest, qu
     end: request.end.timestamp_nanos_opt().unwrap().to_string(),
     query: format!(r#"{{{}{}{}}} {}"#, unwrapped_query, team_query, repo_query, unwrapped_filter)
   };
-
+println!("Param str: {:?}", params);
   return params;
 }
