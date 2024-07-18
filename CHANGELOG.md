@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.3.3 (2024-07-18)
+
+### Fix
+
+* fix: more immediate logging ([`ada576d`](https://github.com/liatrio/liatrio-dora-api/commit/ada576d8719e54f5ba5ab642ef255a079b9451ca))
+
 ## v0.3.2 (2024-07-18)
 
 ### Fix
