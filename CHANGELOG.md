@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.3.6 (2024-07-18)
+
+### Fix
+
+* fix: try this from a github issue ([`21636d1`](https://github.com/liatrio/liatrio-dora-api/commit/21636d1f7833f8ed42c9ee52b5c85b9aabd3b533))
+
 ## v0.3.5 (2024-07-18)
 
 ### Fix
