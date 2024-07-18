@@ -154,11 +154,15 @@ pub async fn query(data: QueryParams) -> Result<QueryResponse> {
 
         match parse_result {
           Ok(value) => return Ok(value),
-          Err(e) => return Err(e.into())
+          Err(e) => {
+            println!("Parse Error: {}", e);
+            return Err(e.into());
+          }
         }
       },
       Err(e) => {
-        return Err(e.into())
+        println!("Reqwest Error: {}", e);
+        return Err(e.into());
       }
     }
 }
