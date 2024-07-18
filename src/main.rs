@@ -15,6 +15,8 @@ mod routes;
 async fn main() -> Result<()> {
     dotenv().ok();
 
+    env_logger::init();
+
     let cache: routes::data::DataCache = Arc::new(DashMap::new());
 
     let app = Router::new()

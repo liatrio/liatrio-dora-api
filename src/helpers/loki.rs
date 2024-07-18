@@ -111,24 +111,20 @@ impl<'de> Deserialize<'de> for ValueItem {
 
 async fn get_response(url: String, user: String, password: String, data: QueryParams) -> Result<Response, Error> {
   let client = reqwest::Client::new();
-
-  println!("Making request to: {}", url);
   
   match user.as_str() {
     "" => {
-      println!("Not using Auth");
       return client.get(url)
-      .query(&data)
-      .send()
-      .await
+        .query(&data)
+        .send()
+        .await
     }
     _ => {
-      println!("Using Auth: {}, {}", user, password);
       return client.get(url)
-      .query(&data)
-      .basic_auth(user, Some(password))
-      .send()
-      .await
+        .query(&data)
+        .basic_auth(user, Some(password))
+        .send()
+        .await
     }
   }
 }
@@ -155,13 +151,11 @@ pub async fn query(data: QueryParams) -> Result<QueryResponse> {
         match parse_result {
           Ok(value) => return Ok(value),
           Err(e) => {
-            println!("Parse Error: {}", e);
             return Err(e.into());
           }
         }
       },
       Err(e) => {
-        println!("Reqwest Error: {}", e);
         return Err(e.into());
       }
     }
