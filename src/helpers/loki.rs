@@ -110,19 +110,17 @@ impl<'de> Deserialize<'de> for ValueItem {
 }
 
 async fn get_response(url: String, user: String, password: String, data: QueryParams) -> Result<Response, Error> {
-  let client = reqwest::Client::builder()
-    .pool_max_idle_per_host(0)
-    .build()?;
+  let client = reqwest::Client::new();
   
   match user.as_str() {
     "" => {
-      return client.get(url)
+      client.get(url)
         .query(&data)
         .send()
         .await
     }
     _ => {
-      return client.get(url)
+      client.get(url)
         .query(&data)
         .basic_auth(user, Some(password))
         .send()
@@ -153,11 +151,13 @@ pub async fn query(data: QueryParams) -> Result<QueryResponse> {
         match parse_result {
           Ok(value) => return Ok(value),
           Err(e) => {
+            tracing::error!("Loki Respones Parsing Failed: {:?}", e);
             return Err(e.into());
           }
         }
       },
       Err(e) => {
+        tracing::error!("Loki Request Failed: {:?}", e);
         return Err(e.into());
       }
     }

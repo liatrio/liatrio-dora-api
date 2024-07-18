@@ -299,7 +299,7 @@ pub async fn handle_request(Extension(cache): Extension<Cache>, Json(request): J
       Ok(Json(response))
     },
     Err(e) => {
-      println!("Error Occured: {:?}", e);
+      tracing::error!("Processing Data Failed: {:?}", e);
       Err(StatusCode::INTERNAL_SERVER_ERROR)
     },
   }
