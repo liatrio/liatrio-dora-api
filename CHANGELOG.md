@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.3.7 (2024-07-18)
+
+### Fix
+
+* fix: don&#39;t do requests in parallel ([`bfa4596`](https://github.com/liatrio/liatrio-dora-api/commit/bfa4596dae0d7b35ce587ace41f702003ca8d35b))
+
 ## v0.3.6 (2024-07-18)
 
 ### Fix
