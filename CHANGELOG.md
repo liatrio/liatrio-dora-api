@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.3.9 (2024-07-18)
+
+### Fix
+
+* fix: remove trailing space on repo list ([`7a814a8`](https://github.com/liatrio/liatrio-dora-api/commit/7a814a8d6f13612757696e34d846ceaf2d565ff6))
+
 ## v0.3.8 (2024-07-18)
 
 ### Fix
