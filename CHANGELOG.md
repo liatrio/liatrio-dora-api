@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.3.5 (2024-07-18)
+
+### Fix
+
+* fix: try forcing http1 ([`928fd2c`](https://github.com/liatrio/liatrio-dora-api/commit/928fd2c65890d96d269760854781bbf7ae9dbea6))
+
 ## v0.3.4 (2024-07-18)
 
 ### Fix
