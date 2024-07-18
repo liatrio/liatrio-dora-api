@@ -110,7 +110,9 @@ impl<'de> Deserialize<'de> for ValueItem {
 }
 
 async fn get_response(url: String, user: String, password: String, data: QueryParams) -> Result<Response, Error> {
-  let client = reqwest::Client::new();
+  let client = reqwest::Client::builder()
+    .http1_only()
+    .build()?;
   
   match user.as_str() {
     "" => {
