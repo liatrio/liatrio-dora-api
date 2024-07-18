@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.3.4 (2024-07-18)
+
+### Fix
+
+* fix: adjust logging output ([`78d2b9d`](https://github.com/liatrio/liatrio-dora-api/commit/78d2b9da3af509f55e858a3efd7c9fdd662289c8))
+
 ## v0.3.3 (2024-07-18)
 
 ### Fix
