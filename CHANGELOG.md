@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.3.10 (2024-07-19)
+
+### Fix
+
+* fix: fix typo, allow error propigation ([`a156e29`](https://github.com/liatrio/liatrio-dora-api/commit/a156e291684856c66be0d32f9a40001d48a90011))
+
 ## v0.3.9 (2024-07-18)
 
 ### Fix
