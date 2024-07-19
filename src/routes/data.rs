@@ -126,30 +126,25 @@ pub struct MergeEntry {
   title: String,
 }
 
-fn sort_merge_data(merge_data: Result<QueryResponse>) -> HashMap<String, MergeEntry> {
+fn sort_merge_data(merge_data: QueryResponse) -> HashMap<String, MergeEntry> {
   let mut records_by_sha: HashMap<String, MergeEntry> = HashMap::new();
 
-  match merge_data {
-    Ok(entry) => {
-      for result in entry.data.result {
-        for value in result.values {
-          
-          let sha = result.stream.merge_sha.as_ref().unwrap().to_string();
-          let pr = value.json_data.body.pull_request.unwrap();
+  for result in merge_data.data.result {
+    for value in result.values {
+      
+      let sha = result.stream.merge_sha.as_ref().unwrap().to_string();
+      let pr = value.json_data.body.pull_request.unwrap();
 
-          let record = MergeEntry { 
-            user: pr.user.login.clone(),
-            title: pr.title.clone(),
-            merged_at: result.stream.merged_at.unwrap().clone(),
-            sha: sha.clone()
-          };
+      let record = MergeEntry { 
+        user: pr.user.login.clone(),
+        title: pr.title.clone(),
+        merged_at: result.stream.merged_at.unwrap().clone(),
+        sha: sha.clone()
+      };
 
-          records_by_sha.entry(sha)
-            .or_insert(record);
-        }
-      }
+      records_by_sha.entry(sha)
+        .or_insert(record);
     }
-    Err(_) => {}
   }
 
   return records_by_sha;
@@ -225,8 +220,8 @@ fn link_issues_to_deployes(deploy_data: &mut HashMap<String, Vec<Record>>, issue
   }
 }
 
-fn link_merge_to_deploys(deploy_by_sha: &mut HashMap<String, Vec<Record>>, merge_data_result: Result<QueryResponse>) {
-  let merge_data = sort_merge_data(merge_data_result);
+fn link_merge_to_deploys(deploy_by_sha: &mut HashMap<String, Vec<Record>>, merge_data: QueryResponse) {
+  let merge_data = sort_merge_data(merge_data);
 
   for merge_entry in merge_data.iter() {
     deploy_by_sha.entry(merge_entry.0.to_string()).and_modify(|e| {
@@ -257,6 +252,11 @@ async fn organize_data(request: DataRequest) -> Result<Vec<Record>> {
     Err(e) => return Err(e.into())
   };
 
+  let merge_data = match merge_data_result {
+    Ok(value) => value,
+    Err(e) => return Err(e.into())
+  };
+
   link_issues_to_deployes(&mut deploy_data, &issue_data);  
 
   let mut deploy_by_sha: HashMap<String, Vec<Record>> = HashMap::new();
@@ -270,7 +270,7 @@ async fn organize_data(request: DataRequest) -> Result<Vec<Record>> {
     }
   }
 
-  link_merge_to_deploys(&mut deploy_by_sha, merge_data_result);
+  link_merge_to_deploys(&mut deploy_by_sha, merge_data);
 
   let mut all_deploys = Vec::new();
 

@@ -142,10 +142,16 @@ pub async fn query(data: QueryParams) -> Result<QueryResponse> {
     let user = user_var.unwrap_or("".to_string());
     let password = password_var.unwrap_or("".to_string());
 
-    let response_result = get_response(url, user, password, data).await;
-
+    let response_result = get_response(url, user, password, data.clone()).await;
+    
     match response_result {
       Ok(response) => {
+        let status = response.status();
+
+        if !status.is_success() {
+          return Err(anyhow!(format!("Loki Responded with status: {:?}", status)))
+        }
+
         let parse_result: Result<QueryResponse, Error> = response.json().await;
 
         match parse_result {
