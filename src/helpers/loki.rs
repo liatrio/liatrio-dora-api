@@ -151,7 +151,7 @@ pub async fn query(data: QueryParams) -> Result<QueryResponse> {
         match parse_result {
           Ok(value) => return Ok(value),
           Err(e) => {
-            tracing::error!("Loki Respones Parsing Failed: {:?}", e);
+            tracing::error!("Loki Response Parsing Failed: {:?}", e);
             return Err(e.into());
           }
         }
