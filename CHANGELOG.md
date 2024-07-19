@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.3.12 (2024-07-19)
+
+### Fix
+
+* fix: spread out the request load for loki ([`c5873d2`](https://github.com/liatrio/liatrio-dora-api/commit/c5873d2ea0ba249da949eb74233128d2d217202d))
+
 ## v0.3.11 (2024-07-19)
 
 ### Fix
