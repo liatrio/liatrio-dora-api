@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.3.11 (2024-07-19)
+
+### Fix
+
+* fix: more logging ([`000e84a`](https://github.com/liatrio/liatrio-dora-api/commit/000e84af4b0a92c7d6c1fae78a73719fbe51eae8))
+
 ## v0.3.10 (2024-07-19)
 
 ### Fix
