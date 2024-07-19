@@ -4,7 +4,7 @@ use serde::Deserialize;
 
 use crate::helpers::loki::QueryParams;
 
-#[derive(Deserialize, Debug)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct DataRequest {
   pub repositories: Option<Vec<String>>,
   pub team: Option<String>,

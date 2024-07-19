@@ -4,20 +4,20 @@ use reqwest::{Response, Error};
 use serde::{Deserialize, Serialize};
 use std::env;
 
-#[derive(Serialize, Debug, Clone)]
+#[derive(Serialize, Debug, Clone, Default)]
 pub struct QueryParams {
   pub query: String,
   pub start: String,
   pub end: String,
 }
 
-#[derive(Deserialize, Debug)]
+#[derive(Deserialize, Debug, Default)]
 pub struct QueryResponse {
   pub status: String,
   pub data: Data,
 }
 
-#[derive(Deserialize, Debug)]
+#[derive(Deserialize, Debug, Default)]
 pub struct Data {
   #[serde(rename = "resultType")]
   pub result_type: String,
