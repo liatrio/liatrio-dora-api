@@ -1,0 +1,15 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind:
+  Kustomization
+
+  # Vault Secrets
+
+  # a.k.a. Ingress v2
+resources:
+  - ../../base
+  - netpol/
+  - secret.yaml
+  - routes.yaml
+
+generatorOptions:
+  disableNameSuffixHash: true
