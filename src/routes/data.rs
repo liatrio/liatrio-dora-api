@@ -5,8 +5,7 @@ use axum::{
   extract::Extension, http::StatusCode, response::Json
 };
 use dashmap::DashMap;
-use anyhow::{Result, anyhow};
-use futures::future::join_all;
+use anyhow::Result;
 
 use crate::helpers::{
   common::DataRequest,
@@ -14,7 +13,7 @@ use crate::helpers::{
   loki::QueryResponse,
 };
 
-type Cache = Arc<DashMap<String, DataResponse>>;
+pub type DataCache = Arc<DashMap<String, DataResponse>>;
 
 #[derive(Serialize, Debug, Clone, Default)]
 pub struct Record {
@@ -321,7 +320,7 @@ async fn organize_data(request: DataRequest) -> Result<Vec<Record>> {
   Ok(all_deploys)
 }
 
-pub async fn handle_request(Extension(cache): Extension<Cache>, Json(request): Json<DataRequest>) -> Result<Json<DataResponse>, StatusCode> {
+pub async fn handle_request(Extension(cache): Extension<DataCache>, Json(request): Json<DataRequest>) -> Result<Json<DataResponse>, StatusCode> {
   let request_key = format!("{:?}", request);
 
   if let Some(cached_response) = cache.get(&request_key) {
@@ -344,5 +343,3 @@ pub async fn handle_request(Extension(cache): Extension<Cache>, Json(request): J
     },
   }
 }
-
-pub type DataCache = Arc<DashMap<String, DataResponse>>;
