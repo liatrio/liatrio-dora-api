@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## v1.1.2 (2024-08-08)
+
+### Fix
+
+* fix: add urls to response (#19)
+
+* fix: add urls to response
+
+* fix: adjust commit url ([`8189101`](https://github.com/liatrio/liatrio-dora-api/commit/81891013961e0c73cdf4aba560886d283ef61f3f))
+
 ## v1.1.1 (2024-08-01)
 
 ### Fix
