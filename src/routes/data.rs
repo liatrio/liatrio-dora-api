@@ -53,8 +53,18 @@ async fn sort_deploy_data(data: QueryResponse) -> HashMap<String, Vec<Record>> {
         let rn = r.stream.repository_name.clone().unwrap();
 
         let d = b.json_data.body.deployment.as_ref().unwrap();
-        let wf = b.json_data.body.workflow_run.unwrap();
         let status = r.stream.deployment_state.clone().unwrap_or_default();
+
+        let mut wf_url = "".to_string();
+        let mut wf_hash = "".to_string();
+
+        match b.json_data.body.workflow_run {
+          Some(wf) => {
+            wf_url = wf.url.replace("api.", "").replace("repos/", "");
+            wf_hash = wf.head_sha;
+          },
+          None => {}
+        }
 
         let record = Record {
           status: status == "success",
@@ -62,8 +72,8 @@ async fn sort_deploy_data(data: QueryResponse) -> HashMap<String, Vec<Record>> {
           team: r.stream.team_name.clone().unwrap(),
           created_at: d.created_at,
           sha: d.sha.clone(),
-          deploy_url: wf.url.replace("api.", "").replace("repos/", ""),
-          change_url: d.url.replace("api.", "").replace("repos/", "").replace("deployments/", "commit/").replace(d.id.to_string().as_str(), wf.head_sha.as_str()),
+          deploy_url: wf_url,
+          change_url: d.url.replace("api.", "").replace("repos/", "").replace("deployments/", "commit/").replace(d.id.to_string().as_str(), wf_hash.as_str()),
           ..Default::default()
         };
         grouped_deploys.entry(rn.clone())
