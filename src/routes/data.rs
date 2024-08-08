@@ -1,5 +1,6 @@
 use std::{collections::HashMap, sync::Arc};
 use chrono::{DateTime, Duration, TimeDelta, Utc};
+use regex::Regex;
 use serde::Serialize;
 use axum::{
   extract::Extension, http::StatusCode, response::Json
@@ -27,8 +28,9 @@ pub struct Record {
   merged_at: Option<DateTime<Utc>>,
   created_at: DateTime<Utc>,
   fixed_at: Option<DateTime<Utc>>,
-  deploy_url: String,
   fixed_url: Option<String>,
+  deploy_url: String,
+  issue_url: Option<String>,
   change_url: String,
 }
 
@@ -80,7 +82,8 @@ async fn sort_deploy_data(data: QueryResponse) -> HashMap<String, Vec<Record>> {
 #[derive(Serialize, Debug, Clone, Default)]
 pub struct IssueEntry {
   created_at: DateTime<Utc>,
-  closed_at: Option<DateTime<Utc>>
+  closed_at: Option<DateTime<Utc>>,
+  number: u32,
 }
 
 async fn sort_issue_data(data: QueryResponse) -> HashMap<String, Vec<IssueEntry>> {
@@ -93,7 +96,8 @@ async fn sort_issue_data(data: QueryResponse) -> HashMap<String, Vec<IssueEntry>
 
       let ie = IssueEntry {
         created_at: issue.created_at,
-        closed_at: issue.closed_at
+        closed_at: issue.closed_at,
+        number: issue.number,
       };
 
       grouped_issues.entry(rn.clone())
@@ -176,10 +180,25 @@ fn find_failures(deploy_data: &mut HashMap<String, Vec<Record>>, issue_data: &Ha
 
       if deploy_issues.len() > 0 {
         let opened_at = deploy_issues.iter().filter_map(|entry| Some(entry.created_at)).min();
-        let closed_at = deploy_issues.iter().filter_map(|entry| entry.closed_at).max();
+        let closing = deploy_issues.iter()
+          .filter_map(|record| record.closed_at.map(|time| (record, time)))
+          .max_by_key(|&(_, time)| time)
+          .map(|(record, _)| record);
 
+        
         deploy.failed_at = opened_at;
-        deploy.fixed_at = closed_at;
+
+        match closing {
+          Some(issue) => {
+            deploy.fixed_at = issue.closed_at;
+            
+            let re = Regex::new(r"actions/runs/\d+").unwrap();
+            let url = re.replace(deploy.deploy_url.as_str(), &format!("issues/{}", issue.number));
+
+            deploy.issue_url = Some(url.to_string());
+          },
+          None => {}
+        }
       }
 
       

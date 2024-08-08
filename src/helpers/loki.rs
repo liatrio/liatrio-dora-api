@@ -68,6 +68,7 @@ pub struct Body {
 pub struct Issue {
   pub created_at: DateTime<Utc>,
   pub closed_at: Option<DateTime<Utc>>,
+  pub number: u32,
 }
 
 #[derive(Deserialize, Debug)]
