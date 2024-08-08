@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v1.1.4 (2024-08-08)
+
+### Fix
+
+* fix: check for workflow_run not existing (#21) ([`b82afb2`](https://github.com/liatrio/liatrio-dora-api/commit/b82afb23ee086fc4f788a41dc7e5a58812e528fc))
+
 ## v1.1.3 (2024-08-08)
 
 ### Fix
