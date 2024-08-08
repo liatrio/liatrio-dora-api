@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## v1.1.3 (2024-08-08)
+
+### Fix
+
+* fix: provide issue url (#20)
+
+* fix: add urls to response
+
+* fix: adjust commit url
+
+* fix: provide issue url ([`4c3eb6e`](https://github.com/liatrio/liatrio-dora-api/commit/4c3eb6e37be0580dcabbbe6e8d0c8c523e48cfaf))
+
 ## v1.1.2 (2024-08-08)
 
 ### Fix
