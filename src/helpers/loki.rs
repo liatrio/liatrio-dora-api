@@ -91,7 +91,8 @@ pub struct Deployment {
 
 #[derive(Deserialize, Debug)]
 pub struct WorkflowRun {
-  pub url: String
+  pub url: String,
+  pub head_sha: String,
 }
 
 #[derive(Deserialize, Debug)]
