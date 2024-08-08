@@ -61,6 +61,7 @@ pub struct Body {
   pub deployment: Option<Deployment>,
   pub issue: Option<Issue>,
   pub repository: Option<Repository>,
+  pub workflow_run: Option<WorkflowRun>,
 }
 
 #[derive(Deserialize, Debug)]
@@ -82,8 +83,16 @@ pub struct PullRequest {
 
 #[derive(Deserialize, Debug)]
 pub struct Deployment {
+  pub id: u32,
   pub created_at: DateTime<Utc>,
   pub sha: String,
+  pub url: String,
+}
+
+#[derive(Deserialize, Debug)]
+pub struct WorkflowRun {
+  pub url: String,
+  pub head_sha: String,
 }
 
 #[derive(Deserialize, Debug)]

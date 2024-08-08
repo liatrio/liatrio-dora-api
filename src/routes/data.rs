@@ -27,6 +27,9 @@ pub struct Record {
   merged_at: Option<DateTime<Utc>>,
   created_at: DateTime<Utc>,
   fixed_at: Option<DateTime<Utc>>,
+  deploy_url: String,
+  fixed_url: Option<String>,
+  change_url: String,
 }
 
 #[derive(Serialize, Debug, Default, Clone)]
@@ -48,6 +51,7 @@ async fn sort_deploy_data(data: QueryResponse) -> HashMap<String, Vec<Record>> {
         let rn = r.stream.repository_name.clone().unwrap();
 
         let d = b.json_data.body.deployment.as_ref().unwrap();
+        let wf = b.json_data.body.workflow_run.unwrap();
         let status = r.stream.deployment_state.clone().unwrap_or_default();
 
         let record = Record {
@@ -56,6 +60,8 @@ async fn sort_deploy_data(data: QueryResponse) -> HashMap<String, Vec<Record>> {
           team: r.stream.team_name.clone().unwrap(),
           created_at: d.created_at,
           sha: d.sha.clone(),
+          deploy_url: wf.url.replace("api.", "").replace("repos/", ""),
+          change_url: d.url.replace("api.", "").replace("repos/", "").replace("deployments/", "commit/").replace(d.id.to_string().as_str(), wf.head_sha.as_str()),
           ..Default::default()
         };
         grouped_deploys.entry(rn.clone())
@@ -135,9 +141,9 @@ fn sort_merge_data(merge_data: QueryResponse) -> HashMap<String, MergeEntry> {
   return records_by_sha;
 }
 
-fn find_failures(deploy_data: &mut HashMap<String, Vec<Record>>, issue_data: &HashMap<String, Vec<IssueEntry>>) -> Vec<(String, usize, Option<DateTime<Utc>>)> {
+fn find_failures(deploy_data: &mut HashMap<String, Vec<Record>>, issue_data: &HashMap<String, Vec<IssueEntry>>) -> Vec<(String, usize, Option<DateTime<Utc>>, Option<String>)> {
   let mut on_failure: Option<(String, usize)> = None;
-  let mut failures: Vec<(String, usize, Option<DateTime<Utc>>)> = [].to_vec();
+  let mut failures: Vec<(String, usize, Option<DateTime<Utc>>, Option<String>)> = [].to_vec();
   
   for (key, values) in deploy_data.iter_mut() {
     let len = values.len();
@@ -182,8 +188,9 @@ fn find_failures(deploy_data: &mut HashMap<String, Vec<Record>>, issue_data: &Ha
       } else if on_failure.is_some() && !failed {
         let failure = on_failure.unwrap();
         let fixed_at = Some(deploy.created_at);
+        let fixed_url = Some(deploy.deploy_url.clone());
 
-        failures.push((failure.0, failure.1, fixed_at));
+        failures.push((failure.0, failure.1, fixed_at, fixed_url));
         
         on_failure = None;
       }
@@ -200,6 +207,7 @@ fn link_issues_to_deployes(deploy_data: &mut HashMap<String, Vec<Record>>, issue
     if let Some(deploy_set) = deploy_data.get_mut(&entry.0) {
       if let Some(failure_record) = deploy_set.get_mut(entry.1) {
         failure_record.fixed_at = entry.2;
+        failure_record.fixed_url = entry.3;
       }
     }
   }
