@@ -1,3 +1,4 @@
 pub mod loki;
-pub mod common;
-pub mod queries;
+pub mod request;
+pub mod response;
+pub mod gatherer;
