@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## v1.1.5 (2024-08-14)
+
+### Chore
+
+* chore: Update Readme (#23)
+
+Co-authored-by: Wolftousen &lt;eliot.t.eikenberry@perilforge.com&gt; ([`6029d54`](https://github.com/liatrio/liatrio-dora-api/commit/6029d54f1727f7cc02697f27759a3d634d6153d8))
+
+### Fix
+
+* fix: refactor query code to be less Loki specific (#24)
+
+* fix: refactor the code to start splitting loki specific logic
+
+* fix: make small batch size configurable ([`70675b4`](https://github.com/liatrio/liatrio-dora-api/commit/70675b44a95f3d0c21dafc36871dfa293c19aad3))
+
 ## v1.1.4 (2024-08-08)
 
 ### Fix
