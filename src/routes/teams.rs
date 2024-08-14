@@ -1,5 +1,5 @@
 use std::{sync::Arc, env};
-use serde::{Deserialize, Serialize};
+use serde::Deserialize;
 use axum::{
   extract::Extension, http::StatusCode, response::Json
 };
@@ -7,17 +7,7 @@ use dashmap::DashMap;
 use anyhow::{Result, anyhow};
 use reqwest::Error;
 
-
-#[derive(Serialize, Debug, Clone, Default)]
-pub struct Team {
-  pub name: String,
-  pub repositories: Vec<String>
-}
-
-#[derive(Serialize, Debug, Default, Clone)]
-pub struct TeamsResponse {
-  pub teams: Vec<Team>
-}
+use crate::helpers::response::{Team, TeamsResponse};
 
 #[derive(Deserialize, Debug, Clone)]
 pub struct GitHubTeam {
