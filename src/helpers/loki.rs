@@ -380,18 +380,37 @@ async fn query_data(request: DataRequest) -> Result<(QueryResponse, QueryRespons
 const REQUEST_DAYS: i64 = 5;
 const REQUEST_DAYS_DURATION: TimeDelta = Duration::days(5);
 
+fn get_batch_days_size() -> i64 {
+  let var = env::var("LOKI_DAYS_BATCH_SIZE");
+
+  match var {
+    Ok(value) => {
+      match value.parse::<i64>() {
+        Ok(parsed) => parsed,
+        Err(_) => 5
+      }
+    }
+    Err(_) => {
+      5
+    }
+  }
+}
+
 pub async fn gather_data(request: DataRequest) -> Result<GatheredData> {
   let mut time_length = (request.end - request.start).num_days();
   let mut end = request.end;
   let mut all_ok = vec![];
+
+  let batch_days_size = get_batch_days_size();
+  let batch_duration = Duration::days(batch_days_size);
 
   while time_length > 0 {
     let mut sub_request = request.clone();
 
     sub_request.end = end;
 
-    if time_length > REQUEST_DAYS {
-      sub_request.start = end - REQUEST_DAYS_DURATION;
+    if time_length > batch_days_size {
+      sub_request.start = end - batch_duration;
     } else {
       sub_request.start = end - Duration::days(time_length);
     }
@@ -403,8 +422,8 @@ pub async fn gather_data(request: DataRequest) -> Result<GatheredData> {
       Err(e) => return Err(e.into())
     };
     
-    time_length -= REQUEST_DAYS;
-    end = end - REQUEST_DAYS_DURATION;
+    time_length -= batch_days_size;
+    end = end - batch_duration;
   }
 
   let mut deploy_data: QueryResponse = Default::default();
