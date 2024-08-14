@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v1.1.6 (2024-08-14)
+
+### Fix
+
+* fix: add new env var to manifest (#25) ([`2b042bc`](https://github.com/liatrio/liatrio-dora-api/commit/2b042bc484f8e059c98ab7e266ec1d90ac1f34bd))
+
 ## v1.1.5 (2024-08-14)
 
 ### Chore
