@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v1.1.9 (2024-08-16)
+
+### Fix
+
+* fix: revert local testing changes (#28) ([`73d2901`](https://github.com/liatrio/liatrio-dora-api/commit/73d2901022079848e7f24106defe4eaf0bd37f2d))
+
 ## v1.1.8 (2024-08-16)
 
 ### Fix
