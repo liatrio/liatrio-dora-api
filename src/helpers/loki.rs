@@ -95,7 +95,8 @@ pub struct Deployment {
 #[derive(Deserialize, Debug)]
 pub struct WorkflowRun {
   pub head_sha: String,
-  pub workflow_id: u32,
+  pub workflow_id: Option<u32>,
+  pub url: Option<String>,
 }
 
 #[derive(Deserialize, Debug)]
@@ -123,7 +124,7 @@ impl<'de> Deserialize<'de> for ValueItem {
 
 async fn get_response(url: String, user: String, password: String, data: QueryParams) -> Result<Response, Error> {
   let client = reqwest::Client::new();
-  
+
   match user.as_str() {
     "" => {
       client.get(url)
@@ -155,7 +156,7 @@ async fn query(data: QueryParams) -> Result<QueryResponse> {
     let password = password_var.unwrap_or("".to_string());
 
     let response_result = get_response(url, user, password, data.clone()).await;
-    
+
     match response_result {
       Ok(response) => {
         let status = response.status();
@@ -216,7 +217,7 @@ fn fill_query_params<Q: AsRef<str>, F: AsRef<str>>(request: &DataRequest, query:
 
 async fn query_merge_data(request: &DataRequest) -> Result<QueryResponse> {
   let query_params = fill_query_params(request, Some(r#"merged_at=~".+""#), None::<&str>);
-  
+
   let query_result = query(query_params).await;
 
   return query_result;
@@ -224,7 +225,7 @@ async fn query_merge_data(request: &DataRequest) -> Result<QueryResponse> {
 
 async fn query_deploy_data(request: &DataRequest) -> Result<QueryResponse> {
   let query_params = fill_query_params(request, Some(r#"deployment_state=~"success|failure""#), None::<&str>);
-  
+
   let query_result = query(query_params).await;
 
   return query_result;
@@ -232,7 +233,7 @@ async fn query_deploy_data(request: &DataRequest) -> Result<QueryResponse> {
 
 async fn query_issue_data(request: &DataRequest) -> Result<QueryResponse> {
   let query_params = fill_query_params(request, Some(r#"action=~"closed|opened""#), Some("|= `incident`"));
-  
+
   let query_result = query(query_params).await;
 
   return query_result;
@@ -259,7 +260,12 @@ async fn sort_deploy_data(data: QueryResponse) -> HashMap<String, Vec<DeployEntr
 
         match b.json_data.body.workflow_run {
           Some(wf) => {
-            wf_url = d.url.replace("api.", "").replace("repos/", "").replace("deployments/", "actions/runs/").replace(d.id.to_string().as_str(), wf.workflow_id.to_string().as_str());
+            if wf.workflow_id.is_some() {
+              wf_url = d.url.replace("api.", "").replace("repos/", "").replace("deployments/", "actions/runs/").replace(d.id.to_string().as_str(), wf.workflow_id.to_string().as_str());
+            } else if wf.url.is_some() {
+              wf_url = wf.url.unwrap().replace("api.", "").replace("repos/", "");
+            }
+
             wf_hash = wf.head_sha;
           },
           None => {}
@@ -324,11 +330,11 @@ fn sort_merge_data(merge_data: QueryResponse) -> HashMap<String, MergeEntry> {
 
   for result in merge_data.data.result {
     for value in result.values {
-      
+
       let sha = result.stream.merge_sha.as_ref().unwrap().to_string();
       let pr = value.json_data.body.pull_request.unwrap();
 
-      let record = MergeEntry { 
+      let record = MergeEntry {
         user: pr.user.login.clone(),
         title: pr.title.clone(),
         merged_at: result.stream.merged_at.unwrap().clone(),
@@ -349,7 +355,7 @@ async fn query_data(request: DataRequest) -> Result<(QueryResponse, QueryRespons
   let merge_data_task = query_merge_data(&request);
 
   let (deploy_data_result, issue_data_result, merge_data_result) = tokio::join!(deploy_data_task, issue_data_task, merge_data_task);
-  
+
   let deploy_data = match deploy_data_result {
     Ok(value) => value,
     Err(e) => return {
@@ -421,7 +427,7 @@ pub async fn gather_data(request: DataRequest) -> Result<GatheredData> {
       Ok(result) => all_ok.push(result),
       Err(e) => return Err(e.into())
     };
-    
+
     time_length -= batch_days_size;
     end = end - batch_duration;
   }
@@ -429,7 +435,7 @@ pub async fn gather_data(request: DataRequest) -> Result<GatheredData> {
   let mut deploy_data: QueryResponse = Default::default();
   let mut issue_data: QueryResponse = Default::default();
   let mut merge_data: QueryResponse = Default::default();
-  
+
   for (first, second, third) in all_ok {
     deploy_data.data.result.extend(first.data.result);
     issue_data.data.result.extend(second.data.result);
