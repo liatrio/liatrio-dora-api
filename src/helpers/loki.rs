@@ -261,7 +261,7 @@ async fn sort_deploy_data(data: QueryResponse) -> HashMap<String, Vec<DeployEntr
         match b.json_data.body.workflow_run {
           Some(wf) => {
             if wf.workflow_id.is_some() {
-              wf_url = d.url.replace("api.", "").replace("repos/", "").replace("deployments/", "actions/runs/").replace(d.id.to_string().as_str(), wf.workflow_id.to_string().as_str());
+              wf_url = d.url.replace("api.", "").replace("repos/", "").replace("deployments/", "actions/runs/").replace(d.id.to_string().as_str(), wf.workflow_id.unwrap().to_string().as_str());
             } else if wf.url.is_some() {
               wf_url = wf.url.unwrap().replace("api.", "").replace("repos/", "");
             }
