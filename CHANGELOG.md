@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## v1.1.12 (2024-08-16)
+
+### Fix
+
+* fix: allow a 3rd option for workflow link (#31)
+
+Co-authored-by: Wolftousen &lt;eliot.t.eikenberry@perilforge.com&gt; ([`17d50b6`](https://github.com/liatrio/liatrio-dora-api/commit/17d50b68ce6b7573eb07f6b63d304df28bd3cce9))
+
 ## v1.1.11 (2024-08-16)
 
 ### Fix
