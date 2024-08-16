@@ -97,6 +97,7 @@ pub struct WorkflowRun {
   pub head_sha: String,
   pub workflow_id: Option<u32>,
   pub url: Option<String>,
+  pub html_url: Option<String>,
 }
 
 #[derive(Deserialize, Debug)]
@@ -260,7 +261,9 @@ async fn sort_deploy_data(data: QueryResponse) -> HashMap<String, Vec<DeployEntr
 
         match b.json_data.body.workflow_run {
           Some(wf) => {
-            if wf.workflow_id.is_some() {
+            if wf.html_url.is_some() {
+              wf_url = wf.html_url.unwrap()
+            } else if wf.workflow_id.is_some() {
               wf_url = d.url.replace("api.", "").replace("repos/", "").replace("deployments/", "actions/runs/").replace(d.id.to_string().as_str(), wf.workflow_id.unwrap().to_string().as_str());
             } else if wf.url.is_some() {
               wf_url = wf.url.unwrap().replace("api.", "").replace("repos/", "");
