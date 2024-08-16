@@ -20,13 +20,7 @@ pub struct ResponseRecord {
   pub total_cycle_time: Option<f32>
 }
 
-#[derive(Serialize, Debug, Clone, Default)]
-pub struct Team {
-  pub name: String,
-  pub repositories: Vec<String>
-}
-
 #[derive(Serialize, Debug, Default, Clone)]
 pub struct TeamsResponse {
-  pub teams: Vec<Team>
+  pub teams: Vec<String>
 }
