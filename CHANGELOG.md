@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v1.1.7 (2024-08-16)
+
+### Fix
+
+* fix: we don&#39;t need repository ownership (#26) ([`4c93fb6`](https://github.com/liatrio/liatrio-dora-api/commit/4c93fb67e7737bb302f6ef1fac49ac5b2aab4692))
+
 ## v1.1.6 (2024-08-14)
 
 ### Fix
