@@ -1,0 +1,1193 @@
+{
+  "status": "success",
+  "data": {
+    "resultType": "streams",
+    "result": [
+      {
+        "stream": {
+          "created_at": "2024-08-14T13:49:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-elite-repo",
+          "team_name": "dora-elite-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1723643354000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-08-14T13:49:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"b08438aac14a52d74d4aab4ec67d04e714982880\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-08-14T13:49:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-08-14T11:26:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-elite-repo",
+          "team_name": "dora-elite-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1723634774000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-08-14T11:26:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"ff359c3821526c1a3febc064b5166e7c7a5b97ee\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-08-14T11:26:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-08-14T09:33:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-elite-repo",
+          "team_name": "dora-elite-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1723627994000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-08-14T09:33:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"481f5227e18608a36bc9cb121c53689b6ecab536\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-08-14T09:33:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-08-13T15:49:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-elite-repo",
+          "team_name": "dora-elite-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1723564154000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-08-13T15:49:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"d68afeffc4c534defb4b5301e076d674f8698c64\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-08-13T15:49:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-08-13T09:15:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-elite-repo",
+          "team_name": "dora-elite-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1723540514000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-08-13T09:15:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"afa988c1a47e4311ff2fe23192bd9f1ba8faaa6a\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-08-13T09:15:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-08-12T09:57:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-high-repo",
+          "team_name": "dora-high-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1723456634000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-08-12T09:57:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"3aef1499954865979037921e6475249079c9010c\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-08-12T09:57:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-high-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-08-12T09:49:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-elite-repo",
+          "team_name": "dora-elite-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1723456154000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-08-12T09:49:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"76d9f77ea857be8f2d64ce958fe30762b3f0b2cb\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-08-12T09:49:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-08-09T17:53:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-elite-repo",
+          "team_name": "dora-elite-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1723225994000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-08-09T17:53:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"90b49bf4b2e857d5d31a238d454ff4cef7669ab2\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-08-09T17:53:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-08-09T13:28:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-elite-repo",
+          "team_name": "dora-elite-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1723210094000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-08-09T13:28:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"53b5021e3aa05674a7b1fe070b8749a6cc2e8298\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-08-09T13:28:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-08-09T09:47:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-elite-repo",
+          "team_name": "dora-elite-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1723196834000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-08-09T09:47:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"0e49fa45fd2cdceb75d6f0c9772f7987cbaef602\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-08-09T09:47:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-08-08T17:58:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-elite-repo",
+          "team_name": "dora-elite-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1723139894000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-08-08T17:58:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"fc7421d0fb296e4bf005f3e79c0cdd4fd58d46af\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-08-08T17:58:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-08-08T09:58:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-elite-repo",
+          "team_name": "dora-elite-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1723111094000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-08-08T09:58:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"23736e6446b6c5c1162df685530bd169d039f717\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-08-08T09:58:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-08-07T17:57:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-elite-repo",
+          "team_name": "dora-elite-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1723053434000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-08-07T17:57:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"262faf606d82b45dcf2800c34ce061fa0647cc6c\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-08-07T17:57:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-08-07T14:07:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-high-repo",
+          "team_name": "dora-high-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1723039634000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-08-07T14:07:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"d00bd65a8fc887b429a5314a2815b87aa8aa2b89\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-08-07T14:07:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-high-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-08-07T09:08:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-elite-repo",
+          "team_name": "dora-elite-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1723021694000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-08-07T09:08:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"8b5731272b0c1a120dbfa3fd6273503d534b4680\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-08-07T09:08:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-08-06T16:07:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-elite-repo",
+          "team_name": "dora-elite-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1722960434000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-08-06T16:07:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"0a551363688e1110fb2e1d5e8f9e15d6e46794b6\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-08-06T16:07:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-08-06T12:10:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-elite-repo",
+          "team_name": "dora-elite-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1722946214000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-08-06T12:10:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"96db9af6d01f1e39a98e7752beb019b88eb09d6c\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-08-06T12:10:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-08-06T09:28:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-elite-repo",
+          "team_name": "dora-elite-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1722936494000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-08-06T09:28:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"7e09c8b58ff8422b2b1d30504a0e7ea2d6578e1b\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-08-06T09:28:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-08-05T14:14:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-elite-repo",
+          "team_name": "dora-elite-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1722867254000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-08-05T14:14:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"8fd8011c22324d8a28ffc0348437100df5fca88f\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-08-05T14:14:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-08-05T12:14:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-high-repo",
+          "team_name": "dora-high-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1722860054000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-08-05T12:14:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"de343ab2208a3d83196ce9a2c6ae01fd3935faea\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-08-05T12:14:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-high-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-08-05T10:57:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-elite-repo",
+          "team_name": "dora-elite-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1722855434000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-08-05T10:57:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"e6b885e3075d99512e05b7de566407b897173c03\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-08-05T10:57:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-08-05T09:55:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-medium-repo",
+          "team_name": "dora-medium-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1722851714000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-08-05T09:55:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"b157b83fcbc03ff00e45392b18eb16ca3ad16747\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-08-05T09:55:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-medium-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-08-05T09:13:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-elite-repo",
+          "team_name": "dora-elite-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1722849194000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-08-05T09:13:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"db53f7c9e6a7ecf6f772ea95f902f06580f03040\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-08-05T09:13:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-08-02T09:51:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-elite-repo",
+          "team_name": "dora-elite-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1722592274000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-08-02T09:51:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"1f829a1ed9d728699214b2566d81d51adc13bb78\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-08-02T09:51:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-08-01T17:44:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-elite-repo",
+          "team_name": "dora-elite-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1722534254000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-08-01T17:44:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"1173a61a8c139403de8eb630f9ca45feb888107c\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-08-01T17:44:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-08-01T15:32:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-elite-repo",
+          "team_name": "dora-elite-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1722526334000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-08-01T15:32:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"a58d2f925f050ea518b8efc14b877c6536de576c\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-08-01T15:32:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-08-01T09:54:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-high-repo",
+          "team_name": "dora-high-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1722506054000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-08-01T09:54:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"5dedaf2d2784c269bda8abfffecfa2c9209d532c\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-08-01T09:54:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-high-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-08-01T09:52:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-elite-repo",
+          "team_name": "dora-elite-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1722505934000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-08-01T09:52:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"b7c895d5715fca2db19fc8c02cc8a4b6ceccb412\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-08-01T09:52:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-07-31T09:39:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-elite-repo",
+          "team_name": "dora-elite-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1722418754000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-07-31T09:39:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"da867b2f59b050c0655e83a2875d1bb4adebb1e8\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-07-31T09:39:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-07-30T12:46:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-elite-repo",
+          "team_name": "dora-elite-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1722343574000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-07-30T12:46:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"b6ac459f69f58b94cd6fb161be5a690b270c679b\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-07-30T12:46:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-07-30T09:25:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-elite-repo",
+          "team_name": "dora-elite-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1722331514000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-07-30T09:25:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"564634332f61cfceebb2cd09b31f6879c9bcc572\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-07-30T09:25:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-07-30T09:13:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-low-repo",
+          "team_name": "dora-low-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1722330794000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-07-30T09:13:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"2f99a0fe2eb28e72c102d7730807a40fa38ae122\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-07-30T09:13:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-low-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-07-29T13:52:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-elite-repo",
+          "team_name": "dora-elite-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1722261134000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-07-29T13:52:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"6fa216f1b1bea0ed68dcc06fd3746024c30ce40a\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-07-29T13:52:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-07-29T09:32:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-elite-repo",
+          "team_name": "dora-elite-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1722245534000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-07-29T09:32:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"dda72ad7bc2e84b5182c89a0a1f3e5df6e478544\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-07-29T09:32:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-07-29T09:17:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-high-repo",
+          "team_name": "dora-high-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1722244634000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-07-29T09:17:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"28274e09d0b5ba032f5fcee2dfe87d0646de2698\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-07-29T09:17:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-high-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-07-26T16:24:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-elite-repo",
+          "team_name": "dora-elite-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1722011054000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-07-26T16:24:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"87e8d7ebcb5b763b7294573d034208430a70d42a\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-07-26T16:24:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-07-26T14:17:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-elite-repo",
+          "team_name": "dora-elite-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1722003434000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-07-26T14:17:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"b6764b039d9f11ab3938113b53f8aa86eb637ad9\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-07-26T14:17:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-07-26T12:25:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-elite-repo",
+          "team_name": "dora-elite-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1721996714000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-07-26T12:25:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"c51a24a5e2b45fbfb71904b89ad78efad3d88db6\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-07-26T12:25:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-07-26T09:21:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-elite-repo",
+          "team_name": "dora-elite-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1721985674000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-07-26T09:21:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"cb86c77846bf85141d4ac31ca7f1bde27667830f\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-07-26T09:21:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-07-25T16:52:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-elite-repo",
+          "team_name": "dora-elite-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1721926334000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-07-25T16:52:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"b8e100a8fc88e3fc344aeec08a4f0aed165ccd66\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-07-25T16:52:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-07-25T15:40:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-elite-repo",
+          "team_name": "dora-elite-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1721922014000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-07-25T15:40:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"1e3acc76219550a704cb89931804b31b0cb861c1\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-07-25T15:40:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-07-25T09:12:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-elite-repo",
+          "team_name": "dora-elite-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1721898734000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-07-25T09:12:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"9f235c25bd5d1d5ab8e03111489d47f7c107ca08\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-07-25T09:12:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-07-24T17:23:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-elite-repo",
+          "team_name": "dora-elite-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1721841794000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-07-24T17:23:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"adffdfd6df3db3555929fd86c30666d3f57e183a\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-07-24T17:23:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-07-24T09:47:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-elite-repo",
+          "team_name": "dora-elite-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1721814434000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-07-24T09:47:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"2555f37df778686fc27019abae70ec42e53a9b7a\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-07-24T09:47:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-07-23T14:27:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-elite-repo",
+          "team_name": "dora-elite-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1721744834000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-07-23T14:27:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"0744d9f70bcbab2b1f2f7148111dfad0fb43ad11\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-07-23T14:27:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-07-23T09:11:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-elite-repo",
+          "team_name": "dora-elite-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1721725874000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-07-23T09:11:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"4c02b73ee1c463fab0ed0fa7928c7aee0e578081\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-07-23T09:11:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-07-22T14:55:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-elite-repo",
+          "team_name": "dora-elite-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1721660114000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-07-22T14:55:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"276f061eb04f125cd6d45950f4005431c0e215eb\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-07-22T14:55:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-07-22T11:40:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-elite-repo",
+          "team_name": "dora-elite-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1721648414000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-07-22T11:40:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"a9c0cf54c00184307f94a0d1e91c6e966a0a7c51\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-07-22T11:40:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-07-22T09:59:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-high-repo",
+          "team_name": "dora-high-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1721642354000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-07-22T09:59:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"c086764822bd16fe8da5434083f9a85ebb95127f\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-07-22T09:59:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-high-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-07-22T09:13:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-elite-repo",
+          "team_name": "dora-elite-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1721639594000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-07-22T09:13:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"3b44e48c7afaf154074004d1fb2a80c0ab08e97f\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-07-22T09:13:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-07-19T09:59:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-elite-repo",
+          "team_name": "dora-elite-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1721383154000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-07-19T09:59:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"7a0a9b28e46082401803260848dadf9b6397042b\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-07-19T09:59:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-07-18T16:39:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-elite-repo",
+          "team_name": "dora-elite-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1721320754000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-07-18T16:39:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"4cbd45974d8784d111e123b18b6aa1796fda4e3b\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-07-18T16:39:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-07-18T13:50:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-elite-repo",
+          "team_name": "dora-elite-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1721310614000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-07-18T13:50:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"320cdbda53c22235eb7f55f065182b42455336db\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-07-18T13:50:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-07-18T09:56:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-elite-repo",
+          "team_name": "dora-elite-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1721296574000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-07-18T09:56:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"2c44ea589fde1579499088b0b6f6f6e603478e8b\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-07-18T09:56:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-07-17T17:17:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-elite-repo",
+          "team_name": "dora-elite-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1721236634000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-07-17T17:17:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"63bc33585a56f9d59fd22ddc2849072515c2dcaf\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-07-17T17:17:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-07-17T09:28:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-elite-repo",
+          "team_name": "dora-elite-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1721208494000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-07-17T09:28:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"1a2b153f0d5cb95a37859cee2301a960bfa751a5\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-07-17T09:28:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-07-16T12:50:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-elite-repo",
+          "team_name": "dora-elite-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1721134214000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-07-16T12:50:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"62f527574321bc2e72a871659d876fda6fe0729f\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-07-16T12:50:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-07-16T10:48:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-elite-repo",
+          "team_name": "dora-elite-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1721126894000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-07-16T10:48:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"be2478b3a71711f8415f1fc3ce230fb7b4d4836e\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-07-16T10:48:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "created_at": "2024-07-16T09:30:14Z",
+          "deployment_environment": "dev",
+          "deployment_state": "success",
+          "environment_name": "dev",
+          "exporter": "OTLP",
+          "historical": "true",
+          "repository_name": "dora-elite-repo",
+          "team_name": "dora-elite-repo",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+        },
+        "values": [
+          [
+            "1721122214000000000",
+            "{\"body\":{\"deployment\":{\"created_at\":\"2024-07-16T09:30:14Z\",\"environment\":\"dev\",\"id\":1581402415,\"ref\":\"main\",\"sha\":\"3acab3d095ee6365a6fa651d6b8a0154a0b15596\",\"task\":\"deploy\",\"updated_at\":\"2024-06-09T20:04:28Z\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415\"},\"deployment_status\":{\"created_at\":\"2024-07-16T09:30:14Z\",\"environment\":\"dev\",\"state\":\"success\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/deployments/1581402415/statuses/3918561986\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]},\"workflow\":{\"name\":\"Terragrunt Lambda Deployment\",\"path\":\".github/workflows/deploy.yml\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/actions/workflows/87524483\"},\"workflow_run\":{\"display_title\":\"feat: set version v0.3.0 (#87)\",\"head_branch\":\"main\",\"head_sha\":\"d8db17958cacd9c4f21284cdab4279032ee1f400\",\"run_number\":51,\"status\":\"in_progress\",\"workflow_id\":87524483}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+          ]
+        ]
+      }
+    ],
+    "stats": {
+      "summary": {
+        "bytesProcessedPerSecond": 472911,
+        "linesProcessedPerSecond": 384,
+        "totalBytesProcessed": 72622,
+        "totalLinesProcessed": 59,
+        "execTime": 0.153564,
+        "queueTime": 0.002471,
+        "subqueries": 0,
+        "totalEntriesReturned": 59,
+        "splits": 31,
+        "shards": 0,
+        "totalPostFilterLines": 59,
+        "totalStructuredMetadataBytesProcessed": 590
+      },
+      "querier": {
+        "store": {
+          "totalChunksRef": 0,
+          "totalChunksDownloaded": 0,
+          "chunksDownloadTime": 0,
+          "chunk": {
+            "headChunkBytes": 0,
+            "headChunkLines": 0,
+            "decompressedBytes": 0,
+            "decompressedLines": 0,
+            "compressedBytes": 0,
+            "totalDuplicates": 0,
+            "postFilterLines": 0,
+            "headChunkStructuredMetadataBytes": 0,
+            "decompressedStructuredMetadataBytes": 0
+          },
+          "chunkRefsFetchTime": 0
+        }
+      },
+      "ingester": {
+        "totalReached": 31,
+        "totalChunksMatched": 0,
+        "totalBatches": 53,
+        "totalLinesSent": 59,
+        "store": {
+          "totalChunksRef": 59,
+          "totalChunksDownloaded": 59,
+          "chunksDownloadTime": 7072656,
+          "chunk": {
+            "headChunkBytes": 0,
+            "headChunkLines": 0,
+            "decompressedBytes": 72622,
+            "decompressedLines": 59,
+            "compressedBytes": 36084,
+            "totalDuplicates": 0,
+            "postFilterLines": 59,
+            "headChunkStructuredMetadataBytes": 0,
+            "decompressedStructuredMetadataBytes": 590
+          },
+          "chunkRefsFetchTime": 86782851
+        }
+      },
+      "cache": {
+        "chunk": { "entriesFound": 0, "entriesRequested": 0, "entriesStored": 0, "bytesReceived": 0, "bytesSent": 0, "requests": 0, "downloadTime": 0 },
+        "index": { "entriesFound": 0, "entriesRequested": 0, "entriesStored": 0, "bytesReceived": 0, "bytesSent": 0, "requests": 0, "downloadTime": 0 },
+        "result": { "entriesFound": 0, "entriesRequested": 0, "entriesStored": 0, "bytesReceived": 0, "bytesSent": 0, "requests": 0, "downloadTime": 0 },
+        "statsResult": { "entriesFound": 0, "entriesRequested": 0, "entriesStored": 0, "bytesReceived": 0, "bytesSent": 0, "requests": 0, "downloadTime": 0 }
+      }
+    }
+  }
+}
