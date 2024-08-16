@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v1.1.8 (2024-08-16)
+
+### Fix
+
+* fix: build workflow run url (#27) ([`99ff807`](https://github.com/liatrio/liatrio-dora-api/commit/99ff80789dfc539e3caa1a14f5cca340e3c31280))
+
 ## v1.1.7 (2024-08-16)
 
 ### Fix
