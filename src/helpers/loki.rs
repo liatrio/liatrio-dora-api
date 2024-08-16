@@ -2,7 +2,7 @@ use anyhow::{anyhow, Result};
 use chrono::{DateTime, Duration, TimeDelta, Utc};
 use reqwest::{Response, Error};
 use serde::{Deserialize, Serialize};
-use std::{collections::HashMap, env};
+use std::{collections::HashMap, env, fs};
 
 use super::{gatherer::{DeployEntry, GatheredData, IssueEntry, MergeEntry}, request::DataRequest, response::ResponseRecord};
 
@@ -94,8 +94,8 @@ pub struct Deployment {
 
 #[derive(Deserialize, Debug)]
 pub struct WorkflowRun {
-  pub url: String,
   pub head_sha: String,
+  pub workflow_id: u32,
 }
 
 #[derive(Deserialize, Debug)]
@@ -215,27 +215,43 @@ fn fill_query_params<Q: AsRef<str>, F: AsRef<str>>(request: &DataRequest, query:
 }
 
 async fn query_merge_data(request: &DataRequest) -> Result<QueryResponse> {
-  let query_params = fill_query_params(request, Some(r#"merged_at=~".+""#), None::<&str>);
+  // let query_params = fill_query_params(request, Some(r#"merged_at=~".+""#), None::<&str>);
   
-  let query_result = query(query_params).await;
+  // let query_result = query(query_params).await;
 
-  return query_result;
+  // return query_result;
+
+  let contents = fs::read_to_string("./test_merge_data.json").unwrap();
+
+  let parsed: QueryResponse = serde_json::from_str(&contents)?;
+
+  Ok(parsed)
 }
 
 async fn query_deploy_data(request: &DataRequest) -> Result<QueryResponse> {
-  let query_params = fill_query_params(request, Some(r#"deployment_state=~"success|failure""#), None::<&str>);
+  // let query_params = fill_query_params(request, Some(r#"deployment_state=~"success|failure""#), None::<&str>);
   
-  let query_result = query(query_params).await;
+  // let query_result = query(query_params).await;
 
-  return query_result;
+  // return query_result;
+  let contents = fs::read_to_string("./test_deploy_data.json").unwrap();
+
+  let parsed: QueryResponse = serde_json::from_str(&contents)?;
+
+  Ok(parsed)
 }
 
 async fn query_issue_data(request: &DataRequest) -> Result<QueryResponse> {
-  let query_params = fill_query_params(request, Some(r#"action=~"closed|opened""#), Some("|= `incident`"));
+  // let query_params = fill_query_params(request, Some(r#"action=~"closed|opened""#), Some("|= `incident`"));
   
-  let query_result = query(query_params).await;
+  // let query_result = query(query_params).await;
 
-  return query_result;
+  // return query_result;
+  let contents = fs::read_to_string("./test_issue_data.json").unwrap();
+
+  let parsed: QueryResponse = serde_json::from_str(&contents)?;
+
+  Ok(parsed)
 }
 
 async fn sort_deploy_data(data: QueryResponse) -> HashMap<String, Vec<DeployEntry>> {
@@ -259,7 +275,7 @@ async fn sort_deploy_data(data: QueryResponse) -> HashMap<String, Vec<DeployEntr
 
         match b.json_data.body.workflow_run {
           Some(wf) => {
-            wf_url = wf.url.replace("api.", "").replace("repos/", "");
+            wf_url = d.url.replace("api.", "").replace("repos/", "").replace("deployments/", "actions/runs/").replace(d.id.to_string().as_str(), wf.workflow_id.to_string().as_str());
             wf_hash = wf.head_sha;
           },
           None => {}
