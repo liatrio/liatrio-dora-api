@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## v1.1.10 (2024-08-16)
+
+### Fix
+
+* fix: allow either workflow_id or url to be used (#29)
+
+Co-authored-by: Wolftousen &lt;eliot.t.eikenberry@perilforge.com&gt; ([`5754ef9`](https://github.com/liatrio/liatrio-dora-api/commit/5754ef94d6d55656f83bd46f85a639fbdf3a7665))
+
 ## v1.1.9 (2024-08-16)
 
 ### Fix
