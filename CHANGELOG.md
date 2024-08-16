@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## v1.1.11 (2024-08-16)
+
+### Fix
+
+* fix: relied on vscode to much to catch this (#30)
+
+Co-authored-by: Wolftousen &lt;eliot.t.eikenberry@perilforge.com&gt; ([`580f6d7`](https://github.com/liatrio/liatrio-dora-api/commit/580f6d72c191e7507f373c4915afc9e1c9a6a0af))
+
 ## v1.1.10 (2024-08-16)
 
 ### Fix
