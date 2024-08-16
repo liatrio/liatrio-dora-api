@@ -215,43 +215,27 @@ fn fill_query_params<Q: AsRef<str>, F: AsRef<str>>(request: &DataRequest, query:
 }
 
 async fn query_merge_data(request: &DataRequest) -> Result<QueryResponse> {
-  // let query_params = fill_query_params(request, Some(r#"merged_at=~".+""#), None::<&str>);
+  let query_params = fill_query_params(request, Some(r#"merged_at=~".+""#), None::<&str>);
   
-  // let query_result = query(query_params).await;
+  let query_result = query(query_params).await;
 
-  // return query_result;
-
-  let contents = fs::read_to_string("./test_merge_data.json").unwrap();
-
-  let parsed: QueryResponse = serde_json::from_str(&contents)?;
-
-  Ok(parsed)
+  return query_result;
 }
 
 async fn query_deploy_data(request: &DataRequest) -> Result<QueryResponse> {
-  // let query_params = fill_query_params(request, Some(r#"deployment_state=~"success|failure""#), None::<&str>);
+  let query_params = fill_query_params(request, Some(r#"deployment_state=~"success|failure""#), None::<&str>);
   
-  // let query_result = query(query_params).await;
+  let query_result = query(query_params).await;
 
-  // return query_result;
-  let contents = fs::read_to_string("./test_deploy_data.json").unwrap();
-
-  let parsed: QueryResponse = serde_json::from_str(&contents)?;
-
-  Ok(parsed)
+  return query_result;
 }
 
 async fn query_issue_data(request: &DataRequest) -> Result<QueryResponse> {
-  // let query_params = fill_query_params(request, Some(r#"action=~"closed|opened""#), Some("|= `incident`"));
+  let query_params = fill_query_params(request, Some(r#"action=~"closed|opened""#), Some("|= `incident`"));
   
-  // let query_result = query(query_params).await;
+  let query_result = query(query_params).await;
 
-  // return query_result;
-  let contents = fs::read_to_string("./test_issue_data.json").unwrap();
-
-  let parsed: QueryResponse = serde_json::from_str(&contents)?;
-
-  Ok(parsed)
+  return query_result;
 }
 
 async fn sort_deploy_data(data: QueryResponse) -> HashMap<String, Vec<DeployEntry>> {
