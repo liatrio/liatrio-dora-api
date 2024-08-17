@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v1.1.13 (2024-08-17)
+
+### Fix
+
+* fix: expand limit to loki query, use different field for merge sha, cleanup warnings (#32) ([`b86b124`](https://github.com/liatrio/liatrio-dora-api/commit/b86b12434af3682f1d78cdfc90a9116ca5410176))
+
 ## v1.1.12 (2024-08-16)
 
 ### Fix
