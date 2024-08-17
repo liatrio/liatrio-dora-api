@@ -1,16 +1,17 @@
 use anyhow::{anyhow, Result};
-use chrono::{DateTime, Duration, TimeDelta, Utc};
+use chrono::{DateTime, Duration, Utc};
 use reqwest::{Response, Error};
 use serde::{Deserialize, Serialize};
-use std::{collections::HashMap, env, fs};
+use std::{collections::HashMap, env};
 
-use super::{gatherer::{DeployEntry, GatheredData, IssueEntry, MergeEntry}, request::DataRequest, response::ResponseRecord};
+use super::{gatherer::{DeployEntry, GatheredData, IssueEntry, MergeEntry}, request::DataRequest};
 
 #[derive(Serialize, Debug, Clone, Default)]
 pub struct QueryParams {
   pub query: String,
   pub start: String,
   pub end: String,
+  pub limit: u16,
 }
 
 #[derive(Deserialize, Debug, Default)]
@@ -40,7 +41,6 @@ pub struct Stream {
   pub repository_name: Option<String>,
   pub service_name: Option<String>,
   pub team_name: Option<String>,
-  pub merge_sha: Option<String>,
   pub merged_at: Option<DateTime<Utc>>,
   pub deployment_state: Option<String>,
 }
@@ -82,6 +82,7 @@ pub struct Repository {
 pub struct PullRequest {
   pub title: String,
   pub user: User,
+  pub merge_commit_sha: String,
 }
 
 #[derive(Deserialize, Debug)]
@@ -210,7 +211,8 @@ fn fill_query_params<Q: AsRef<str>, F: AsRef<str>>(request: &DataRequest, query:
   let params = QueryParams {
     start: request.start.timestamp_nanos_opt().unwrap().to_string(),
     end: request.end.timestamp_nanos_opt().unwrap().to_string(),
-    query: query
+    query: query,
+    limit: 5000,
   };
 
   return params;
@@ -333,18 +335,16 @@ fn sort_merge_data(merge_data: QueryResponse) -> HashMap<String, MergeEntry> {
 
   for result in merge_data.data.result {
     for value in result.values {
-
-      let sha = result.stream.merge_sha.as_ref().unwrap().to_string();
       let pr = value.json_data.body.pull_request.unwrap();
 
       let record = MergeEntry {
         user: pr.user.login.clone(),
         title: pr.title.clone(),
         merged_at: result.stream.merged_at.unwrap().clone(),
-        sha: sha.clone()
+        sha: pr.merge_commit_sha.clone()
       };
 
-      records_by_sha.entry(sha)
+      records_by_sha.entry(pr.merge_commit_sha)
         .or_insert(record);
     }
   }
@@ -385,9 +385,6 @@ async fn query_data(request: DataRequest) -> Result<(QueryResponse, QueryRespons
 
   Ok((deploy_data, issue_data, merge_data))
 }
-
-const REQUEST_DAYS: i64 = 5;
-const REQUEST_DAYS_DURATION: TimeDelta = Duration::days(5);
 
 fn get_batch_days_size() -> i64 {
   let var = env::var("LOKI_DAYS_BATCH_SIZE");

@@ -1,8 +1,6 @@
 use chrono::{DateTime, Utc};
 use regex::Regex;
-use serde::de;
 use std::collections::HashMap;
-use anyhow::Result;
 
 use super::response::ResponseRecord;
 
@@ -154,7 +152,7 @@ pub fn link_data(data: GatheredData) -> Vec<ResponseRecord> {
 
   let failures = find_failures_per_deployment(&data);
 
-  data.deployments_by_repo.iter().for_each(|(key, value)| {
+  data.deployments_by_repo.iter().for_each(|(_, value)| {
     value.iter().for_each(|deployment| {
       let mut record: ResponseRecord = ResponseRecord {
         repository: deployment.repository.clone(),
