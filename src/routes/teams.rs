@@ -99,7 +99,7 @@ pub async fn handle_request(Extension(cache): Extension<TeamsCache>) -> Result<J
           break;
         }
       }
-      Err(e) => {
+      Err(_) => {
         tracing::error!("GitHub Request Failed");
         return Err(StatusCode::INTERNAL_SERVER_ERROR);
       }
