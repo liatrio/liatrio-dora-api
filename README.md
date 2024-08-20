@@ -20,7 +20,9 @@ You will need the following:
 
 * [Rust Compiler](https://www.rust-lang.org/tools/install)
 
-When running the API locally, it does support the use of a `.env` file for providing Environment Variables.
+When running the API locally, it does support the use of a `.env` file at the root of the project for providing [Environment Variables](https://github.com/liatrio/liatrio-dora-api/tree/main?tab=readme-ov-file#environment-variables).
+
+If you are unfamiliar with Rust, you can build the application using `cargo build` and run the application using `cargo run`.
 
 # Usage
 
