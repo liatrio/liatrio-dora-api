@@ -2,19 +2,19 @@
 
 This an API to sit between our `liatrio-react-dora` components and your DORA metrics database.
 
-# Metric Storage Compatibility
+## Metric Storage Compatibility
 
 For our initial purposes, we chose to use Loki DB for the storage of our observability events.  Due to that, this API is loosely tied to Loki DB.
 
 If you desire to use a time series database other than Loki DB, it should only be a small lift to fork this repository and implement that change.
 
-# Installation
+## Installation
 
-## Docker
+### Docker
 
 If are using Loki DB and want to use our public pre-built Docker Image, you can find it [here](https://github.com/liatrio/liatrio-dora-api/pkgs/container/liatrio-dora-api)
 
-## Building from Source
+### Building from Source
 
 You will need the following:
 
@@ -24,12 +24,18 @@ When running the API locally, it does support the use of a `.env` file at the ro
 
 If you are unfamiliar with Rust, you can build the application using `cargo build` and run the application using `cargo run`.
 
-# Usage
+## Routes
 
-* health
-  * Used for standard health checks
+The API supplies the following routes:
 
-* data
+### `/health`
+
+Method: `GET`
+
+Used for standard health checks
+
+### `/data`
+
   * This returns all the data necessary for a given start/end time frame and set or repositories and or team.
   * Method: `POST`
   * The expected body is a JSON blob containing the following:
@@ -54,8 +60,9 @@ If you are unfamiliar with Rust, you can build the application using `cargo buil
       * `issue_url`: A link to the issue that was created to track the failed deployment
       * `change_url`: A link to the change that caused the deployment
 
-* teams
-  * This will return a list of teams and their associated repositories from the GitHub Org you have supplied as an env var.
+### `/teams`
+
+* This will return a list of teams and their associated repositories from the GitHub Org you have supplied as an env var.
   * Method: `GET`
   * Parameters: None
   * The response will be a JSON blob containing the following:
@@ -63,7 +70,7 @@ If you are unfamiliar with Rust, you can build the application using `cargo buil
       * `name`: The name of the team
       * `repositories`: A list of the repositories this team owns
 
-# Environment Variables
+## Environment Variables
 
 The following variables are required to run this API:
 
