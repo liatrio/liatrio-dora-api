@@ -35,7 +35,7 @@ async fn get_teams(gh_org: &String, gh_token: &String, page: usize) -> Result<Ve
 
       if !status.is_success() {
         tracing::error!("GitHub Teams Request Responded with status: {:?}", status);
-        return Err(anyhow!(format!("GitHUb responsed with status: {:?}", status)));
+        return Err(anyhow!(format!("GitHub responded with status: {:?}", status)));
       }
 
       let parse_result: Result<Vec<GitHubTeam>, Error> = response.json().await;

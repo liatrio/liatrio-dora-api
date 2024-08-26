@@ -54,7 +54,7 @@ The response will be a JSON blob containing with a `records` key containing an a
 | `repository` | The repository this record belongs to                               |
 | `team`       | The team that owns the repository                                   |
 | `title`      | The commit message of the change                                    |
-| `user`       | The user that commited the change                                   |
+| `user`       | The user that committed the change                                  |
 | `sha`        | The commit sha of the change                                        |
 | `status`     | The deployment status                                               |
 | `failed_at`  | When the deployment failed, if it did                               |
