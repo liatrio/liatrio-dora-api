@@ -4,7 +4,7 @@ use serde::Serialize;
 #[derive(Serialize, Debug, Clone, Default)]
 pub struct ResponseRecord {
   pub repository: String,
-  pub team: String, 
+  pub team: String,
   pub title: Option<String>,
   pub user: Option<String>,
   pub sha: String,
