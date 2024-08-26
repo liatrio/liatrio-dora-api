@@ -37,7 +37,7 @@ jobs:
     - name: update manifest version
       run: |
         echo "new version: ${{ steps.release_version.outputs.version }}"
-        cd manifests/base 
+        cd manifests/base
         kustomize edit set image "ghcr.io/liatrio/liatrio-dora-api:v${{ steps.release_version.outputs.version }}"
         git add kustomization.yaml
 
