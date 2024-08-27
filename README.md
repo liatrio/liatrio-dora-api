@@ -1,3 +1,6 @@
+# Badges
+[![CodeQL](https://github.com/liatrio/liatrio-dora-api/actions/workflows/codeql.yml/badge.svg?branch=main)](https://github.com/liatrio/liatrio-dora-api/actions/workflows/codeql.yml)
+
 # Introduction
 
 This an API to sit between our `liatrio-react-dora` components and your DORA metrics database.
