@@ -19,14 +19,11 @@ pub struct QueryParams {
 
 #[derive(Deserialize, Debug, Default)]
 pub struct QueryResponse {
-    pub status: String,
     pub data: Data,
 }
 
 #[derive(Deserialize, Debug, Default)]
 pub struct Data {
-    #[serde(rename = "resultType")]
-    pub result_type: String,
     pub result: Vec<ResultItem>,
 }
 
@@ -38,11 +35,8 @@ pub struct ResultItem {
 
 #[derive(Deserialize, Debug)]
 pub struct Stream {
-    pub action: Option<String>,
-    pub created_at: Option<DateTime<Utc>>,
     pub environment_name: Option<String>,
     pub repository_name: Option<String>,
-    pub service_name: Option<String>,
     pub team_name: Option<String>,
     pub merged_at: Option<DateTime<Utc>>,
     pub deployment_state: Option<String>,
@@ -50,7 +44,6 @@ pub struct Stream {
 
 #[derive(Debug)]
 pub struct ValueItem {
-    pub timestamp: String,
     pub json_data: JsonData,
 }
 
@@ -61,7 +54,6 @@ pub struct JsonData {
 
 #[derive(Deserialize, Debug)]
 pub struct Body {
-    pub number: Option<u32>,
     pub pull_request: Option<PullRequest>,
     pub deployment: Option<Deployment>,
     pub issue: Option<Issue>,
@@ -121,7 +113,6 @@ impl<'de> Deserialize<'de> for ValueItem {
         let json_data: JsonData =
             serde_json::from_str(&vec[1]).map_err(serde::de::Error::custom)?;
         Ok(ValueItem {
-            timestamp: vec[0].clone(),
             json_data,
         })
     }
@@ -354,7 +345,6 @@ fn sort_merge_data(merge_data: QueryResponse) -> HashMap<String, MergeEntry> {
                 user: pr.user.login.clone(),
                 title: pr.title.clone(),
                 merged_at: result.stream.merged_at.unwrap(),
-                sha: pr.merge_commit_sha.clone(),
             };
 
             records_by_sha.entry(pr.merge_commit_sha).or_insert(record);

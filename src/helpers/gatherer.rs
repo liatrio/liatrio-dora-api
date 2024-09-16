@@ -13,7 +13,6 @@ pub struct IssueEntry {
 
 #[derive(Debug, Clone, Default)]
 pub struct MergeEntry {
-    pub sha: String,
     pub merged_at: DateTime<Utc>,
     pub user: String,
     pub title: String,
