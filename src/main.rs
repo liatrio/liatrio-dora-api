@@ -1,13 +1,13 @@
+use anyhow::Result;
 use axum::{
     extract::Extension,
-    routing::{post, get},
+    routing::{get, post},
     Router,
 };
-use anyhow::Result;
-use std::{env, sync::Arc};
-use dotenv::dotenv;
-use dashmap::DashMap;
 use axum_tracing_opentelemetry::middleware::{OtelAxumLayer, OtelInResponseLayer};
+use dashmap::DashMap;
+use dotenv::dotenv;
+use std::{env, sync::Arc};
 
 mod helpers;
 mod routes;
@@ -23,27 +23,28 @@ async fn main() -> Result<()> {
 
     let app = Router::new()
         .route("/data", post(routes::data::handle_request))
-            .layer(OtelInResponseLayer::default())
-            .layer(OtelAxumLayer::default())
-            .layer(Extension(data_cache))
+        .layer(OtelInResponseLayer)
+        .layer(OtelAxumLayer::default())
+        .layer(Extension(data_cache))
         .route("/teams", get(routes::teams::handle_request))
-            .layer(OtelInResponseLayer::default())
-            .layer(OtelAxumLayer::default())
-            .layer(Extension(teams_cache))
+        .layer(OtelInResponseLayer)
+        .layer(OtelAxumLayer::default())
+        .layer(Extension(teams_cache))
         .route("/health", get(routes::health::handle_request));
 
     let port = env::var("PORT")?;
-    let addr = format!("[::]:{port}").parse::<std::net::SocketAddr>().unwrap();
+    let addr = format!("[::]:{port}")
+        .parse::<std::net::SocketAddr>()
+        .unwrap();
 
-    let listener = tokio::net::TcpListener::bind(addr)
-        .await?;
-
+    let listener = tokio::net::TcpListener::bind(addr).await?;
 
     tracing::warn!("listening on {:?}", listener.local_addr().unwrap());
 
     axum::serve(listener, app.into_make_service())
         .with_graceful_shutdown(shutdown_signal())
-        .await.unwrap();
+        .await
+        .unwrap();
 
     Ok(())
 }

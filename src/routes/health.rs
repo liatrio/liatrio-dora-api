@@ -1,16 +1,11 @@
+use axum::{http::StatusCode, response::Json};
 use serde::Serialize;
-use axum::{
-  http::StatusCode,
-  response::Json
-};
 
 #[derive(Serialize, Debug)]
-pub struct HealthResponse {
-
-}
+pub struct HealthResponse {}
 
 pub async fn handle_request() -> Result<Json<HealthResponse>, StatusCode> {
-  let response : HealthResponse = HealthResponse{};
+    let response: HealthResponse = HealthResponse {};
 
-  Ok(Json(response))
+    Ok(Json(response))
 }
