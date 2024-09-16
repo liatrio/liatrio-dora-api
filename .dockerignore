@@ -5,3 +5,4 @@ notes
 LICENSE
 .gitignore
 manifests
+.env

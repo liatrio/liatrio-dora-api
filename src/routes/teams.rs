@@ -19,7 +19,7 @@ pub type TeamsCache = Arc<DashMap<String, TeamsResponse>>;
 async fn get_teams(gh_org: &String, gh_token: &String, page: usize) -> Result<Vec<GitHubTeam>> {
   let client = reqwest::Client::new();
   let url = format!("https://api.github.com/orgs/{}/teams", gh_org);
-  
+
   let response_result = client.get(url)
     .query(&[("page", page), ("per_page", 100)])
     .header("User-Agent", "request")
@@ -35,7 +35,7 @@ async fn get_teams(gh_org: &String, gh_token: &String, page: usize) -> Result<Ve
 
       if !status.is_success() {
         tracing::error!("GitHub Teams Request Responded with status: {:?}", status);
-        return Err(anyhow!(format!("GitHUb responsed with status: {:?}", status)));
+        return Err(anyhow!(format!("GitHub responded with status: {:?}", status)));
       }
 
       let parse_result: Result<Vec<GitHubTeam>, Error> = response.json().await;
@@ -64,7 +64,7 @@ pub async fn handle_request(Extension(cache): Extension<TeamsCache>) -> Result<J
   }
 
   let mut response : TeamsResponse = Default::default();
-  
+
   let gh_org_var = env::var("GITHUB_ORG");
   let gh_token_var = env::var("GITHUB_TOKEN");
 
@@ -83,10 +83,10 @@ pub async fn handle_request(Extension(cache): Extension<TeamsCache>) -> Result<J
       return Err(StatusCode::INTERNAL_SERVER_ERROR);
     }
   };
-  
+
   let mut page = 1;
   let mut all_teams: Vec<GitHubTeam> = [].to_vec();
-  
+
   loop {
     let team_result = get_teams(&gh_org, &gh_token, page).await;
 

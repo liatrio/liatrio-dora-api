@@ -1,0 +1,29 @@
+language: en_US
+words:
+  - Liatrio
+  - liatr.io
+  - kyverno
+  - nanos
+  - rustls
+  - serde
+  - stakater
+dictionaries:
+  - aws
+  - companies
+  - css
+  - docker
+  - html
+  - k8s
+  - markdown
+  - misc
+  - npm
+  - softwareTerms
+  - useCompounds
+ignorePaths:
+  - test_deploy_data.json
+  - test_issue_data.json
+  - test_merge_data.json
+features:
+  weighted-suggestions: true
+allowCompoundWords: true
+useGitignore: true

@@ -23,7 +23,7 @@ pub struct MergeEntry {
 pub struct DeployEntry {
   pub status: bool,
   pub repository: String,
-  pub team: String, 
+  pub team: String,
   pub created_at: DateTime<Utc>,
   pub sha: String,
   pub deploy_url: String,
@@ -42,7 +42,7 @@ struct Failure {
   failed_at: Option<DateTime<Utc>>,
   fixed_at: Option<DateTime<Utc>>,
   issue_url: Option<String>,
-  fixed_url: Option<String>,  
+  fixed_url: Option<String>,
 }
 
 fn extract_failure_by_sha(deployment: &DeployEntry, next_deployment_at: DateTime<Utc>, data: &GatheredData) -> (String, Failure) {
@@ -59,7 +59,7 @@ fn extract_failure_by_sha(deployment: &DeployEntry, next_deployment_at: DateTime
   } else {
     sha.clone_from(&deployment.sha);
     failure.failed_at = Some(deployment.created_at);
-  }      
+  }
 
   if !deploy_issues.is_empty() {
     let opened_at = deploy_issues.iter().map(|issue| issue.created_at).min();
@@ -89,13 +89,13 @@ fn extract_failure_by_sha(deployment: &DeployEntry, next_deployment_at: DateTime
 fn find_failures_per_deployment(data: &GatheredData) -> HashMap<String, Failure> {
   let mut previous_failure: Option<(String, Failure)> = None;
   let mut failures: HashMap<String, Failure> = HashMap::new();
-  
+
   for (_, deployments) in data.deployments_by_repo.iter() {
     let len: usize = deployments.len();
 
     for (index, deployment) in deployments.iter().enumerate() {
       let is_last = index + 1 >= len;
-      
+
       let next_deployment_at = if !is_last {
         deployments[index + 1].created_at
       } else {
@@ -111,7 +111,7 @@ fn find_failures_per_deployment(data: &GatheredData) -> HashMap<String, Failure>
 
             if previous_failure.is_some() {
               let (sha, failure_data) = previous_failure.unwrap();
-              
+
               failures.insert(sha, failure_data);
               previous_failure = None;
             }
@@ -122,20 +122,20 @@ fn find_failures_per_deployment(data: &GatheredData) -> HashMap<String, Failure>
         None => {
           if previous_failure.is_some() {
             let (sha, mut failure_data) = previous_failure.unwrap();
-  
+
             if failure_data.fixed_at.is_none() {
               failure_data.fixed_at = Some(deployment.created_at);
               failure_data.fixed_url = Some(deployment.deploy_url.clone());
             }
-  
+
             failures.insert(sha, failure_data);
-            
+
             previous_failure = None;
           }
         }
       }
     }
-  }  
+  }
 
   failures
 }
@@ -145,6 +145,7 @@ pub fn link_data(data: GatheredData) -> Vec<ResponseRecord> {
 
   let failures = find_failures_per_deployment(&data);
 
+  data.deployments_by_repo.iter().for_each(|(_, value)| {
   data.deployments_by_repo.iter().for_each(|(_, value)| {
     value.iter().for_each(|deployment| {
       let mut record: ResponseRecord = ResponseRecord {
@@ -182,6 +183,6 @@ pub fn link_data(data: GatheredData) -> Vec<ResponseRecord> {
       records.push(record);
     })
   });
-  
+
   records
 }
