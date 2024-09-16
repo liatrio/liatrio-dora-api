@@ -1,6 +1,15 @@
-# Introduction
+# Badges
+
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 [![CodeQL](https://github.com/liatrio/liatrio-dora-api/actions/workflows/codeql.yml/badge.svg?branch=main)](https://github.com/liatrio/liatrio-dora-api/actions/workflows/codeql.yml)
+
+[![Release](https://github.com/liatrio/liatrio-dora-api/actions/workflows/release.yml/badge.svg?branch=main)](https://github.com/liatrio/liatrio-dora-api/actions/workflows/release.yml)
+
+![GitHub top language](https://img.shields.io/github/languages/top/liatrio/liatrio-dora-api)
+
+
+# Introduction
 
 This an API to sit between our `liatrio-react-dora` components and your DORA metrics database.
 
