@@ -41,23 +41,23 @@ async fn get_teams(gh_org: &String, gh_token: &String, page: usize) -> Result<Ve
       let parse_result: Result<Vec<GitHubTeam>, Error> = response.json().await;
 
       match parse_result {
-        Ok(value) => return Ok(value),
+        Ok(value) => Ok(value),
         Err(e) => {
           tracing::error!("GitHub Teams Response Parsing Failed: {:?}", e);
-          return Err(e.into());
+          Err(e.into())
         }
       }
     },
     Err(e) => {
       tracing::error!("GitHub Teams Request Failed: {:?}", e);
-      return Err(e.into());
+      Err(e.into())
     }
   }
 }
 
 
 pub async fn handle_request(Extension(cache): Extension<TeamsCache>) -> Result<Json<TeamsResponse>, StatusCode> {
-  let request_key = format!("teams");
+  let request_key = "teams".to_string();
 
   if let Some(cached_response) = cache.get(&request_key) {
     return Ok(Json(cached_response.clone()));
@@ -92,9 +92,9 @@ pub async fn handle_request(Extension(cache): Extension<TeamsCache>) -> Result<J
 
     match team_result {
       Ok(mut teams) => {
-        if teams.len() > 0 {
+        if !teams.is_empty() {
           all_teams.append(&mut teams);
-          page = page + 1;
+          page += 1;
         } else {
           break;
         }

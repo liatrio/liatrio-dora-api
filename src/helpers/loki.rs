@@ -170,16 +170,16 @@ async fn query(data: QueryParams) -> Result<QueryResponse> {
         let parse_result: Result<QueryResponse, Error> = response.json().await;
 
         match parse_result {
-          Ok(value) => return Ok(value),
+          Ok(value) => Ok(value),
           Err(e) => {
             tracing::error!("Loki Response Parsing Failed: {:?}", e);
-            return Err(e.into());
+            Err(e.into())
           }
         }
       },
       Err(e) => {
         tracing::error!("Loki Request Failed: {:?}", e);
-        return Err(e.into());
+        Err(e.into())
       }
     }
 }
@@ -208,38 +208,30 @@ fn fill_query_params<Q: AsRef<str>, F: AsRef<str>>(request: &DataRequest, query:
     _ => format!(r#"{{{}{}{}}} {}"#, unwrapped_query, team_query, repo_query, unwrapped_filter)
   };
 
-  let params = QueryParams {
+  QueryParams {
     start: request.start.timestamp_nanos_opt().unwrap().to_string(),
     end: request.end.timestamp_nanos_opt().unwrap().to_string(),
-    query: query,
+    query,
     limit: 5000,
-  };
-
-  return params;
+  }
 }
 
 async fn query_merge_data(request: &DataRequest) -> Result<QueryResponse> {
   let query_params = fill_query_params(request, Some(r#"merged_at=~".+""#), None::<&str>);
 
-  let query_result = query(query_params).await;
-
-  return query_result;
+  query(query_params).await
 }
 
 async fn query_deploy_data(request: &DataRequest) -> Result<QueryResponse> {
   let query_params = fill_query_params(request, Some(r#"deployment_state=~"success|failure""#), None::<&str>);
 
-  let query_result = query(query_params).await;
-
-  return query_result;
+  query(query_params).await
 }
 
 async fn query_issue_data(request: &DataRequest) -> Result<QueryResponse> {
   let query_params = fill_query_params(request, Some(r#"action=~"closed|opened""#), Some("|= `incident`"));
 
-  let query_result = query(query_params).await;
-
-  return query_result;
+  query(query_params).await
 }
 
 async fn sort_deploy_data(data: QueryResponse) -> HashMap<String, Vec<DeployEntry>> {
@@ -261,19 +253,16 @@ async fn sort_deploy_data(data: QueryResponse) -> HashMap<String, Vec<DeployEntr
         let mut wf_url = "".to_string();
         let mut wf_hash = "".to_string();
 
-        match b.json_data.body.workflow_run {
-          Some(wf) => {
-            if wf.html_url.is_some() {
-              wf_url = wf.html_url.unwrap()
-            } else if wf.workflow_id.is_some() {
-              wf_url = d.url.replace("api.", "").replace("repos/", "").replace("deployments/", "actions/runs/").replace(d.id.to_string().as_str(), wf.workflow_id.unwrap().to_string().as_str());
-            } else if wf.url.is_some() {
-              wf_url = wf.url.unwrap().replace("api.", "").replace("repos/", "");
-            }
+        if let Some(wf) = b.json_data.body.workflow_run {
+          if wf.html_url.is_some() {
+            wf_url = wf.html_url.unwrap()
+          } else if wf.workflow_id.is_some() {
+            wf_url = d.url.replace("api.", "").replace("repos/", "").replace("deployments/", "actions/runs/").replace(d.id.to_string().as_str(), wf.workflow_id.unwrap().to_string().as_str());
+          } else if wf.url.is_some() {
+            wf_url = wf.url.unwrap().replace("api.", "").replace("repos/", "");
+          }
 
-            wf_hash = wf.head_sha;
-          },
-          None => {}
+          wf_hash = wf.head_sha;
         }
 
         let record = DeployEntry {
@@ -296,10 +285,8 @@ async fn sort_deploy_data(data: QueryResponse) -> HashMap<String, Vec<DeployEntr
       v.sort_by(|l, r| l.created_at.cmp(&r.created_at))
     }
 
-    return grouped_deploys;
+    grouped_deploys
 }
-
-
 
 async fn sort_issue_data(data: QueryResponse) -> HashMap<String, Vec<IssueEntry>> {
   let mut grouped_issues: HashMap<String, Vec<IssueEntry>> = HashMap::new();
@@ -325,10 +312,8 @@ async fn sort_issue_data(data: QueryResponse) -> HashMap<String, Vec<IssueEntry>
     v.sort_by(|l, r| l.created_at.cmp(&r.created_at))
   }
 
-  return grouped_issues;
+  grouped_issues
 }
-
-
 
 fn sort_merge_data(merge_data: QueryResponse) -> HashMap<String, MergeEntry> {
   let mut records_by_sha: HashMap<String, MergeEntry> = HashMap::new();
@@ -340,7 +325,7 @@ fn sort_merge_data(merge_data: QueryResponse) -> HashMap<String, MergeEntry> {
       let record = MergeEntry {
         user: pr.user.login.clone(),
         title: pr.title.clone(),
-        merged_at: result.stream.merged_at.unwrap().clone(),
+        merged_at: result.stream.merged_at.unwrap(),
         sha: pr.merge_commit_sha.clone()
       };
 
@@ -349,7 +334,7 @@ fn sort_merge_data(merge_data: QueryResponse) -> HashMap<String, MergeEntry> {
     }
   }
 
-  return records_by_sha;
+  records_by_sha
 }
 
 async fn query_data(request: DataRequest) -> Result<(QueryResponse, QueryResponse, QueryResponse)> {
@@ -363,7 +348,7 @@ async fn query_data(request: DataRequest) -> Result<(QueryResponse, QueryRespons
     Ok(value) => value,
     Err(e) => return {
       println!("Error: {:?}", e);
-      Err(e.into())
+      Err(e)
     }
   };
 
@@ -371,7 +356,7 @@ async fn query_data(request: DataRequest) -> Result<(QueryResponse, QueryRespons
     Ok(value) => value,
     Err(e) => return {
       println!("Error: {:?}", e);
-      Err(e.into())
+      Err(e)
     }
   };
 
@@ -379,7 +364,7 @@ async fn query_data(request: DataRequest) -> Result<(QueryResponse, QueryRespons
     Ok(value) => value,
     Err(e) => return {
       println!("Error: {:?}", e);
-      Err(e.into())
+      Err(e)
     }
   };
 
@@ -391,10 +376,7 @@ fn get_batch_days_size() -> i64 {
 
   match var {
     Ok(value) => {
-      match value.parse::<i64>() {
-        Ok(parsed) => parsed,
-        Err(_) => 5
-      }
+      value.parse::<i64>().unwrap_or(5)
     }
     Err(_) => {
       5
@@ -425,11 +407,11 @@ pub async fn gather_data(request: DataRequest) -> Result<GatheredData> {
 
     match gather_result {
       Ok(result) => all_ok.push(result),
-      Err(e) => return Err(e.into())
+      Err(e) => return Err(e)
     };
 
     time_length -= batch_days_size;
-    end = end - batch_duration;
+    end -= batch_duration;
   }
 
   let mut deploy_data: QueryResponse = Default::default();
@@ -452,5 +434,5 @@ pub async fn gather_data(request: DataRequest) -> Result<GatheredData> {
     merges_by_sha: sorted_merge_data,
   };
 
-  return Ok(gathered_data);
+  Ok(gathered_data)
 }

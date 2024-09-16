@@ -23,11 +23,11 @@ async fn main() -> Result<()> {
 
     let app = Router::new()
         .route("/data", post(routes::data::handle_request))
-            .layer(OtelInResponseLayer::default())
+            .layer(OtelInResponseLayer)
             .layer(OtelAxumLayer::default())
             .layer(Extension(data_cache))
         .route("/teams", get(routes::teams::handle_request))
-            .layer(OtelInResponseLayer::default())
+            .layer(OtelInResponseLayer)
             .layer(OtelAxumLayer::default())
             .layer(Extension(teams_cache))
         .route("/health", get(routes::health::handle_request));

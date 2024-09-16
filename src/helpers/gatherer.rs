@@ -51,46 +51,39 @@ fn extract_failure_by_sha(deployment: &DeployEntry, next_deployment_at: DateTime
   let mut sha: String = String::default();
 
   if deployment.status {
-    match data.issues_by_repo.get(&deployment.repository) {
-      Some(issues) => {
-        deploy_issues = issues.iter().filter(|issue| {
-          issue.created_at >= deployment.created_at && issue.created_at < next_deployment_at
-        }).collect()
-      },
-      None => {}
+    if let Some(issues) = data.issues_by_repo.get(&deployment.repository) {
+      deploy_issues = issues.iter().filter(|issue| {
+        issue.created_at >= deployment.created_at && issue.created_at < next_deployment_at
+      }).collect()
     }
   } else {
-    sha = deployment.sha.clone();
+    sha.clone_from(&deployment.sha);
     failure.failed_at = Some(deployment.created_at);
   }      
 
-  if deploy_issues.len() > 0 {
-    let opened_at = deploy_issues.iter().filter_map(|issue| Some(issue.created_at)).min();
+  if !deploy_issues.is_empty() {
+    let opened_at = deploy_issues.iter().map(|issue| issue.created_at).min();
     let closing = deploy_issues.iter()
       .filter_map(|record| record.closed_at.map(|time| (record, time)))
       .max_by_key(|&(_, time)| time)
       .map(|(record, _)| record);
 
       failure.failed_at = opened_at;
-      sha = deployment.sha.clone();
+      sha.clone_from(&deployment.sha);
 
-    match closing {
-      Some(issue) => {
-        if issue.closed_at > opened_at {
-          failure.fixed_at = issue.closed_at;
-          
-          let re = Regex::new(r"actions/runs/\d+").unwrap();
-          let url = re.replace(deployment.deploy_url.as_str(), &format!("issues/{}", issue.number));
+    if let Some(issue) = closing {
+      if issue.closed_at > opened_at {
+        failure.fixed_at = issue.closed_at;
+        
+        let re = Regex::new(r"actions/runs/\d+").unwrap();
+        let url = re.replace(deployment.deploy_url.as_str(), &format!("issues/{}", issue.number));
 
-          failure.issue_url = Some(url.to_string());
-        }
-      },
-      None => {}
+        failure.issue_url = Some(url.to_string());
+      }
     }
-
   }
 
-  return (sha, failure);
+  (sha, failure)
 }
 
 fn find_failures_per_deployment(data: &GatheredData) -> HashMap<String, Failure> {
@@ -109,7 +102,7 @@ fn find_failures_per_deployment(data: &GatheredData) -> HashMap<String, Failure>
         DateTime::<Utc>::MAX_UTC
       };
       
-      let (sha, failure) = extract_failure_by_sha(&deployment, next_deployment_at, data);
+      let (sha, failure) = extract_failure_by_sha(deployment, next_deployment_at, data);
   
       match failure.failed_at {
         Some(_) => {
@@ -144,7 +137,7 @@ fn find_failures_per_deployment(data: &GatheredData) -> HashMap<String, Failure>
     }
   }  
 
-  return failures;
+  failures
 }
 
 pub fn link_data(data: GatheredData) -> Vec<ResponseRecord> {
@@ -172,8 +165,8 @@ pub fn link_data(data: GatheredData) -> Vec<ResponseRecord> {
 
         record.failed_at = failure_data.failed_at;
         record.fixed_at = failure_data.fixed_at;
-        record.issue_url = failure_data.issue_url.clone();
-        record.fixed_url = failure_data.fixed_url.clone();
+        record.issue_url.clone_from(&failure_data.issue_url);
+        record.fixed_url.clone_from(&failure_data.fixed_url);
       }
 
       let merge = data.merges_by_sha.get(&deployment.sha);

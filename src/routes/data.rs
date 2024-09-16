@@ -31,7 +31,7 @@ pub async fn handle_request(Extension(cache): Extension<DataCache>, Json(request
       let records = link_data(data);
 
       let response = DataResponse {
-        records: records,
+        records,
       };
 
       cache.insert(request_key, response.clone());
