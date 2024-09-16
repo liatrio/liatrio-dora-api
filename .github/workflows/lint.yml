@@ -25,5 +25,8 @@ jobs:
       - name: Install Clippy
         run: rustup component add clippy
 
-      - name: Run Clippy
+      - name: Run Clippy Check
         run: cargo clippy -- -D warnings
+
+      - name: Run Format Check
+        run: cargo fmt -- --check

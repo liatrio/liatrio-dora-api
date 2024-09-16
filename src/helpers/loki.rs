@@ -112,9 +112,7 @@ impl<'de> Deserialize<'de> for ValueItem {
         }
         let json_data: JsonData =
             serde_json::from_str(&vec[1]).map_err(serde::de::Error::custom)?;
-        Ok(ValueItem {
-            json_data,
-        })
+        Ok(ValueItem { json_data })
     }
 }
 
