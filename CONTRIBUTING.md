@@ -24,10 +24,6 @@ We follow standard Rust coding practices. Please make sure to:
 * Keep your code concise and readable.
 * Use Rustdoc comments to document your code.
 
-### Using `pre-commit`
-
-We use [pre-commit](https://pre-commit.com/) to ensure that our code is formatted consistently and follows good coding practices. Run `pre-commit install` to install the pre-commit hooks. After installation, `pre-commit` will run automatically against your changes on every commit. You can also run `pre-commit run --all-files` to manually run the hooks on all files.
-
 ## Testing
 
 We use Rust's built-in testing framework. Please make sure to write tests for any new features or bug fixes you contribute. You can run the tests with `cargo test`.
@@ -40,8 +36,9 @@ To contribute to the codebase, please follow these steps:
 2. Run `cargo build` to build the project and ensure there are no compilation errors.
 3. Run `cargo fmt` and `cargo clippy` to format and lint your code.
 4. Run `cargo test` to ensure all tests pass.
-5. Commit your changes and push your branch to your fork.
-6. Open a pull request with a clear description of your changes.
+5. Use [Conventional Commits](https://www.conventionalcommits.org) to format your commit messages.
+6. Commit your changes and push your branch to your fork.
+7. Open a pull request with a clear description of your changes.
 
 Thank you for your contributions!
 
