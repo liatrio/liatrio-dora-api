@@ -2,10 +2,16 @@ use anyhow::{anyhow, Result};
 use chrono::{DateTime, Duration, Utc};
 use reqwest::{Error, Response};
 use serde::{Deserialize, Serialize};
-use std::{collections::{HashMap, HashSet}, env};
+use std::{
+    collections::{HashMap, HashSet},
+    env,
+};
 
 use super::{
-    event_vendor::EventVendorFunctions, gatherer::{DeployEntry, GatheredData, IssueEntry, MergeEntry}, github::GitHub, request::DataRequest
+    event_vendor::EventVendorFunctions,
+    gatherer::{DeployEntry, GatheredData, IssueEntry, MergeEntry},
+    github::GitHub,
+    request::DataRequest,
 };
 
 #[derive(Serialize, Debug, Clone, Default)]
@@ -212,53 +218,40 @@ fn fill_query_params<T: AsRef<str>>(
     }
 }
 
-fn read_and_deserialize_json(file_path: &str) -> Result<QueryResponse> {
-  let file_content = std::fs::read_to_string(file_path)?;
-  
-  let data: QueryResponse = serde_json::from_str(&file_content)?;
-  
-  Ok(data)
-}
-
 async fn query_merge_data(request: &DataRequest) -> Result<QueryResponse> {
-    // let query_params = fill_query_params(
-    //     request,
-    //     r#"event_name=`change_closed`, merged_at!="""#,
-    //     None::<&str>,
-    // );
+    let query_params = fill_query_params(
+        request,
+        r#"event_name=`change_closed`, merged_at!="""#,
+        None::<&str>,
+    );
 
-    // query(query_params).await
-
-    read_and_deserialize_json("./test_merge_data.json")
+    query(query_params).await
 }
 
 async fn query_deploy_data(request: &DataRequest) -> Result<QueryResponse> {
-    // let query_params = fill_query_params(
-    //     request,
-    //     r#"deployment_state=~"success|failure""#,
-    //     None::<&str>,
-    // );
+    let query_params = fill_query_params(
+        request,
+        r#"deployment_state=~"success|failure""#,
+        None::<&str>,
+    );
 
-    // query(query_params).await
-
-    read_and_deserialize_json("./test_deploy_data.json")
+    query(query_params).await
 }
 
 async fn query_issue_data(request: &DataRequest) -> Result<QueryResponse> {
-    // let query_params = fill_query_params(
-    //     request,
-    //     r#"event_name=`issue_closed`"#,
-    //     Some("|= `incident`"),
-    // );
+    let query_params = fill_query_params(
+        request,
+        r#"event_name=`issue_closed`"#,
+        Some("|= `incident`"),
+    );
 
-    // query(query_params).await
-
-    read_and_deserialize_json("./test_issue_data.json")
+    query(query_params).await
 }
 
 async fn sort_deploy_data(data: QueryResponse) -> HashMap<String, Vec<DeployEntry>> {
     let mut grouped_deploys: HashMap<String, Vec<DeployEntry>> = HashMap::new();
-    let prod_env_names = env::var("PRODUCTION_ENVIRONMENT_NAMES").unwrap_or("production,prod".to_string());
+    let prod_env_names =
+        env::var("PRODUCTION_ENVIRONMENT_NAMES").unwrap_or("production,prod".to_string());
 
     for r in data.data.result {
         let env = r.stream.deployment_environment_name.unwrap().to_lowercase();
@@ -283,7 +276,7 @@ async fn sort_deploy_data(data: QueryResponse) -> HashMap<String, Vec<DeployEntr
                 created_at: d.created_at,
                 sha: d.sha.clone(),
                 deploy_url: deployment_url,
-                change_url: change_url,
+                change_url,
             };
 
             grouped_deploys.entry(rn.clone()).or_default().push(record)
@@ -294,7 +287,7 @@ async fn sort_deploy_data(data: QueryResponse) -> HashMap<String, Vec<DeployEntr
         v.sort_by(|l, r| l.created_at.cmp(&r.created_at));
 
         let mut seen_shas = HashSet::new();
-        
+
         v.retain(|entry| seen_shas.insert(entry.sha.clone()));
     }
 

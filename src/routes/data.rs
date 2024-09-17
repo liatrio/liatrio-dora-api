@@ -1,7 +1,11 @@
 use anyhow::Result;
-use axum::{extract::{Extension, Query}, http::StatusCode, response::Json};
+use axum::{
+    extract::{Extension, Query},
+    http::StatusCode,
+    response::Json,
+};
 use dashmap::DashMap;
-use serde::{Serialize, Deserialize};
+use serde::{Deserialize, Serialize};
 use std::sync::Arc;
 
 use crate::helpers::{
@@ -19,7 +23,6 @@ pub struct DataResponse {
 pub struct RequestParams {
     pub no_cache: Option<bool>,
 }
-
 
 pub async fn handle_request(
     Extension(cache): Extension<DataCache>,
@@ -43,7 +46,7 @@ pub async fn handle_request(
             let response = DataResponse { records };
 
             if cache.contains_key(&request_key) {
-                cache.alter(&request_key, |_,_| response.clone());
+                cache.alter(&request_key, |_, _| response.clone());
             } else {
                 cache.insert(request_key, response.clone());
             }
