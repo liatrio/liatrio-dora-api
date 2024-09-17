@@ -1,5 +1,71 @@
 # CHANGELOG
 
+## v1.1.14 (2024-09-17)
+
+### Chore
+
+* chore: add format check (#37)
+
+* chore: add format check
+
+* chore: formatting ([`94939ea`](https://github.com/liatrio/liatrio-dora-api/commit/94939ea488079fd1de9e34e95db6adeaab52748a))
+
+* chore: Add Clippy (#36)
+
+* fix: expand limit to loki query, use different field for merge sha, cleanup warnings
+
+* chore: Add Clippy Job and update code to follow clippy
+
+* fix: remove duplicate code line causing errors
+
+* chore: run fmt
+
+* chore: remove dead code ([`933f0d6`](https://github.com/liatrio/liatrio-dora-api/commit/933f0d63d5d1863fac7a43637ce181cfb167530e))
+
+* chore: add issue templates (#35) ([`e31fab1`](https://github.com/liatrio/liatrio-dora-api/commit/e31fab14e3fb5344d10c28635a1447f2cd54c83d))
+
+### Ci
+
+* ci: add code scanning (codeql) and badge (#34)
+
+* ci: add code scanning with codeql and badge
+
+* docs: fix spacing in readme
+
+* fix: precommit fix ([`5f57fc1`](https://github.com/liatrio/liatrio-dora-api/commit/5f57fc12de0368ce70de4579f34abf6ec74e000f))
+
+### Documentation
+
+* docs: readme updates &amp; pre-commit config (#33)
+
+* feat: add pre-commit config
+
+* fix: style/formatting/pre-commit fixes
+
+* fix: clean up section headings
+
+* fix: convert lists to tables
+
+* fix: spelling fixes
+
+* fix: update link to internal header ([`9c9ada4`](https://github.com/liatrio/liatrio-dora-api/commit/9c9ada43a46e1b6ee667e4169d3f4e5f135cd595))
+
+### Fix
+
+* fix: added LICENSE, build, and language badge to repo (#38)
+
+* fix: added LICENSE, build, and language badge to repo
+
+* docs: reformatted README ([`07b3dd4`](https://github.com/liatrio/liatrio-dora-api/commit/07b3dd4700df7c9c86a52234748d1156fce441d5))
+
+### Unknown
+
+* Update .dockerignore ([`39bbc29`](https://github.com/liatrio/liatrio-dora-api/commit/39bbc2988d48f13a79f962ddb898680abf21d1b1))
+
+* Create .env ([`a173af3`](https://github.com/liatrio/liatrio-dora-api/commit/a173af340c2516d5e3cb8695368f3312ffdf8273))
+
+* Update README.md ([`d092180`](https://github.com/liatrio/liatrio-dora-api/commit/d0921807c626d2b0feb2241ddb51fef3d1ee248c))
+
 ## v1.1.13 (2024-08-17)
 
 ### Fix
