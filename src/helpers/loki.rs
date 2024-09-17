@@ -2,11 +2,10 @@ use anyhow::{anyhow, Result};
 use chrono::{DateTime, Duration, Utc};
 use reqwest::{Error, Response};
 use serde::{Deserialize, Serialize};
-use std::{collections::HashMap, env};
+use std::{collections::{HashMap, HashSet}, env};
 
 use super::{
-    gatherer::{DeployEntry, GatheredData, IssueEntry, MergeEntry},
-    request::DataRequest,
+    event_vendor::EventVendorFunctions, gatherer::{DeployEntry, GatheredData, IssueEntry, MergeEntry}, github::GitHub, request::DataRequest
 };
 
 #[derive(Serialize, Debug, Clone, Default)]
@@ -35,11 +34,12 @@ pub struct ResultItem {
 
 #[derive(Deserialize, Debug)]
 pub struct Stream {
-    pub environment_name: Option<String>,
-    pub repository_name: Option<String>,
-    pub team_name: Option<String>,
+    pub deployment_environment_name: Option<String>,
+    pub environment_name: String,
+    pub vcs_repository_name: String,
+    pub team_name: String,
     pub merged_at: Option<DateTime<Utc>>,
-    pub deployment_state: Option<String>,
+    pub deployment_status: Option<String>,
 }
 
 #[derive(Debug)]
@@ -49,11 +49,6 @@ pub struct ValueItem {
 
 #[derive(Deserialize, Debug)]
 pub struct JsonData {
-    pub body: Body,
-}
-
-#[derive(Deserialize, Debug)]
-pub struct Body {
     pub pull_request: Option<PullRequest>,
     pub deployment: Option<Deployment>,
     pub issue: Option<Issue>,
@@ -86,14 +81,13 @@ pub struct Deployment {
     pub created_at: DateTime<Utc>,
     pub sha: String,
     pub url: String,
+    pub environment: String,
 }
 
 #[derive(Deserialize, Debug)]
 pub struct WorkflowRun {
     pub head_sha: String,
     pub workflow_id: Option<u32>,
-    pub url: Option<String>,
-    pub html_url: Option<String>,
 }
 
 #[derive(Deserialize, Debug)]
@@ -139,16 +133,14 @@ async fn get_response(
 
 async fn query(data: QueryParams) -> Result<QueryResponse> {
     let url_var = env::var("LOKI_URL");
-    let user_var = env::var("LOKI_USER");
-    let password_var = env::var("LOKI_TOKEN");
 
     let url = match url_var {
         Ok(value) => value,
         Err(e) => return Err(anyhow!(format!("{}: LOKI_URL", e.to_string()))),
     };
 
-    let user = user_var.unwrap_or("".to_string());
-    let password = password_var.unwrap_or("".to_string());
+    let user = env::var("LOKI_USER").unwrap_or_default();
+    let password = env::var("LOKI_TOKEN").unwrap_or_default();
 
     let response_result = get_response(url, user, password, data.clone()).await;
 
@@ -177,34 +169,38 @@ async fn query(data: QueryParams) -> Result<QueryResponse> {
     }
 }
 
-fn fill_query_params<Q: AsRef<str>, F: AsRef<str>>(
+fn fill_query_params<T: AsRef<str>>(
     request: &DataRequest,
-    query: Option<Q>,
-    filter: Option<F>,
+    query: T,
+    filter: Option<T>,
 ) -> QueryParams {
+    let service_name_var = env::var("SERVICE_NAME").unwrap_or("github".to_string());
+
     let team_query = match &request.team {
-        Some(t) => format!(r#",team_name="{}""#, t),
+        Some(t) => format!(r#"team_name="{}", "#, t),
         None => "".to_string(),
     };
 
     let repo_query = match &request.repositories {
-        Some(r) => format!(r#",repository_name="{}""#, r.join("|")),
+        Some(r) => format!(r#"vcs_repository_name="{}", "#, r.join("|")),
         None => "".to_string(),
     };
 
-    let unwrapped_query = query
-        .as_ref()
-        .map_or("".to_string(), |q| q.as_ref().to_string());
-
-    let unwrapped_filter = filter
-        .as_ref()
-        .map_or("".to_string(), |f| f.as_ref().to_string());
-
-    let query = match unwrapped_filter.as_str() {
-        "" => format!(r#"{{{}{}{}}}"#, unwrapped_query, team_query, repo_query),
-        _ => format!(
-            r#"{{{}{}{}}} {}"#,
-            unwrapped_query, team_query, repo_query, unwrapped_filter
+    let query = match filter {
+        Some(f) => format!(
+            r#"{{service_namespace=`{:?}`}} | {:?}{:?}{:?} {:?}"#,
+            service_name_var,
+            team_query,
+            repo_query,
+            query.as_ref().to_string(),
+            f.as_ref().to_string()
+        ),
+        None => format!(
+            r#"{{service_namespace=`{:?}`}} | {:?}{:?}{:?}"#,
+            service_name_var,
+            team_query,
+            repo_query,
+            query.as_ref().to_string()
         ),
     };
 
@@ -216,84 +212,78 @@ fn fill_query_params<Q: AsRef<str>, F: AsRef<str>>(
     }
 }
 
-async fn query_merge_data(request: &DataRequest) -> Result<QueryResponse> {
-    let query_params = fill_query_params(request, Some(r#"merged_at=~".+""#), None::<&str>);
+fn read_and_deserialize_json(file_path: &str) -> Result<QueryResponse> {
+  let file_content = std::fs::read_to_string(file_path)?;
+  
+  let data: QueryResponse = serde_json::from_str(&file_content)?;
+  
+  Ok(data)
+}
 
-    query(query_params).await
+async fn query_merge_data(request: &DataRequest) -> Result<QueryResponse> {
+    // let query_params = fill_query_params(
+    //     request,
+    //     r#"event_name=`change_closed`, merged_at!="""#,
+    //     None::<&str>,
+    // );
+
+    // query(query_params).await
+
+    read_and_deserialize_json("./test_merge_data.json")
 }
 
 async fn query_deploy_data(request: &DataRequest) -> Result<QueryResponse> {
-    let query_params = fill_query_params(
-        request,
-        Some(r#"deployment_state=~"success|failure""#),
-        None::<&str>,
-    );
+    // let query_params = fill_query_params(
+    //     request,
+    //     r#"deployment_state=~"success|failure""#,
+    //     None::<&str>,
+    // );
 
-    query(query_params).await
+    // query(query_params).await
+
+    read_and_deserialize_json("./test_deploy_data.json")
 }
 
 async fn query_issue_data(request: &DataRequest) -> Result<QueryResponse> {
-    let query_params = fill_query_params(
-        request,
-        Some(r#"action=~"closed|opened""#),
-        Some("|= `incident`"),
-    );
+    // let query_params = fill_query_params(
+    //     request,
+    //     r#"event_name=`issue_closed`"#,
+    //     Some("|= `incident`"),
+    // );
 
-    query(query_params).await
+    // query(query_params).await
+
+    read_and_deserialize_json("./test_issue_data.json")
 }
 
 async fn sort_deploy_data(data: QueryResponse) -> HashMap<String, Vec<DeployEntry>> {
     let mut grouped_deploys: HashMap<String, Vec<DeployEntry>> = HashMap::new();
+    let prod_env_names = env::var("PRODUCTION_ENVIRONMENT_NAMES").unwrap_or("production,prod".to_string());
 
     for r in data.data.result {
-        let env = r.stream.environment_name.unwrap().to_lowercase();
+        let env = r.stream.deployment_environment_name.unwrap().to_lowercase();
 
-        if env != "dev" {
+        if !prod_env_names.contains(&env) {
             continue;
         }
 
         for b in r.values {
-            let rn = r.stream.repository_name.clone().unwrap();
+            let rn = r.stream.vcs_repository_name.clone();
 
-            let d = b.json_data.body.deployment.as_ref().unwrap();
-            let status = r.stream.deployment_state.clone().unwrap_or_default();
+            let d = b.json_data.deployment.as_ref().unwrap();
+            let status = r.stream.deployment_status.clone().unwrap_or_default();
 
-            let mut wf_url = "".to_string();
-            let mut wf_hash = "".to_string();
-
-            if let Some(wf) = b.json_data.body.workflow_run {
-                if wf.html_url.is_some() {
-                    wf_url = wf.html_url.unwrap()
-                } else if wf.workflow_id.is_some() {
-                    wf_url = d
-                        .url
-                        .replace("api.", "")
-                        .replace("repos/", "")
-                        .replace("deployments/", "actions/runs/")
-                        .replace(
-                            d.id.to_string().as_str(),
-                            wf.workflow_id.unwrap().to_string().as_str(),
-                        );
-                } else if wf.url.is_some() {
-                    wf_url = wf.url.unwrap().replace("api.", "").replace("repos/", "");
-                }
-
-                wf_hash = wf.head_sha;
-            }
+            let deployment_url = GitHub::extract_deployment_url(&b);
+            let change_url = GitHub::extract_change_url(&b);
 
             let record = DeployEntry {
                 status: status == "success",
                 repository: rn.clone(),
-                team: r.stream.team_name.clone().unwrap(),
+                team: r.stream.team_name.clone(),
                 created_at: d.created_at,
                 sha: d.sha.clone(),
-                deploy_url: wf_url,
-                change_url: d
-                    .url
-                    .replace("api.", "")
-                    .replace("repos/", "")
-                    .replace("deployments/", "commit/")
-                    .replace(d.id.to_string().as_str(), wf_hash.as_str()),
+                deploy_url: deployment_url,
+                change_url: change_url,
             };
 
             grouped_deploys.entry(rn.clone()).or_default().push(record)
@@ -301,7 +291,11 @@ async fn sort_deploy_data(data: QueryResponse) -> HashMap<String, Vec<DeployEntr
     }
 
     for v in grouped_deploys.values_mut() {
-        v.sort_by(|l, r| l.created_at.cmp(&r.created_at))
+        v.sort_by(|l, r| l.created_at.cmp(&r.created_at));
+
+        let mut seen_shas = HashSet::new();
+        
+        v.retain(|entry| seen_shas.insert(entry.sha.clone()));
     }
 
     grouped_deploys
@@ -312,8 +306,8 @@ async fn sort_issue_data(data: QueryResponse) -> HashMap<String, Vec<IssueEntry>
 
     for result in data.data.result {
         for value in result.values {
-            let rn = value.json_data.body.repository.unwrap().name;
-            let issue = value.json_data.body.issue.unwrap();
+            let rn = value.json_data.repository.unwrap().name;
+            let issue = value.json_data.issue.unwrap();
 
             let ie = IssueEntry {
                 created_at: issue.created_at,
@@ -337,7 +331,7 @@ fn sort_merge_data(merge_data: QueryResponse) -> HashMap<String, MergeEntry> {
 
     for result in merge_data.data.result {
         for value in result.values {
-            let pr = value.json_data.body.pull_request.unwrap();
+            let pr = value.json_data.pull_request.unwrap();
 
             let record = MergeEntry {
                 user: pr.user.login.clone(),
