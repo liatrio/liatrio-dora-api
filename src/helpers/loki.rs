@@ -2,10 +2,7 @@ use anyhow::{anyhow, Result};
 use chrono::{DateTime, Duration, Utc};
 use reqwest::{Error, Response};
 use serde::{Deserialize, Serialize};
-use std::{
-    collections::{HashMap, HashSet},
-    env,
-};
+use std::{collections::HashMap, env};
 
 use super::{
     event_vendor::EventVendorFunctions,
@@ -286,9 +283,22 @@ async fn sort_deploy_data(data: QueryResponse) -> HashMap<String, Vec<DeployEntr
     for v in grouped_deploys.values_mut() {
         v.sort_by(|l, r| l.created_at.cmp(&r.created_at));
 
-        let mut seen_shas = HashSet::new();
+        let mut seen_shas: HashMap<String, bool> = HashMap::new();
 
-        v.retain(|entry| seen_shas.insert(entry.sha.clone()));
+        v.retain(|entry| {
+            let sha = entry.sha.clone();
+
+            if let Some(&seen) = seen_shas.get(&sha) {
+                if !seen && entry.status {
+                    seen_shas.entry(sha).and_modify(|value| *value = true);
+                    return true;
+                }
+                false
+            } else {
+                seen_shas.insert(sha, entry.status);
+                true
+            }
+        });
     }
 
     grouped_deploys
