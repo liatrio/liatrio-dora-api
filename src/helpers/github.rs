@@ -5,7 +5,7 @@ pub struct GitHub {}
 impl EventVendorFunctions for GitHub {
     /// Extracts a commit URL from a deployment entry by transforming the deployment URL.
     ///
-    /// This function takes a `ValueItem` that contains a deployment object with a URL, 
+    /// This function takes a `ValueItem` that contains a deployment object with a URL,
     /// deployment ID, and SHA. It modifies the deployment URL by:
     ///
     /// 1. Removing the "api." portion of the URL.
@@ -51,7 +51,7 @@ impl EventVendorFunctions for GitHub {
 
     /// Extracts a workflow run URL from a deployment entry, if a workflow is present.
     ///
-    /// This function takes a `ValueItem` that contains deployment and workflow run information. 
+    /// This function takes a `ValueItem` that contains deployment and workflow run information.
     /// If a workflow run with a `workflow_id` is present, it modifies the deployment URL by:
     ///
     /// 1. Removing the "api." portion of the URL.
@@ -126,12 +126,16 @@ impl EventVendorFunctions for GitHub {
 
 #[cfg(test)]
 mod tests {
-    use crate::helpers::{event_vendor::EventVendorFunctions, github::GitHub, loki::{Deployment, JsonData, ValueItem, WorkflowRun}};
+    use crate::helpers::{
+        event_vendor::EventVendorFunctions,
+        github::GitHub,
+        loki::{Deployment, JsonData, ValueItem, WorkflowRun},
+    };
 
     #[test]
     fn test_extract_change_url() {
         let entry = ValueItem {
-            json_data: JsonData{
+            json_data: JsonData {
                 deployment: Some(Deployment {
                     url: "https://api.github.com/repos/owner/repo/deployments/123456".to_string(),
                     id: 123456,
@@ -139,21 +143,18 @@ mod tests {
                     ..Default::default()
                 }),
                 ..Default::default()
-            }
+            },
         };
-        
+
         let result = GitHub::extract_change_url(&entry);
 
-        assert_eq!(
-            result,
-            "https://github.com/owner/repo/commit/abcdef"
-        );
+        assert_eq!(result, "https://github.com/owner/repo/commit/abcdef");
     }
 
     #[test]
     fn test_extract_deployment_url_with_workflow_run() {
         let entry = ValueItem {
-            json_data: JsonData{
+            json_data: JsonData {
                 deployment: Some(Deployment {
                     url: "https://api.github.com/repos/owner/repo/deployments/123456".to_string(),
                     id: 123456,
@@ -165,21 +166,18 @@ mod tests {
                     ..Default::default()
                 }),
                 ..Default::default()
-            }
+            },
         };
-        
+
         let result = GitHub::extract_deployment_url(&entry);
 
-        assert_eq!(
-            result,
-            "https://github.com/owner/repo/actions/runs/7890"
-        );
+        assert_eq!(result, "https://github.com/owner/repo/actions/runs/7890");
     }
 
     #[test]
     fn test_extract_deployment_url_without_workflow_run() {
         let entry = ValueItem {
-            json_data: JsonData{
+            json_data: JsonData {
                 deployment: Some(Deployment {
                     url: "https://api.github.com/repos/owner/repo/deployments/123456".to_string(),
                     id: 123456,
@@ -187,14 +185,11 @@ mod tests {
                     ..Default::default()
                 }),
                 ..Default::default()
-            }
+            },
         };
-        
+
         let result = GitHub::extract_deployment_url(&entry);
 
-        assert_eq!(
-            result,
-            ""
-        );
+        assert_eq!(result, "");
     }
 }

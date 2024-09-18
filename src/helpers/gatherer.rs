@@ -47,7 +47,7 @@ struct Failure {
 /// Extracts failure details for a given deployment based on related issues and the deployment's SHA.
 ///
 /// This function analyzes a deployment to determine if it failed and identifies any related issues that occurred
-/// between the deployment's creation time and the next deployment's time. If the deployment failed, or if relevant 
+/// between the deployment's creation time and the next deployment's time. If the deployment failed, or if relevant
 /// issues are found, it constructs a `Failure` struct with the failure details, including the time of failure, time of resolution,
 /// and an optional issue URL.
 ///
@@ -65,8 +65,8 @@ struct Failure {
 ///
 /// # Behavior
 ///
-/// 1. If the deployment succeeded, the function searches for issues created between the deployment's creation time 
-///    and the time of the next deployment. If relevant issues are found, it identifies the earliest issue and the latest 
+/// 1. If the deployment succeeded, the function searches for issues created between the deployment's creation time
+///    and the time of the next deployment. If relevant issues are found, it identifies the earliest issue and the latest
 ///    issue closure time to determine the failure and fix times.
 /// 2. If the deployment failed, the function captures the failure time directly from the deployment's creation time.
 /// 3. If an issue is associated with the failure, the function modifies the deployment URL to point to the related issue.
@@ -124,10 +124,9 @@ fn extract_failure_by_sha(
     if !deploy_issues.is_empty() {
         let opened = deploy_issues
             .iter()
-            .filter_map(|record| Some((record, record.created_at)))
-            .min_by_key(|&(_, time)| time)
-            .map(|(record, _)| record)
+            .min_by_key(|record| record.created_at)
             .unwrap();
+
         let closing = deploy_issues
             .iter()
             .filter_map(|record| record.closed_at.map(|time| (record, time)))
@@ -163,7 +162,7 @@ fn extract_failure_by_sha(
 /// them with their respective SHA values. It determines if a deployment failed by calling `extract_failure_by_sha`,
 /// and tracks both failures and their fixes across multiple deployments.
 ///
-/// If a failure is found but no fix is yet available (i.e., a succeeding deployment hasn’t fixed the failure), 
+/// If a failure is found but no fix is yet available (i.e., a succeeding deployment hasn’t fixed the failure),
 /// the function holds onto the failure until a fix is found or until the last deployment is processed.
 /// The failures are returned as a `HashMap` where the key is the deployment's SHA and the value is a `Failure` struct.
 ///
@@ -266,10 +265,10 @@ fn find_failures_per_deployment(data: &GatheredData) -> HashMap<String, Failure>
 
 /// Links deployment, failure, and merge data into a list of response records.
 ///
-/// This function processes the gathered deployment, issue, and merge data, and creates a list of 
-/// `ResponseRecord` objects that combine the information from each deployment with any associated failures 
+/// This function processes the gathered deployment, issue, and merge data, and creates a list of
+/// `ResponseRecord` objects that combine the information from each deployment with any associated failures
 /// and merges. It links the failures and merges to the corresponding deployments by their SHA values.
-/// 
+///
 /// For each deployment:
 /// - If a failure is found (based on the SHA), the failure details (failure time, fix time, and issue URL) are added to the response.
 /// - If a merge is found (based on the SHA), the merge details (merged time, title, and user) are added to the response.
@@ -385,7 +384,8 @@ mod tests {
         };
 
         let next_deployment_at = Utc::now();
-        let (sha, failure) = extract_failure_by_sha(&deployment, next_deployment_at, &gathered_data);
+        let (sha, failure) =
+            extract_failure_by_sha(&deployment, next_deployment_at, &gathered_data);
 
         assert_eq!(sha, "abcdef");
         assert_eq!(
@@ -424,7 +424,8 @@ mod tests {
         };
 
         let next_deployment_at = Utc::now();
-        let (sha, failure) = extract_failure_by_sha(&deployment, next_deployment_at, &gathered_data);
+        let (sha, failure) =
+            extract_failure_by_sha(&deployment, next_deployment_at, &gathered_data);
 
         assert_eq!(sha, "abcdef");
         assert_eq!(
@@ -463,7 +464,8 @@ mod tests {
         };
 
         let next_deployment_at = Utc::now();
-        let (sha, failure) = extract_failure_by_sha(&deployment, next_deployment_at, &gathered_data);
+        let (sha, failure) =
+            extract_failure_by_sha(&deployment, next_deployment_at, &gathered_data);
 
         assert_eq!(sha, "abcdef");
         assert_eq!(
@@ -494,7 +496,8 @@ mod tests {
         };
 
         let next_deployment_at = Utc::now();
-        let (sha, failure) = extract_failure_by_sha(&deployment, next_deployment_at, &gathered_data);
+        let (sha, failure) =
+            extract_failure_by_sha(&deployment, next_deployment_at, &gathered_data);
 
         assert_eq!(sha, "");
         assert_eq!(failure, Failure::default());

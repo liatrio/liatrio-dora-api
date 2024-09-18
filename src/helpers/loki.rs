@@ -121,8 +121,8 @@ impl<'de> Deserialize<'de> for ValueItem {
 
 /// Makes an asynchronous REST API call using GET and optional basic authentication.
 ///
-/// This function constructs and sends a GET request to the provided `url` with the given query parameters. 
-/// If a `user` is supplied, basic authentication is used with the provided `password`. If no `user` is supplied, 
+/// This function constructs and sends a GET request to the provided `url` with the given query parameters.
+/// If a `user` is supplied, basic authentication is used with the provided `password`. If no `user` is supplied,
 /// the request is made without authentication.
 ///
 /// # Arguments
@@ -286,13 +286,13 @@ async fn query(data: QueryParams) -> Result<QueryResponse> {
 
 /// Constructs a set of query parameters based on the provided request, query, and optional filter.
 ///
-/// This function takes a `DataRequest` object, a query string, and an optional filter string to 
-/// build a `QueryParams` structure for querying data. It also reads an environment variable 
-/// `SERVICE_NAME` to determine the service namespace, defaulting to "github" if the variable is 
+/// This function takes a `DataRequest` object, a query string, and an optional filter string to
+/// build a `QueryParams` structure for querying data. It also reads an environment variable
+/// `SERVICE_NAME` to determine the service namespace, defaulting to "github" if the variable is
 /// not set.
 ///
 /// The constructed query includes:
-/// 
+///
 /// 1. A team name filter, if present in the `request`.
 /// 2. A repository filter, if present in the `request`.
 /// 3. The main query and an optional filter string.
@@ -316,7 +316,7 @@ async fn query(data: QueryParams) -> Result<QueryResponse> {
 ///
 /// # Panics
 ///
-/// This function will panic if the environment variable `SERVICE_NAME` cannot be retrieved and is 
+/// This function will panic if the environment variable `SERVICE_NAME` cannot be retrieved and is
 /// not set to a default, or if the `timestamp_nanos_opt` values from the `request` are `None`.
 ///
 /// # Example
@@ -366,15 +366,15 @@ fn fill_query_params<T: AsRef<str>>(
             service_name_var,
             team_query,
             repo_query,
-            query.as_ref().to_string(),
-            f.as_ref().to_string()
+            query.as_ref(),
+            f.as_ref()
         ),
         None => format!(
             r#"{{service_namespace=`{}`}} | {}{}{}"#,
             service_name_var,
             team_query,
             repo_query,
-            query.as_ref().to_string()
+            query.as_ref()
         ),
     };
 
@@ -480,7 +480,7 @@ async fn query_deploy_data(request: &DataRequest) -> Result<QueryResponse> {
 ///
 /// This function constructs query parameters using the `fill_query_params` function, targeting
 /// events where the `event_name` is `issue_closed`. Additionally, it applies a filter for
-/// events containing the word "incident". The query is then sent to the server using the `query` 
+/// events containing the word "incident". The query is then sent to the server using the `query`
 /// function to retrieve the relevant issue data.
 ///
 /// # Arguments
@@ -511,7 +511,7 @@ async fn query_deploy_data(request: &DataRequest) -> Result<QueryResponse> {
 /// }
 /// ```
 ///
-/// This query specifically filters for events where an issue was closed, and optionally 
+/// This query specifically filters for events where an issue was closed, and optionally
 /// filters for incidents using the provided filter.
 async fn query_issue_data(request: &DataRequest) -> Result<QueryResponse> {
     let query_params = fill_query_params(
@@ -576,15 +576,19 @@ async fn query_issue_data(request: &DataRequest) -> Result<QueryResponse> {
 /// ```
 ///
 /// This function provides a convenient way to extract deployment information and populate a `DeployEntry` struct.
-fn extract_deployment_data(value: &ValueItem, team_name: String, repository_name: String) -> DeployEntry {
+fn extract_deployment_data(
+    value: &ValueItem,
+    team_name: String,
+    repository_name: String,
+) -> DeployEntry {
     let d: &Deployment = value.json_data.deployment.as_ref().unwrap();
     let status = value.json_data.deployment_status.as_ref().unwrap().state == "success";
 
-    let deploy_url = GitHub::extract_deployment_url(&value);
-    let change_url = GitHub::extract_change_url(&value);
+    let deploy_url = GitHub::extract_deployment_url(value);
+    let change_url = GitHub::extract_change_url(value);
 
     DeployEntry {
-        status: status,
+        status,
         repository: repository_name,
         team: team_name,
         created_at: d.created_at,
@@ -644,38 +648,35 @@ fn extract_deployment_data(value: &ValueItem, team_name: String, repository_name
 ///
 /// This function is useful for cleaning up deployment lists where multiple entries may exist
 /// for the same deployment, but only the successful ones should be retained.
-fn filter_duplicate_deployments_by_sha(
-    deploys: &mut Vec<DeployEntry>,
-) {
+fn filter_duplicate_deployments_by_sha(deploys: &mut Vec<DeployEntry>) {
     let mut seen_shas: HashMap<String, bool> = HashMap::new();
 
-    deploys
-        .retain(|entry| {
-            let sha = entry.sha.clone();
+    deploys.retain(|entry| {
+        let sha = entry.sha.clone();
 
-            if let Some(&seen) = seen_shas.get(&sha) {
-                if !seen && entry.status {
-                    seen_shas.entry(sha).and_modify(|value| *value = true);
-                    return true;
-                }
-                false
-            } else {
-                seen_shas.insert(sha, entry.status);
-                true
+        if let Some(&seen) = seen_shas.get(&sha) {
+            if !seen && entry.status {
+                seen_shas.entry(sha).and_modify(|value| *value = true);
+                return true;
             }
-        });
+            false
+        } else {
+            seen_shas.insert(sha, entry.status);
+            true
+        }
+    });
 }
 
 /// Sorts and filters deployment data by environment, repository, and timestamp.
 ///
 /// This function processes a `QueryResponse` containing deployment data, filters the deployments
-/// based on the environment names (targeting production environments), and groups the filtered 
-/// deployments by repository name. It also sorts the deployments by their creation timestamp 
+/// based on the environment names (targeting production environments), and groups the filtered
+/// deployments by repository name. It also sorts the deployments by their creation timestamp
 /// and filters out duplicate deployments based on their SHA, keeping only the first successful
 /// deployment for each SHA.
 ///
 /// The production environments are determined by reading the `PRODUCTION_ENVIRONMENT_NAMES` environment
-/// variable, which defaults to "production,prod" if not set. Only deployments from these environments are 
+/// variable, which defaults to "production,prod" if not set. Only deployments from these environments are
 /// considered during processing.
 ///
 /// # Arguments
@@ -691,7 +692,7 @@ fn filter_duplicate_deployments_by_sha(
 ///
 /// # Environment Variables
 ///
-/// * `PRODUCTION_ENVIRONMENT_NAMES` - A comma-separated list of environment names considered as production. 
+/// * `PRODUCTION_ENVIRONMENT_NAMES` - A comma-separated list of environment names considered as production.
 ///   Defaults to "production,prod" if not set.
 ///
 /// # Behavior
@@ -735,9 +736,13 @@ fn sort_deploy_data(data: QueryResponse) -> HashMap<String, Vec<DeployEntry>> {
         let team_name = r.stream.team_name;
 
         for value in r.values {
-            let record = extract_deployment_data(&value, team_name.clone(), repository_name.clone());
+            let record =
+                extract_deployment_data(&value, team_name.clone(), repository_name.clone());
 
-            grouped_deploys.entry(repository_name.clone()).or_default().push(record)
+            grouped_deploys
+                .entry(repository_name.clone())
+                .or_default()
+                .push(record)
         }
     }
 
@@ -819,7 +824,7 @@ fn sort_issue_data(data: QueryResponse) -> HashMap<String, Vec<IssueEntry>> {
 /// Sorts and groups merge data by SHA (commit hash).
 ///
 /// This function processes a `QueryResponse` containing merge data and groups the merge entries
-/// by the SHA of the merge commit. For each pull request, it extracts the relevant user, title, 
+/// by the SHA of the merge commit. For each pull request, it extracts the relevant user, title,
 /// and merge timestamp, and creates a `MergeEntry`. The data is then stored in a `HashMap` where
 /// the key is the merge commit SHA, and the value is the corresponding `MergeEntry`.
 ///
@@ -875,7 +880,7 @@ fn sort_merge_data(merge_data: QueryResponse) -> HashMap<String, MergeEntry> {
 ///
 /// This function takes a `DataRequest` and concurrently queries three different sets of data:
 /// deployment data, issue data, and merge data. It uses `tokio::join!` to run the queries in parallel,
-/// and returns a tuple containing the results of the three queries if all are successful. If any query fails, 
+/// and returns a tuple containing the results of the three queries if all are successful. If any query fails,
 /// the function logs the error and returns it.
 ///
 /// # Arguments
@@ -885,7 +890,7 @@ fn sort_merge_data(merge_data: QueryResponse) -> HashMap<String, MergeEntry> {
 /// # Returns
 ///
 /// A `Result` containing:
-/// - `Ok((QueryResponse, QueryResponse, QueryResponse))` - A tuple of `QueryResponse` values representing 
+/// - `Ok((QueryResponse, QueryResponse, QueryResponse))` - A tuple of `QueryResponse` values representing
 ///   the deployment, issue, and merge data.
 /// - `Err(anyhow::Error)` - If any of the queries fail, an error is returned.
 ///
@@ -971,7 +976,7 @@ async fn query_data(request: DataRequest) -> Result<(QueryResponse, QueryRespons
 /// # Returns
 ///
 /// An `i64` representing the number of days to use as the batch size. The value is either retrieved
-/// from the `LOKI_DAYS_BATCH_SIZE` environment variable or defaults to `5` if the variable is not set or 
+/// from the `LOKI_DAYS_BATCH_SIZE` environment variable or defaults to `5` if the variable is not set or
 /// contains an invalid value.
 ///
 /// # Example
@@ -986,7 +991,7 @@ async fn query_data(request: DataRequest) -> Result<(QueryResponse, QueryRespons
 /// assert_eq!(batch_size, 5);
 /// ```
 ///
-/// This function is useful for determining how many days' worth of data to process in each batch, 
+/// This function is useful for determining how many days' worth of data to process in each batch,
 /// with the flexibility of configuring the value via an environment variable.
 fn get_batch_days_size() -> i64 {
     let var = env::var("LOKI_DAYS_BATCH_SIZE");
@@ -1002,7 +1007,7 @@ fn get_batch_days_size() -> i64 {
 /// This function takes a `DataRequest` and processes it in batches, determined by the number of days
 /// specified in the environment variable `LOKI_DAYS_BATCH_SIZE` (defaulting to 5 days if not set). It repeatedly
 /// queries the data within smaller time windows until the entire requested time range is covered. The gathered
-/// data is then sorted and returned as a `GatheredData` struct containing deployment, issue, and merge data grouped 
+/// data is then sorted and returned as a `GatheredData` struct containing deployment, issue, and merge data grouped
 /// by repository and SHA.
 ///
 /// # Arguments
@@ -1043,7 +1048,7 @@ fn get_batch_days_size() -> i64 {
 /// }
 /// ```
 ///
-/// This example demonstrates querying data over a 30-day period, batched in smaller chunks, 
+/// This example demonstrates querying data over a 30-day period, batched in smaller chunks,
 /// and then accessing the gathered deployment, issue, and merge data.
 ///
 /// # Environment Variables
@@ -1102,12 +1107,11 @@ pub async fn gather_data(request: DataRequest) -> Result<GatheredData> {
     Ok(gathered_data)
 }
 
-
 #[cfg(test)]
 mod tests {
     use super::*;
-    use std::env;
     use chrono::{DateTime, Utc};
+    use std::env;
 
     #[test]
     fn test_fill_query_params_with_all_fields() {
@@ -1127,7 +1131,10 @@ mod tests {
 
         assert_eq!(result.start, "0");
         assert_eq!(result.end, "1000000000");
-        assert_eq!(result.query, r#"{service_namespace=`test_service`} | team_name="test_team", vcs_repository_name="repo1|repo2", query filter"#);
+        assert_eq!(
+            result.query,
+            r#"{service_namespace=`test_service`} | team_name="test_team", vcs_repository_name="repo1|repo2", query filter"#
+        );
         assert_eq!(result.limit, 5000);
     }
 
@@ -1149,7 +1156,10 @@ mod tests {
 
         assert_eq!(result.start, "0");
         assert_eq!(result.end, "1000000000");
-        assert_eq!(result.query, r#"{service_namespace=`test_service`} | query"#);
+        assert_eq!(
+            result.query,
+            r#"{service_namespace=`test_service`} | query"#
+        );
         assert_eq!(result.limit, 5000);
     }
 
@@ -1181,9 +1191,15 @@ mod tests {
         filter_duplicate_deployments_by_sha(&mut deploys);
 
         assert_eq!(deploys.len(), 3);
-        assert!(deploys.iter().any(|d| d.sha == "abcdef" && d.status == false));
-        assert!(deploys.iter().any(|d| d.sha == "abcdef" && d.status == true));
-        assert!(deploys.iter().any(|d| d.sha == "123456" && d.status == true));
+        assert!(deploys
+            .iter()
+            .any(|d| d.sha == "abcdef" && d.status == false));
+        assert!(deploys
+            .iter()
+            .any(|d| d.sha == "abcdef" && d.status == true));
+        assert!(deploys
+            .iter()
+            .any(|d| d.sha == "123456" && d.status == true));
     }
 
     #[test]
@@ -1209,8 +1225,12 @@ mod tests {
         filter_duplicate_deployments_by_sha(&mut deploys);
 
         assert_eq!(deploys.len(), 2);
-        assert!(deploys.iter().any(|d| d.sha == "abcdef" && d.status == false));
-        assert!(deploys.iter().any(|d| d.sha == "123456" && d.status == true));
+        assert!(deploys
+            .iter()
+            .any(|d| d.sha == "abcdef" && d.status == false));
+        assert!(deploys
+            .iter()
+            .any(|d| d.sha == "123456" && d.status == true));
     }
 
     #[test]
@@ -1260,7 +1280,11 @@ mod tests {
         filter_duplicate_deployments_by_sha(&mut deploys);
 
         assert_eq!(deploys.len(), 2);
-        assert!(deploys.iter().any(|d| d.sha == "abcdef" && d.status == true));
-        assert!(deploys.iter().any(|d| d.sha == "123456" && d.status == true));
+        assert!(deploys
+            .iter()
+            .any(|d| d.sha == "abcdef" && d.status == true));
+        assert!(deploys
+            .iter()
+            .any(|d| d.sha == "123456" && d.status == true));
     }
 }
