@@ -1,5 +1,39 @@
 # CHANGELOG
 
+## v1.1.15 (2024-09-18)
+
+### Chore
+
+* chore: query updates, documentation, tests (#41)
+
+* chore: update test data
+
+* chore: move vendor specific functionality, allow cache bypass
+
+* chore: formatting, clippy, disable debug code
+
+* fix: include subsequent success if first was a failure
+
+* chore: add documentation, unit tests and test job for PRs
+
+* chore: fmt and clippy
+
+* chore: more clippy ([`a359cc9`](https://github.com/liatrio/liatrio-dora-api/commit/a359cc973d601e8f755c8c3683cd157651dab223))
+
+### Documentation
+
+* docs: add template for PRs (#40) ([`44d132f`](https://github.com/liatrio/liatrio-dora-api/commit/44d132fdd309601861c45986950e89f6a997576a))
+
+* docs: add contributing docs (#39)
+
+* docs: add contributing docs
+
+* fix: remove pre-commit config, add conventional commit blurb in contributing doc ([`1cf0ce1`](https://github.com/liatrio/liatrio-dora-api/commit/1cf0ce157baf6afd1ec7dd40dc577e342bbe7d75))
+
+### Fix
+
+* fix: ver bump (#42) ([`081905e`](https://github.com/liatrio/liatrio-dora-api/commit/081905e5841499c49ecb7c14e8e727c4ab1b3ff3))
+
 ## v1.1.14 (2024-09-17)
 
 ### Chore
