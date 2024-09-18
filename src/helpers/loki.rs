@@ -38,11 +38,9 @@ pub struct ResultItem {
 #[derive(Deserialize, Debug, Default)]
 pub struct Stream {
     pub deployment_environment_name: Option<String>,
-    pub environment_name: String,
     pub vcs_repository_name: String,
     pub team_name: String,
     pub merged_at: Option<DateTime<Utc>>,
-    pub deployment_status: Option<String>,
 }
 
 #[derive(Debug, Default)]
@@ -90,12 +88,10 @@ pub struct Deployment {
     pub created_at: DateTime<Utc>,
     pub sha: String,
     pub url: String,
-    pub environment: String,
 }
 
 #[derive(Deserialize, Debug, Default)]
 pub struct WorkflowRun {
-    pub head_sha: String,
     pub workflow_id: Option<u32>,
 }
 
