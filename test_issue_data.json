@@ -5,169 +5,203 @@
     "result": [
       {
         "stream": {
-          "action": "opened",
-          "created_at": "2024-08-14T12:54:14Z",
-          "exporter": "OTLP",
-          "repository_name": "dora-elite-repo",
-          "team_name": "dora-elite-repo",
-          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+          "closed_at": "2024-08-29T16:39:53Z",
+          "created_at": "2024-08-28T21:56:49Z",
+          "environment_name": "dev",
+          "event_name": "issue_closed",
+          "loki_resource_labels": "service.name, service.namespace",
+          "receiver": "webhookevent",
+          "scope_name": "otlp/webhookevent",
+          "scope_version": "1.0.0",
+          "service_name": "dora-deploy-demo",
+          "service_namespace": "github",
+          "source": "webhookevent",
+          "team_name": "tag-o11y",
+          "vcs_repository_name": "dora-deploy-demo",
+          "vcs_repository_owner": "liatrio",
+          "vcs_repository_url_full": "https://github.com/liatrio/dora-deploy-demo"
         },
         "values": [
           [
-            "1723640054000000000",
-            "{\"body\":{\"action\":\"opened\",\"issue\":{\"closed_at\":null,\"created_at\":\"2024-08-14T12:54:14Z\",\"labels\":[{\"color\":\"ededed\",\"default\":false,\"description\":null,\"id\":6614257895,\"name\":\"incident\",\"node_id\":\"LA_kwDOLXIy5c8AAAABij2Q5w\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/labels/incident\"}],\"number\":89,\"repository_url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo\",\"state\":\"open\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+            "1724949594620755126",
+            "{\"action\":\"closed\",\"issue\":{\"closed_at\":\"2024-08-29T16:39:53Z\",\"created_at\":\"2024-08-28T21:56:49Z\",\"labels\":[{\"color\":\"ededed\",\"default\":false,\"description\":null,\"id\":6614257895,\"name\":\"incident\",\"node_id\":\"LA_kwDOLXIy5c8AAAABij2Q5w\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/labels/incident\"}],\"number\":379,\"repository_url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo\",\"state\":\"closed\"},\"repository\":{\"custom_properties\":{\"service_name\":\"dora-deploy-demo\",\"team_name\":\"tag-o11y\"},\"full_name\":\"liatrio/dora-deploy-demo\",\"html_url\":\"https://github.com/liatrio/dora-deploy-demo\",\"name\":\"dora-deploy-demo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]}}"
           ]
         ]
       },
       {
         "stream": {
-          "action": "opened",
-          "created_at": "2024-08-11T23:15:14Z",
-          "exporter": "OTLP",
-          "repository_name": "dora-high-repo",
-          "team_name": "dora-high-repo",
-          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+          "closed_at": "2024-08-29T16:12:36Z",
+          "created_at": "2024-08-28T21:56:49Z",
+          "environment_name": "dev",
+          "event_name": "issue_closed",
+          "loki_resource_labels": "service.name, service.namespace",
+          "receiver": "webhookevent",
+          "scope_name": "otlp/webhookevent",
+          "scope_version": "1.0.0",
+          "service_name": "dora-deploy-demo",
+          "service_namespace": "github",
+          "source": "webhookevent",
+          "team_name": "tag-o11y",
+          "vcs_repository_name": "dora-deploy-demo",
+          "vcs_repository_owner": "liatrio",
+          "vcs_repository_url_full": "https://github.com/liatrio/dora-deploy-demo"
         },
         "values": [
           [
-            "1723418114000000000",
-            "{\"body\":{\"action\":\"opened\",\"issue\":{\"closed_at\":null,\"created_at\":\"2024-08-11T23:15:14Z\",\"labels\":[{\"color\":\"ededed\",\"default\":false,\"description\":null,\"id\":6614257895,\"name\":\"incident\",\"node_id\":\"LA_kwDOLXIy5c8AAAABij2Q5w\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/labels/incident\"}],\"number\":89,\"repository_url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo\",\"state\":\"open\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-high-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+            "1724947957307603469",
+            "{\"action\":\"closed\",\"issue\":{\"closed_at\":\"2024-08-29T16:12:36Z\",\"created_at\":\"2024-08-28T21:56:49Z\",\"labels\":[{\"color\":\"ededed\",\"default\":false,\"description\":null,\"id\":6614257895,\"name\":\"incident\",\"node_id\":\"LA_kwDOLXIy5c8AAAABij2Q5w\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/labels/incident\"}],\"number\":379,\"repository_url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo\",\"state\":\"closed\"},\"repository\":{\"custom_properties\":{\"service_name\":\"dora-deploy-demo\",\"team_name\":\"tag-o11y\"},\"full_name\":\"liatrio/dora-deploy-demo\",\"html_url\":\"https://github.com/liatrio/dora-deploy-demo\",\"name\":\"dora-deploy-demo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]}}"
           ]
         ]
       },
       {
         "stream": {
-          "action": "opened",
-          "created_at": "2024-07-31T09:12:14Z",
-          "exporter": "OTLP",
-          "repository_name": "dora-elite-repo",
-          "team_name": "dora-elite-repo",
-          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+          "closed_at": "2024-08-28T23:54:27Z",
+          "created_at": "2024-08-28T21:56:49Z",
+          "environment_name": "dev",
+          "event_name": "issue_closed",
+          "loki_resource_labels": "environment.name, service.name",
+          "receiver": "webhookevent",
+          "scope_name": "otlp/webhookevent",
+          "scope_version": "1.0.0",
+          "service_name": "dora-deploy-demo",
+          "service_namespace": "github",
+          "source": "webhookevent",
+          "team_name": "tag-o11y",
+          "vcs_repository_name": "dora-deploy-demo",
+          "vcs_repository_owner": "liatrio",
+          "vcs_repository_url_full": "https://github.com/liatrio/dora-deploy-demo"
         },
         "values": [
           [
-            "1722417134000000000",
-            "{\"body\":{\"action\":\"opened\",\"issue\":{\"closed_at\":null,\"created_at\":\"2024-07-31T09:12:14Z\",\"labels\":[{\"color\":\"ededed\",\"default\":false,\"description\":null,\"id\":6614257895,\"name\":\"incident\",\"node_id\":\"LA_kwDOLXIy5c8AAAABij2Q5w\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/labels/incident\"}],\"number\":89,\"repository_url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo\",\"state\":\"open\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+            "1724889268875084186",
+            "{\"action\":\"closed\",\"issue\":{\"closed_at\":\"2024-08-28T23:54:27Z\",\"created_at\":\"2024-08-28T21:56:49Z\",\"labels\":[{\"color\":\"ededed\",\"default\":false,\"description\":null,\"id\":6614257895,\"name\":\"incident\",\"node_id\":\"LA_kwDOLXIy5c8AAAABij2Q5w\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/labels/incident\"}],\"number\":379,\"repository_url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo\",\"state\":\"closed\"},\"repository\":{\"custom_properties\":{\"service_name\":\"dora-deploy-demo\",\"team_name\":\"tag-o11y\"},\"full_name\":\"liatrio/dora-deploy-demo\",\"html_url\":\"https://github.com/liatrio/dora-deploy-demo\",\"name\":\"dora-deploy-demo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]}}"
           ]
         ]
       },
       {
         "stream": {
-          "action": "opened",
-          "created_at": "2024-07-18T09:46:14Z",
-          "exporter": "OTLP",
-          "repository_name": "dora-elite-repo",
-          "team_name": "dora-elite-repo",
-          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+          "closed_at": "2024-08-28T23:04:38Z",
+          "created_at": "2024-08-28T21:56:49Z",
+          "environment_name": "dev",
+          "event_name": "issue_closed",
+          "loki_resource_labels": "environment.name, service.name",
+          "receiver": "webhookevent",
+          "scope_name": "otlp/webhookevent",
+          "scope_version": "1.0.0",
+          "service_name": "dora-deploy-demo",
+          "service_namespace": "github",
+          "source": "webhookevent",
+          "team_name": "tag-o11y",
+          "vcs_repository_name": "dora-deploy-demo",
+          "vcs_repository_owner": "liatrio",
+          "vcs_repository_url_full": "https://github.com/liatrio/dora-deploy-demo"
         },
         "values": [
           [
-            "1721295974000000000",
-            "{\"body\":{\"action\":\"opened\",\"issue\":{\"closed_at\":null,\"created_at\":\"2024-07-18T09:46:14Z\",\"labels\":[{\"color\":\"ededed\",\"default\":false,\"description\":null,\"id\":6614257895,\"name\":\"incident\",\"node_id\":\"LA_kwDOLXIy5c8AAAABij2Q5w\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/labels/incident\"}],\"number\":89,\"repository_url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo\",\"state\":\"open\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]}},\"attributes\":{\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+            "1724886279965708117",
+            "{\"action\":\"closed\",\"issue\":{\"closed_at\":\"2024-08-28T23:04:38Z\",\"created_at\":\"2024-08-28T21:56:49Z\",\"labels\":[{\"color\":\"ededed\",\"default\":false,\"description\":null,\"id\":6614257895,\"name\":\"incident\",\"node_id\":\"LA_kwDOLXIy5c8AAAABij2Q5w\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/labels/incident\"}],\"number\":379,\"repository_url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo\",\"state\":\"closed\"},\"repository\":{\"custom_properties\":{\"service_name\":\"dora-deploy-demo\",\"team_name\":\"tag-o11y\"},\"full_name\":\"liatrio/dora-deploy-demo\",\"html_url\":\"https://github.com/liatrio/dora-deploy-demo\",\"name\":\"dora-deploy-demo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]}}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "closed_at": "2024-08-28T22:58:44Z",
+          "created_at": "2024-08-28T21:56:49Z",
+          "environment_name": "dev",
+          "event_name": "issue_closed",
+          "loki_resource_labels": "environment.name, service.name",
+          "receiver": "webhookevent",
+          "scope_name": "otlp/webhookevent",
+          "scope_version": "1.0.0",
+          "service_name": "dora-deploy-demo",
+          "service_namespace": "github",
+          "source": "webhookevent",
+          "team_name": "tag-o11y",
+          "vcs_repository_name": "dora-deploy-demo",
+          "vcs_repository_owner": "liatrio"
+        },
+        "values": [
+          [
+            "1724885926020109306",
+            "{\"action\":\"closed\",\"issue\":{\"closed_at\":\"2024-08-28T22:58:44Z\",\"created_at\":\"2024-08-28T21:56:49Z\",\"labels\":[{\"color\":\"ededed\",\"default\":false,\"description\":null,\"id\":6614257895,\"name\":\"incident\",\"node_id\":\"LA_kwDOLXIy5c8AAAABij2Q5w\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/labels/incident\"}],\"number\":379,\"repository_url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo\",\"state\":\"closed\"},\"repository\":{\"custom_properties\":{\"service_name\":\"dora-deploy-demo\",\"team_name\":\"tag-o11y\"},\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-deploy-demo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]}}"
           ]
         ]
       },
       {
         "stream": {
           "action": "closed",
-          "created_at": "2024-08-14T13:59:14Z",
-          "exporter": "OTLP",
-          "repository_name": "dora-elite-repo",
-          "team_name": "dora-elite-repo",
-          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
+          "closed_at": "2024-08-28T22:53:14Z",
+          "created_at": "2024-08-28T21:56:49Z",
+          "environment_name": "dev",
+          "event_name": "issue_closed",
+          "loki_resource_labels": "environment.name, service.name",
+          "receiver": "webhookevent",
+          "scope_name": "otlp/webhookevent",
+          "scope_version": "1.0.0",
+          "service": "github",
+          "service_name": "dora-deploy-demo",
+          "service_namespace": "github",
+          "source": "webhookevent",
+          "team_name": "tag-o11y",
+          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]",
+          "vcs_repository_name": "dora-deploy-demo",
+          "vcs_repository_owner": "liatrio"
         },
         "values": [
           [
-            "1723643954000000000",
-            "{\"body\":{\"action\":\"closed\",\"issue\":{\"closed_at\":\"2024-08-14T13:59:14Z\",\"created_at\":\"2024-08-14T12:54:14Z\",\"labels\":[{\"color\":\"ededed\",\"default\":false,\"description\":null,\"id\":6614257895,\"name\":\"incident\",\"node_id\":\"LA_kwDOLXIy5c8AAAABij2Q5w\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/labels/incident\"}],\"number\":89,\"repository_url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo\",\"state\":\"closed\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]}},\"attributes\":{\"closed_at\":\"2024-08-14T13:59:14Z\",\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
-          ]
-        ]
-      },
-      {
-        "stream": {
-          "action": "closed",
-          "created_at": "2024-08-12T10:07:14Z",
-          "exporter": "OTLP",
-          "repository_name": "dora-high-repo",
-          "team_name": "dora-high-repo",
-          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
-        },
-        "values": [
-          [
-            "1723457234000000000",
-            "{\"body\":{\"action\":\"closed\",\"issue\":{\"closed_at\":\"2024-08-12T10:07:14Z\",\"created_at\":\"2024-08-11T23:15:14Z\",\"labels\":[{\"color\":\"ededed\",\"default\":false,\"description\":null,\"id\":6614257895,\"name\":\"incident\",\"node_id\":\"LA_kwDOLXIy5c8AAAABij2Q5w\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/labels/incident\"}],\"number\":89,\"repository_url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo\",\"state\":\"closed\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-high-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]}},\"attributes\":{\"closed_at\":\"2024-08-12T10:07:14Z\",\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
-          ]
-        ]
-      },
-      {
-        "stream": {
-          "action": "closed",
-          "created_at": "2024-07-31T09:49:14Z",
-          "exporter": "OTLP",
-          "repository_name": "dora-elite-repo",
-          "team_name": "dora-elite-repo",
-          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
-        },
-        "values": [
-          [
-            "1722419354000000000",
-            "{\"body\":{\"action\":\"closed\",\"issue\":{\"closed_at\":\"2024-07-31T09:49:14Z\",\"created_at\":\"2024-07-31T09:12:14Z\",\"labels\":[{\"color\":\"ededed\",\"default\":false,\"description\":null,\"id\":6614257895,\"name\":\"incident\",\"node_id\":\"LA_kwDOLXIy5c8AAAABij2Q5w\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/labels/incident\"}],\"number\":89,\"repository_url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo\",\"state\":\"closed\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]}},\"attributes\":{\"closed_at\":\"2024-07-31T09:49:14Z\",\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
-          ]
-        ]
-      },
-      {
-        "stream": {
-          "action": "closed",
-          "created_at": "2024-07-30T09:23:14Z",
-          "exporter": "OTLP",
-          "repository_name": "dora-low-repo",
-          "team_name": "dora-low-repo",
-          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
-        },
-        "values": [
-          [
-            "1722331394000000000",
-            "{\"body\":{\"action\":\"closed\",\"issue\":{\"closed_at\":\"2024-07-30T09:23:14Z\",\"created_at\":\"2024-06-14T00:16:14Z\",\"labels\":[{\"color\":\"ededed\",\"default\":false,\"description\":null,\"id\":6614257895,\"name\":\"incident\",\"node_id\":\"LA_kwDOLXIy5c8AAAABij2Q5w\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/labels/incident\"}],\"number\":89,\"repository_url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo\",\"state\":\"closed\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-low-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]}},\"attributes\":{\"closed_at\":\"2024-07-30T09:23:14Z\",\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
-          ]
-        ]
-      },
-      {
-        "stream": {
-          "action": "closed",
-          "created_at": "2024-07-18T10:06:14Z",
-          "exporter": "OTLP",
-          "repository_name": "dora-elite-repo",
-          "team_name": "dora-elite-repo",
-          "topics": "[\"demo\",\"o11y\",\"tag-o11y\"]"
-        },
-        "values": [
-          [
-            "1721297174000000000",
-            "{\"body\":{\"action\":\"closed\",\"issue\":{\"closed_at\":\"2024-07-18T10:06:14Z\",\"created_at\":\"2024-07-18T09:46:14Z\",\"labels\":[{\"color\":\"ededed\",\"default\":false,\"description\":null,\"id\":6614257895,\"name\":\"incident\",\"node_id\":\"LA_kwDOLXIy5c8AAAABij2Q5w\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/labels/incident\"}],\"number\":89,\"repository_url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo\",\"state\":\"closed\"},\"repository\":{\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-elite-repo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]}},\"attributes\":{\"closed_at\":\"2024-07-18T10:06:14Z\",\"repository_owner\":\"liatrio\"},\"instrumentation_scope\":{\"name\":\"otlp/webhookevent\",\"version\":\"1.0.0\",\"attributes\":{\"receiver\":\"webhookevent\",\"source\":\"webhookevent\"}}}"
+            "1724885595449994710",
+            "{\"action\":\"closed\",\"issue\":{\"closed_at\":\"2024-08-28T22:53:14Z\",\"created_at\":\"2024-08-28T21:56:49Z\",\"labels\":[{\"color\":\"ededed\",\"default\":false,\"description\":null,\"id\":6614257895,\"name\":\"incident\",\"node_id\":\"LA_kwDOLXIy5c8AAAABij2Q5w\",\"url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo/labels/incident\"}],\"number\":379,\"repository_url\":\"https://api.github.com/repos/liatrio/dora-deploy-demo\",\"state\":\"closed\"},\"repository\":{\"custom_properties\":{\"service_name\":\"dora-deploy-demo\",\"team_name\":\"tag-o11y\"},\"full_name\":\"liatrio/dora-deploy-demo\",\"name\":\"dora-deploy-demo\",\"owner\":{\"login\":\"liatrio\"},\"topics\":[\"demo\",\"o11y\",\"tag-o11y\"]}}"
           ]
         ]
       }
     ],
     "stats": {
       "summary": {
-        "bytesProcessedPerSecond": 1195451,
-        "linesProcessedPerSecond": 1929,
-        "totalBytesProcessed": 39650,
-        "totalLinesProcessed": 64,
-        "execTime": 0.033167,
-        "queueTime": 0.102274,
+        "bytesProcessedPerSecond": 337063804,
+        "linesProcessedPerSecond": 257909,
+        "totalBytesProcessed": 62346072,
+        "totalLinesProcessed": 47705,
+        "execTime": 0.184968,
+        "queueTime": 6.326045,
         "subqueries": 0,
-        "totalEntriesReturned": 9,
-        "splits": 31,
-        "shards": 31,
-        "totalPostFilterLines": 9,
-        "totalStructuredMetadataBytesProcessed": 640
+        "totalEntriesReturned": 6,
+        "splits": 348,
+        "shards": 348,
+        "totalPostFilterLines": 6,
+        "totalStructuredMetadataBytesProcessed": 15220430
       },
       "querier": {
+        "store": {
+          "totalChunksRef": 1698,
+          "totalChunksDownloaded": 1698,
+          "chunksDownloadTime": 495453188,
+          "queryReferencedStructuredMetadata": true,
+          "chunk": {
+            "headChunkBytes": 0,
+            "headChunkLines": 0,
+            "decompressedBytes": 62346072,
+            "decompressedLines": 47705,
+            "compressedBytes": 6519122,
+            "totalDuplicates": 0,
+            "postFilterLines": 6,
+            "headChunkStructuredMetadataBytes": 0,
+            "decompressedStructuredMetadataBytes": 15220430
+          },
+          "chunkRefsFetchTime": 388662491,
+          "congestionControlLatency": 24973,
+          "pipelineWrapperFilteredLines": 0
+        }
+      },
+      "ingester": {
+        "totalReached": 0,
+        "totalChunksMatched": 0,
+        "totalBatches": 0,
+        "totalLinesSent": 0,
         "store": {
           "totalChunksRef": 0,
           "totalChunksDownloaded": 0,
           "chunksDownloadTime": 0,
+          "queryReferencedStructuredMetadata": false,
           "chunk": {
             "headChunkBytes": 0,
             "headChunkLines": 0,
@@ -179,41 +213,21 @@
             "headChunkStructuredMetadataBytes": 0,
             "decompressedStructuredMetadataBytes": 0
           },
-          "chunkRefsFetchTime": 0
-        }
-      },
-      "ingester": {
-        "totalReached": 31,
-        "totalChunksMatched": 0,
-        "totalBatches": 37,
-        "totalLinesSent": 9,
-        "store": {
-          "totalChunksRef": 64,
-          "totalChunksDownloaded": 64,
-          "chunksDownloadTime": 3956001,
-          "chunk": {
-            "headChunkBytes": 0,
-            "headChunkLines": 0,
-            "decompressedBytes": 39650,
-            "decompressedLines": 64,
-            "compressedBytes": 24994,
-            "totalDuplicates": 0,
-            "postFilterLines": 9,
-            "headChunkStructuredMetadataBytes": 0,
-            "decompressedStructuredMetadataBytes": 640
-          },
-          "chunkRefsFetchTime": 14064213
+          "chunkRefsFetchTime": 0,
+          "congestionControlLatency": 0,
+          "pipelineWrapperFilteredLines": 0
         }
       },
       "cache": {
         "chunk": {
-          "entriesFound": 0,
-          "entriesRequested": 0,
-          "entriesStored": 0,
-          "bytesReceived": 0,
-          "bytesSent": 0,
-          "requests": 0,
-          "downloadTime": 0
+          "entriesFound": 1685,
+          "entriesRequested": 1698,
+          "entriesStored": 26,
+          "bytesReceived": 9762122,
+          "bytesSent": 34591,
+          "requests": 824,
+          "downloadTime": 217297140,
+          "queryLengthServed": 0
         },
         "index": {
           "entriesFound": 0,
@@ -222,26 +236,74 @@
           "bytesReceived": 0,
           "bytesSent": 0,
           "requests": 0,
-          "downloadTime": 0
+          "downloadTime": 0,
+          "queryLengthServed": 0
         },
         "result": {
           "entriesFound": 0,
-          "entriesRequested": 0,
-          "entriesStored": 0,
+          "entriesRequested": 348,
+          "entriesStored": 346,
           "bytesReceived": 0,
           "bytesSent": 0,
-          "requests": 0,
-          "downloadTime": 0
+          "requests": 694,
+          "downloadTime": 1063291259,
+          "queryLengthServed": 0
         },
         "statsResult": {
+          "entriesFound": 377,
+          "entriesRequested": 377,
+          "entriesStored": 0,
+          "bytesReceived": 81466,
+          "bytesSent": 0,
+          "requests": 377,
+          "downloadTime": 199288578,
+          "queryLengthServed": 2516011000000000
+        },
+        "volumeResult": {
           "entriesFound": 0,
           "entriesRequested": 0,
           "entriesStored": 0,
           "bytesReceived": 0,
           "bytesSent": 0,
           "requests": 0,
-          "downloadTime": 0
+          "downloadTime": 0,
+          "queryLengthServed": 0
+        },
+        "seriesResult": {
+          "entriesFound": 0,
+          "entriesRequested": 0,
+          "entriesStored": 0,
+          "bytesReceived": 0,
+          "bytesSent": 0,
+          "requests": 0,
+          "downloadTime": 0,
+          "queryLengthServed": 0
+        },
+        "labelResult": {
+          "entriesFound": 0,
+          "entriesRequested": 0,
+          "entriesStored": 0,
+          "bytesReceived": 0,
+          "bytesSent": 0,
+          "requests": 0,
+          "downloadTime": 0,
+          "queryLengthServed": 0
+        },
+        "instantMetricResult": {
+          "entriesFound": 0,
+          "entriesRequested": 0,
+          "entriesStored": 0,
+          "bytesReceived": 0,
+          "bytesSent": 0,
+          "requests": 0,
+          "downloadTime": 0,
+          "queryLengthServed": 0
         }
+      },
+      "index": {
+        "totalChunks": 0,
+        "postFilterChunks": 0,
+        "shardsDuration": 0
       }
     }
   }

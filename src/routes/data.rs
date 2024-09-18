@@ -1,7 +1,11 @@
 use anyhow::Result;
-use axum::{extract::Extension, http::StatusCode, response::Json};
+use axum::{
+    extract::{Extension, Query},
+    http::StatusCode,
+    response::Json,
+};
 use dashmap::DashMap;
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
 use std::sync::Arc;
 
 use crate::helpers::{
@@ -15,14 +19,22 @@ pub struct DataResponse {
     records: Vec<ResponseRecord>,
 }
 
+#[derive(Deserialize, Debug)]
+pub struct RequestParams {
+    pub no_cache: Option<bool>,
+}
+
 pub async fn handle_request(
     Extension(cache): Extension<DataCache>,
+    Query(params): Query<RequestParams>,
     Json(request): Json<DataRequest>,
 ) -> Result<Json<DataResponse>, StatusCode> {
     let request_key = format!("{:?}", request);
 
-    if let Some(cached_response) = cache.get(&request_key) {
-        return Ok(Json(cached_response.clone()));
+    if !params.no_cache.unwrap_or_default() {
+        if let Some(cached_response) = cache.get(&request_key) {
+            return Ok(Json(cached_response.clone()));
+        }
     }
 
     let data_set = gather_data(request).await;
@@ -33,7 +45,12 @@ pub async fn handle_request(
 
             let response = DataResponse { records };
 
-            cache.insert(request_key, response.clone());
+            if cache.contains_key(&request_key) {
+                cache.alter(&request_key, |_, _| response.clone());
+            } else {
+                cache.insert(request_key, response.clone());
+            }
+
             Ok(Json(response))
         }
         Err(e) => {
