@@ -1,4 +1,4 @@
-name: Lint Rust Code
+name: "Lint/FMT"
 
 on:
   push:

@@ -1,5 +1,6 @@
 # Liatrio Dora Charts
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)[![CodeQL](https://github.com/liatrio/liatrio-dora-api/actions/workflows/codeql.yml/badge.svg?branch=main)](https://github.com/liatrio/liatrio-dora-api/actions/workflows/codeql.yml)[![Release](https://github.com/liatrio/liatrio-dora-api/actions/workflows/release.yml/badge.svg?branch=main)](https://github.com/liatrio/liatrio-dora-api/actions/workflows/release.yml)![GitHub top language](https://img.shields.io/github/languages/top/liatrio/liatrio-dora-api)
+|[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)|[![CodeQL](https://github.com/liatrio/liatrio-dora-api/actions/workflows/codeql.yml/badge.svg?branch=main)](https://github.com/liatrio/liatrio-dora-api/actions/workflows/codeql.yml)|[![Release](https://github.com/liatrio/liatrio-dora-api/actions/workflows/release.yml/badge.svg?branch=main)](https://github.com/liatrio/liatrio-dora-api/actions/workflows/release.yml)|![GitHub top language](https://img.shields.io/github/languages/top/liatrio/liatrio-dora-api)| [![Test Status](https://github.com/liatrio/liatrio-dora-api/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/liatrio/liatrio-dora-api/actions/workflows/test.yml)
+|---|---|---|---|---|
 
 
 # Introduction
@@ -92,6 +93,8 @@ The following variables are required to run this API:
 | `PORT`         | What port you want to run on                      |
 | `GITHUB_ORG`   | The GitHub Org used to host your repositories     |
 | `GITHUB_TOKEN` | A GitHub Token with access to the Org (see below) |
+| `SERVICE_NAME` | This is defaulted to `github`, but should be the supplying your OTEL events |
+| `PRODUCTION_ENVIRONMENT_NAMES` | This API only returns events for production environments and those names are controlled with this variable.  By default, this is set to `production,prod` |
 
 The `GITHUB_TOKEN` must have the following scopes:
 
