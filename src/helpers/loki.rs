@@ -465,7 +465,7 @@ async fn query_merge_data(request: &DataRequest) -> Result<QueryResponse> {
 async fn query_deploy_data(request: &DataRequest) -> Result<QueryResponse> {
     let query_params = fill_query_params(
         request,
-        r#"deployment_state=~"success|failure""#,
+        r#"deployment_status=~`failure|success`"#,
         None::<&str>,
     );
 
