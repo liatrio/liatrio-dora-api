@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## v1.1.16 (2024-09-20)
+
+### Chore
+
+* chore: update workflow names, update readme with badges (#43) ([`7036246`](https://github.com/liatrio/liatrio-dora-api/commit/70362460750a58688fac2ff0e58fc114bfe56f40))
+
+### Fix
+
+* fix: correct deployment query (#44) ([`623f867`](https://github.com/liatrio/liatrio-dora-api/commit/623f867c4e9873e14d15f7ddc7e7e3fe52cbf811))
+
 ## v1.1.15 (2024-09-18)
 
 ### Chore
