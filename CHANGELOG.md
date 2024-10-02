@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v1.2.1 (2024-10-02)
+
+### Fix
+
+* fix: allow tag-o11y (#47) ([`9ef2685`](https://github.com/liatrio/liatrio-dora-api/commit/9ef2685df20063c49270958bf2383af0f1544650))
+
 ## v1.2.0 (2024-10-02)
 
 ### Feature
