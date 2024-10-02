@@ -723,8 +723,8 @@ fn sort_deploy_data(data: QueryResponse) -> HashMap<String, Vec<DeployEntry>> {
 
     for r in data.data.result {
         let env = r.stream.deployment_environment_name.unwrap().to_lowercase();
-
-        if !prod_env_names.contains(&env) {
+        
+        if !prod_env_names.contains(&env) || env.starts_with("prod-") {
             continue;
         }
 
