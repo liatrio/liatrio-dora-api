@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## v1.2.2 (2024-10-02)
+
+### Fix
+
+* fix: allow env to be prod- (#46)
+
+* fix: allow env to be prod-
+
+* fix: run cargo fmt ([`35729a3`](https://github.com/liatrio/liatrio-dora-api/commit/35729a341a092ab0c0efa2805743d6cd7fd1a7e6))
+
 ## v1.2.1 (2024-10-02)
 
 ### Fix
