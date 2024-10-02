@@ -15,8 +15,6 @@ spec:
     metadata:
       labels:
         app: liatrio-dora-api
-      annotations:
-        instrumentation.opentelemetry.io/inject-rust: "true"
     spec:
       imagePullSecrets:
         - name: ghcr-token
@@ -32,6 +30,12 @@ spec:
           env:
             - name: PORT
               value: "3000"
+            - name: OTEL_SERVICE_NAME
+              value: "liatrio-dora-api"
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              value: "otel-kubernetes-collector-collector.otel-gateway:4317"
+            - name: OTEL_EXPORTER_OTLP_INSECURE
+              value: "true"
           readinessProbe:
             failureThreshold: 6
             httpGet:
