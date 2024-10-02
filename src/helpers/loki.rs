@@ -728,7 +728,6 @@ fn sort_deploy_data(data: QueryResponse) -> HashMap<String, Vec<DeployEntry>> {
             continue;
         }
 
-        println!("Environment: {}", env);
         let repository_name = r.stream.vcs_repository_name;
         let team_name = r.stream.team_name;
 
