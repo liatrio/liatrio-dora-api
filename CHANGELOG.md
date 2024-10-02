@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## v1.2.3 (2024-10-02)
+
+### Fix
+
+* fix: correct this conditional (#48)
+
+* fix: correct this conditional
+
+* chore: remove print statement ([`d485941`](https://github.com/liatrio/liatrio-dora-api/commit/d48594148a7c85c63db74cc683a5d277098c1868))
+
 ## v1.2.2 (2024-10-02)
 
 ### Fix
