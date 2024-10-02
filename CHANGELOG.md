@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v1.2.0 (2024-10-02)
+
+### Feature
+
+* feat: enable OTLP trace exportation in manifests (#45) ([`abe53b8`](https://github.com/liatrio/liatrio-dora-api/commit/abe53b83bf40082628534406d8b966b39b276072))
+
 ## v1.1.16 (2024-09-20)
 
 ### Chore
