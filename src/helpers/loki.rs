@@ -724,10 +724,11 @@ fn sort_deploy_data(data: QueryResponse) -> HashMap<String, Vec<DeployEntry>> {
     for r in data.data.result {
         let env = r.stream.deployment_environment_name.unwrap().to_lowercase();
 
-        if !prod_env_names.contains(&env) || env.starts_with("prod-") {
+        if !prod_env_names.contains(&env) && !env.starts_with("prod-") {
             continue;
         }
 
+        println!("Environment: {}", env);
         let repository_name = r.stream.vcs_repository_name;
         let team_name = r.stream.team_name;
 
