@@ -33,9 +33,7 @@ spec:
             - name: OTEL_SERVICE_NAME
               value: "liatrio-dora-api"
             - name: OTEL_EXPORTER_OTLP_ENDPOINT
-              value: "otel-kubernetes-collector-collector.otel-gateway:4317"
-            - name: OTEL_EXPORTER_OTLP_INSECURE
-              value: "true"
+              value: "http://otel-kubernetes-collector-collector.otel-gateway:4317"
             - name: PRODUCTION_ENVIRONMENT_NAMES
               value: "prod,production,tag-o11y"
           readinessProbe:
