@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v1.2.5 (2025-03-28)
+
+### Bug Fixes
+
+- Update manifest to point to v2 gateway
+  ([`6414fa9`](https://github.com/liatrio/liatrio-dora-api/commit/6414fa9997943f067378ab85e6ec1520c5f03f37))
+
+
 ## v1.2.4 (2024-11-20)
 
 ### Bug Fixes
@@ -92,15 +100,15 @@
 
 ### Documentation
 
-- Add template for PRs ([#40](https://github.com/liatrio/liatrio-dora-api/pull/40),
-  [`44d132f`](https://github.com/liatrio/liatrio-dora-api/commit/44d132fdd309601861c45986950e89f6a997576a))
-
 - Add contributing docs ([#39](https://github.com/liatrio/liatrio-dora-api/pull/39),
   [`1cf0ce1`](https://github.com/liatrio/liatrio-dora-api/commit/1cf0ce157baf6afd1ec7dd40dc577e342bbe7d75))
 
 * docs: add contributing docs
 
 * fix: remove pre-commit config, add conventional commit blurb in contributing doc
+
+- Add template for PRs ([#40](https://github.com/liatrio/liatrio-dora-api/pull/40),
+  [`44d132f`](https://github.com/liatrio/liatrio-dora-api/commit/44d132fdd309601861c45986950e89f6a997576a))
 
 
 ## v1.1.14 (2024-09-17)
@@ -117,13 +125,6 @@
 
 ### Chores
 
-- Add format check ([#37](https://github.com/liatrio/liatrio-dora-api/pull/37),
-  [`94939ea`](https://github.com/liatrio/liatrio-dora-api/commit/94939ea488079fd1de9e34e95db6adeaab52748a))
-
-* chore: add format check
-
-* chore: formatting
-
 - Add Clippy ([#36](https://github.com/liatrio/liatrio-dora-api/pull/36),
   [`933f0d6`](https://github.com/liatrio/liatrio-dora-api/commit/933f0d63d5d1863fac7a43637ce181cfb167530e))
 
@@ -136,6 +137,13 @@
 * chore: run fmt
 
 * chore: remove dead code
+
+- Add format check ([#37](https://github.com/liatrio/liatrio-dora-api/pull/37),
+  [`94939ea`](https://github.com/liatrio/liatrio-dora-api/commit/94939ea488079fd1de9e34e95db6adeaab52748a))
+
+* chore: add format check
+
+* chore: formatting
 
 - Add issue templates ([#35](https://github.com/liatrio/liatrio-dora-api/pull/35),
   [`e31fab1`](https://github.com/liatrio/liatrio-dora-api/commit/e31fab14e3fb5344d10c28635a1447f2cd54c83d))
