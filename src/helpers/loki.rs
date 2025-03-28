@@ -3,6 +3,7 @@ use chrono::{DateTime, Duration, Utc};
 use reqwest::{Error, Response};
 use serde::{Deserialize, Serialize};
 use std::{collections::HashMap, env};
+use tracing::instrument;
 
 use super::{
     event_vendor::EventVendorFunctions,
@@ -1050,6 +1051,7 @@ fn get_batch_days_size() -> i64 {
 /// # Environment Variables
 ///
 /// * `LOKI_DAYS_BATCH_SIZE` - Defines the number of days to include in each batch of the query. Defaults to 5 days if not set.
+#[instrument]
 pub async fn gather_data(request: DataRequest) -> Result<GatheredData> {
     let mut time_length = (request.end - request.start).num_days();
     let mut end = request.end;

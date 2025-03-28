@@ -57,6 +57,7 @@ async fn get_teams(gh_org: &String, gh_token: &String, page: usize) -> Result<Ve
     }
 }
 
+#[instrument]
 pub async fn handle_request(
     Extension(cache): Extension<TeamsCache>,
 ) -> Result<Json<TeamsResponse>, StatusCode> {

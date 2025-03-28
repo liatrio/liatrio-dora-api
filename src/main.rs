@@ -4,10 +4,12 @@ use axum::{
     routing::{get, post},
     Router,
 };
-use axum_tracing_opentelemetry::middleware::{OtelAxumLayer, OtelInResponseLayer};
 use dashmap::DashMap;
 use dotenv::dotenv;
 use std::{env, sync::Arc};
+use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
+use opentelemetry::sdk::trace as sdktrace;
+use tracing_opentelemetry::OpenTelemetryLayer;
 
 mod helpers;
 mod routes;
@@ -15,20 +17,35 @@ mod routes;
 #[tokio::main]
 async fn main() -> Result<()> {
     dotenv().ok();
-    init_tracing_opentelemetry::tracing_subscriber_ext::init_subscribers()?;
     env_logger::init();
+
+    // Set up the OpenTelemetry tracer (OTLP exporter to collector)
+    let tracer = opentelemetry_otlp::new_pipeline()
+        .tracing()
+        .with_protocol(opentelemetry_otlp::Protocol::HttpBinary)
+        .with_trace_config(
+            sdktrace::config().with_resource(Resource::new(vec![
+                KeyValue::new("service.name", "liatrio-dora-api"),
+            ])),
+        )
+        .install_batch(opentelemetry::runtime::Tokio)?;
+
+    // Create a tracing layer with the OTEL tracer
+    let telemetry = OpenTelemetryLayer::new(tracer);
+
+    // Build a tracing subscriber with the OTEL layer + log formatting
+    tracing_subscriber::registry()
+        .with(tracing_subscriber::fmt::layer())
+        .with(telemetry)
+        .init();
 
     let data_cache: routes::data::DataCache = Arc::new(DashMap::new());
     let teams_cache: routes::teams::TeamsCache = Arc::new(DashMap::new());
 
     let app = Router::new()
         .route("/data", post(routes::data::handle_request))
-        .layer(OtelInResponseLayer)
-        .layer(OtelAxumLayer::default())
         .layer(Extension(data_cache))
         .route("/teams", get(routes::teams::handle_request))
-        .layer(OtelInResponseLayer)
-        .layer(OtelAxumLayer::default())
         .layer(Extension(teams_cache))
         .route("/health", get(routes::health::handle_request));
 
@@ -45,6 +62,8 @@ async fn main() -> Result<()> {
         .with_graceful_shutdown(shutdown_signal())
         .await
         .unwrap();
+
+    opentelemetry::global::shutdown_tracer_provider(); // graceful shutdown
 
     Ok(())
 }

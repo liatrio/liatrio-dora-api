@@ -6,6 +6,7 @@ use axum::{
 };
 use dashmap::DashMap;
 use serde::{Deserialize, Serialize};
+use tracing::instrument;
 use std::sync::Arc;
 
 use crate::helpers::{
@@ -24,6 +25,7 @@ pub struct RequestParams {
     pub no_cache: Option<bool>,
 }
 
+#[instrument]
 pub async fn handle_request(
     Extension(cache): Extension<DataCache>,
     Query(params): Query<RequestParams>,
