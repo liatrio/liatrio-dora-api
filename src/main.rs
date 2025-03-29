@@ -6,10 +6,12 @@ use axum::{
 };
 use dashmap::DashMap;
 use dotenv::dotenv;
-use std::{env, sync::Arc};
-use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
-use opentelemetry::sdk::trace as sdktrace;
 use tracing_opentelemetry::OpenTelemetryLayer;
+use std::{env, sync::Arc};
+use opentelemetry_otlp::{SpanExporter, WithExportConfig};
+use opentelemetry_sdk::trace::SdkTracerProvider;
+use opentelemetry::trace::TracerProvider as _;
+use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
 
 mod helpers;
 mod routes;
@@ -19,24 +21,25 @@ async fn main() -> Result<()> {
     dotenv().ok();
     env_logger::init();
 
-    // Set up the OpenTelemetry tracer (OTLP exporter to collector)
-    let tracer = opentelemetry_otlp::new_pipeline()
-        .tracing()
-        .with_protocol(opentelemetry_otlp::Protocol::HttpBinary)
-        .with_trace_config(
-            sdktrace::config().with_resource(Resource::new(vec![
-                KeyValue::new("service.name", "liatrio-dora-api"),
-            ])),
-        )
-        .install_batch(opentelemetry::runtime::Tokio)?;
+    let exporter = SpanExporter::builder()
+        .with_http()
+        .with_endpoint(env::var("OTEL_EXPORTER_OTLP_ENDPOINT")?)
+        .with_timeout(std::time::Duration::from_secs(5))
+        .build()
+        .unwrap();
 
-    // Create a tracing layer with the OTEL tracer
-    let telemetry = OpenTelemetryLayer::new(tracer);
+    let provider = SdkTracerProvider::builder()
+        .with_batch_exporter(exporter)
+        .build();
 
-    // Build a tracing subscriber with the OTEL layer + log formatting
+    let tracer = provider
+        .tracer("liatrio-dora-api");    
+
+    let otel_layer = OpenTelemetryLayer::new(tracer);
+    
     tracing_subscriber::registry()
         .with(tracing_subscriber::fmt::layer())
-        .with(telemetry)
+        .with(otel_layer)
         .init();
 
     let data_cache: routes::data::DataCache = Arc::new(DashMap::new());
@@ -62,8 +65,6 @@ async fn main() -> Result<()> {
         .with_graceful_shutdown(shutdown_signal())
         .await
         .unwrap();
-
-    opentelemetry::global::shutdown_tracer_provider(); // graceful shutdown
 
     Ok(())
 }
@@ -97,7 +98,6 @@ async fn shutdown_signal() {
     tracing::warn!("signal received, starting graceful shutdown");
     let (sender, receiver) = mpsc::channel();
     let _ = thread::spawn(move || {
-        opentelemetry::global::shutdown_tracer_provider();
         sender.send(()).ok()
     });
     let shutdown_res = receiver.recv_timeout(Duration::from_millis(2_000));

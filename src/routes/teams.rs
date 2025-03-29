@@ -4,6 +4,7 @@ use dashmap::DashMap;
 use reqwest::Error;
 use serde::Deserialize;
 use std::{env, sync::Arc};
+use tracing::instrument;
 
 use crate::helpers::response::TeamsResponse;
 

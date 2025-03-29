@@ -18,7 +18,8 @@ log = "0.4.22"
 env_logger = "0.11.3"
 
 opentelemetry = "0.29.0"
-opentelemetry-otlp = { version = "0.29.0", optional = true }
+opentelemetry-otlp = "0.29.0"
+opentelemetry_sdk = "0.29.0"
 tracing = "0.1.41"
 tracing-subscriber = "0.3.19"
 tracing-opentelemetry = "0.30.0"
