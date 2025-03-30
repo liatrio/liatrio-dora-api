@@ -15,6 +15,7 @@ pub struct GitHubTeam {
 
 pub type TeamsCache = Arc<DashMap<String, TeamsResponse>>;
 
+#[instrument]
 async fn get_teams(gh_org: &String, gh_token: &String, page: usize) -> Result<Vec<GitHubTeam>> {
     let client = reqwest::Client::new();
     let url = format!("https://api.github.com/orgs/{}/teams", gh_org);
