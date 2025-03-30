@@ -341,7 +341,7 @@ async fn query(data: QueryParams) -> Result<QueryResponse> {
 /// assert!(query_params.query.ends_with("deployment_status"));
 /// ```
 #[instrument]
-fn fill_query_params<T: AsRef<str>>(
+fn fill_query_params<T: AsRef<str> + std::fmt::Debug>(
     request: &DataRequest,
     query: T,
     filter: Option<T>,

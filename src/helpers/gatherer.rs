@@ -1,6 +1,7 @@
 use chrono::{DateTime, Utc};
 use regex::Regex;
 use std::collections::HashMap;
+use tracing::instrument;
 
 use super::response::ResponseRecord;
 
