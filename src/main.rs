@@ -11,7 +11,7 @@ use std::{env, sync::Arc};
 use opentelemetry_otlp::{SpanExporter, WithExportConfig};
 use opentelemetry_sdk::trace::SdkTracerProvider;
 use opentelemetry::trace::TracerProvider as _;
-use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
+use tracing_subscriber::layer::SubscriberExt;
 
 mod helpers;
 mod routes;
@@ -23,7 +23,6 @@ async fn main() -> Result<()> {
 
     let exporter = SpanExporter::builder()
         .with_http()
-        .with_endpoint(env::var("OTEL_EXPORTER_OTLP_ENDPOINT")?)
         .with_timeout(std::time::Duration::from_secs(5))
         .build()
         .unwrap();
@@ -37,10 +36,11 @@ async fn main() -> Result<()> {
 
     let otel_layer = OpenTelemetryLayer::new(tracer);
     
-    tracing_subscriber::registry()
-        .with(tracing_subscriber::fmt::layer())
-        .with(otel_layer)
-        .init();
+    tracing::subscriber::set_global_default(
+        tracing_subscriber::registry()
+            .with(tracing_subscriber::fmt::layer())
+            .with(otel_layer)
+    ).expect("Failed to set global default subscriber");
 
     let data_cache: routes::data::DataCache = Arc::new(DashMap::new());
     let teams_cache: routes::teams::TeamsCache = Arc::new(DashMap::new());
