@@ -7,6 +7,7 @@ use axum::{
 use dashmap::DashMap;
 use serde::{Deserialize, Serialize};
 use std::sync::Arc;
+use tracing::instrument;
 
 use crate::helpers::{
     gatherer::link_data, loki::gather_data, request::DataRequest, response::ResponseRecord,
@@ -24,6 +25,7 @@ pub struct RequestParams {
     pub no_cache: Option<bool>,
 }
 
+#[instrument]
 pub async fn handle_request(
     Extension(cache): Extension<DataCache>,
     Query(params): Query<RequestParams>,

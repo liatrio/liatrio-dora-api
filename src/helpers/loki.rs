@@ -3,6 +3,7 @@ use chrono::{DateTime, Duration, Utc};
 use reqwest::{Error, Response};
 use serde::{Deserialize, Serialize};
 use std::{collections::HashMap, env};
+use tracing::instrument;
 
 use super::{
     event_vendor::EventVendorFunctions,
@@ -339,7 +340,8 @@ async fn query(data: QueryParams) -> Result<QueryResponse> {
 ///
 /// assert!(query_params.query.ends_with("deployment_status"));
 /// ```
-fn fill_query_params<T: AsRef<str>>(
+#[instrument]
+fn fill_query_params<T: AsRef<str> + std::fmt::Debug>(
     request: &DataRequest,
     query: T,
     filter: Option<T>,
@@ -417,6 +419,7 @@ fn fill_query_params<T: AsRef<str>>(
 /// ```
 ///
 /// This query specifically filters for events where a change was closed and successfully merged.
+#[instrument]
 async fn query_merge_data(request: &DataRequest) -> Result<QueryResponse> {
     let query_params = fill_query_params(
         request,
@@ -462,6 +465,7 @@ async fn query_merge_data(request: &DataRequest) -> Result<QueryResponse> {
 /// ```
 ///
 /// This query specifically filters for deployment events that resulted in either a success or failure.
+#[instrument]
 async fn query_deploy_data(request: &DataRequest) -> Result<QueryResponse> {
     let query_params = fill_query_params(
         request,
@@ -509,6 +513,7 @@ async fn query_deploy_data(request: &DataRequest) -> Result<QueryResponse> {
 ///
 /// This query specifically filters for events where an issue was closed, and optionally
 /// filters for incidents using the provided filter.
+#[instrument]
 async fn query_issue_data(request: &DataRequest) -> Result<QueryResponse> {
     let query_params = fill_query_params(
         request,
@@ -572,6 +577,7 @@ async fn query_issue_data(request: &DataRequest) -> Result<QueryResponse> {
 /// ```
 ///
 /// This function provides a convenient way to extract deployment information and populate a `DeployEntry` struct.
+#[instrument]
 fn extract_deployment_data(
     value: &ValueItem,
     team_name: String,
@@ -644,6 +650,7 @@ fn extract_deployment_data(
 ///
 /// This function is useful for cleaning up deployment lists where multiple entries may exist
 /// for the same deployment, but only the successful ones should be retained.
+#[instrument]
 fn filter_duplicate_deployments_by_sha(deploys: &mut Vec<DeployEntry>) {
     let mut seen_shas: HashMap<String, bool> = HashMap::new();
 
@@ -716,6 +723,7 @@ fn filter_duplicate_deployments_by_sha(deploys: &mut Vec<DeployEntry>) {
 /// ```
 ///
 /// In this example, the deployment data is sorted by repository and timestamp, and duplicates are filtered by SHA.
+#[instrument]
 fn sort_deploy_data(data: QueryResponse) -> HashMap<String, Vec<DeployEntry>> {
     let mut grouped_deploys: HashMap<String, Vec<DeployEntry>> = HashMap::new();
     let prod_env_names =
@@ -792,6 +800,7 @@ fn sort_deploy_data(data: QueryResponse) -> HashMap<String, Vec<DeployEntry>> {
 /// ```
 ///
 /// In this example, the issues are grouped by repository and sorted by their creation time.
+#[instrument]
 fn sort_issue_data(data: QueryResponse) -> HashMap<String, Vec<IssueEntry>> {
     let mut grouped_issues: HashMap<String, Vec<IssueEntry>> = HashMap::new();
 
@@ -852,6 +861,7 @@ fn sort_issue_data(data: QueryResponse) -> HashMap<String, Vec<IssueEntry>> {
 /// ```
 ///
 /// In this example, the merge data is grouped by SHA and contains details about the pull request and user who performed the merge.
+#[instrument]
 fn sort_merge_data(merge_data: QueryResponse) -> HashMap<String, MergeEntry> {
     let mut records_by_sha: HashMap<String, MergeEntry> = HashMap::new();
 
@@ -922,6 +932,7 @@ fn sort_merge_data(merge_data: QueryResponse) -> HashMap<String, MergeEntry> {
 /// ```
 ///
 /// In this example, the function queries deployment, issue, and merge data concurrently and handles any potential errors.
+#[instrument]
 async fn query_data(request: DataRequest) -> Result<(QueryResponse, QueryResponse, QueryResponse)> {
     let deploy_data_task = query_deploy_data(&request);
     let issue_data_task = query_issue_data(&request);
@@ -989,6 +1000,7 @@ async fn query_data(request: DataRequest) -> Result<(QueryResponse, QueryRespons
 ///
 /// This function is useful for determining how many days' worth of data to process in each batch,
 /// with the flexibility of configuring the value via an environment variable.
+#[instrument]
 fn get_batch_days_size() -> i64 {
     let var = env::var("LOKI_DAYS_BATCH_SIZE");
 
@@ -1050,6 +1062,7 @@ fn get_batch_days_size() -> i64 {
 /// # Environment Variables
 ///
 /// * `LOKI_DAYS_BATCH_SIZE` - Defines the number of days to include in each batch of the query. Defaults to 5 days if not set.
+#[instrument]
 pub async fn gather_data(request: DataRequest) -> Result<GatheredData> {
     let mut time_length = (request.end - request.start).num_days();
     let mut end = request.end;

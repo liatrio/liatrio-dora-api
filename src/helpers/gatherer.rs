@@ -1,6 +1,7 @@
 use chrono::{DateTime, Utc};
 use regex::Regex;
 use std::collections::HashMap;
+use tracing::instrument;
 
 use super::response::ResponseRecord;
 
@@ -97,6 +98,7 @@ struct Failure {
 /// ```
 ///
 /// This example demonstrates how to extract failure details for a given deployment, analyzing related issues if the deployment failed.
+#[instrument]
 fn extract_failure_by_sha(
     deployment: &DeployEntry,
     next_deployment_at: DateTime<Utc>,
@@ -209,6 +211,7 @@ fn extract_failure_by_sha(
 /// - The function handles the case where a failure is identified but has not yet been fixed by holding it in a temporary
 ///   variable (`previous_failure`) until a fix is found.
 /// - If no fix is found by the end of the deployments, the failure is recorded without a fix time.
+#[instrument]
 fn find_failures_per_deployment(data: &GatheredData) -> HashMap<String, Failure> {
     let mut previous_failure: Option<(String, Failure)> = None;
     let mut failures: HashMap<String, Failure> = HashMap::new();
@@ -316,6 +319,7 @@ fn find_failures_per_deployment(data: &GatheredData) -> HashMap<String, Failure>
 /// 3. If a failure is found, it adds failure details to the `ResponseRecord`.
 /// 4. If a merge is found, it adds merge details to the `ResponseRecord`.
 /// 5. The resulting list of response records is returned.
+#[instrument]
 pub fn link_data(data: GatheredData) -> Vec<ResponseRecord> {
     let mut records: Vec<ResponseRecord> = [].to_vec();
 

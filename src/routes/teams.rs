@@ -4,6 +4,7 @@ use dashmap::DashMap;
 use reqwest::Error;
 use serde::Deserialize;
 use std::{env, sync::Arc};
+use tracing::instrument;
 
 use crate::helpers::response::TeamsResponse;
 
@@ -14,6 +15,7 @@ pub struct GitHubTeam {
 
 pub type TeamsCache = Arc<DashMap<String, TeamsResponse>>;
 
+#[instrument]
 async fn get_teams(gh_org: &String, gh_token: &String, page: usize) -> Result<Vec<GitHubTeam>> {
     let client = reqwest::Client::new();
     let url = format!("https://api.github.com/orgs/{}/teams", gh_org);
@@ -57,6 +59,7 @@ async fn get_teams(gh_org: &String, gh_token: &String, page: usize) -> Result<Ve
     }
 }
 
+#[instrument]
 pub async fn handle_request(
     Extension(cache): Extension<TeamsCache>,
 ) -> Result<Json<TeamsResponse>, StatusCode> {
