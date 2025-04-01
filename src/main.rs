@@ -6,11 +6,11 @@ use axum::{
 };
 use dashmap::DashMap;
 use dotenv::dotenv;
-use tracing_opentelemetry::OpenTelemetryLayer;
-use std::{env, sync::Arc};
+use opentelemetry::trace::TracerProvider as _;
 use opentelemetry_otlp::{SpanExporter, WithExportConfig};
 use opentelemetry_sdk::trace::SdkTracerProvider;
-use opentelemetry::trace::TracerProvider as _;
+use std::{env, sync::Arc};
+use tracing_opentelemetry::OpenTelemetryLayer;
 use tracing_subscriber::layer::SubscriberExt;
 
 mod helpers;
@@ -31,16 +31,16 @@ async fn main() -> Result<()> {
         .with_batch_exporter(exporter)
         .build();
 
-    let tracer = provider
-        .tracer("liatrio-dora-api");    
+    let tracer = provider.tracer("liatrio-dora-api");
 
     let otel_layer = OpenTelemetryLayer::new(tracer);
-    
+
     tracing::subscriber::set_global_default(
         tracing_subscriber::registry()
             .with(tracing_subscriber::fmt::layer())
-            .with(otel_layer)
-    ).expect("Failed to set global default subscriber");
+            .with(otel_layer),
+    )
+    .expect("Failed to set global default subscriber");
 
     let data_cache: routes::data::DataCache = Arc::new(DashMap::new());
     let teams_cache: routes::teams::TeamsCache = Arc::new(DashMap::new());
@@ -97,9 +97,7 @@ async fn shutdown_signal() {
 
     tracing::warn!("signal received, starting graceful shutdown");
     let (sender, receiver) = mpsc::channel();
-    let _ = thread::spawn(move || {
-        sender.send(()).ok()
-    });
+    let _ = thread::spawn(move || sender.send(()).ok());
     let shutdown_res = receiver.recv_timeout(Duration::from_millis(2_000));
     if shutdown_res.is_err() {
         tracing::error!("failed to shutdown OpenTelemetry");

@@ -41,12 +41,12 @@ impl EventVendorFunctions for GitHub {
     fn extract_change_url(entry: &ValueItem) -> String {
         let deployment = entry.json_data.deployment.as_ref().unwrap();
 
-        return deployment
+        deployment
             .url
             .replace("api.", "")
             .replace("repos/", "")
             .replace("deployments/", "commit/")
-            .replace(deployment.id.to_string().as_str(), &deployment.sha);
+            .replace(deployment.id.to_string().as_str(), &deployment.sha)
     }
 
     /// Extracts a workflow run URL from a deployment entry, if a workflow is present.

@@ -6,8 +6,8 @@ use axum::{
 };
 use dashmap::DashMap;
 use serde::{Deserialize, Serialize};
-use tracing::instrument;
 use std::sync::Arc;
+use tracing::instrument;
 
 use crate::helpers::{
     gatherer::link_data, loki::gather_data, request::DataRequest, response::ResponseRecord,

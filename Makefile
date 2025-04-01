@@ -27,3 +27,19 @@ template-env:
 	cp .env.example .env
 	echo "Done... Update your .env now with the correct values"
 
+.PHONY: fmt
+fmt:
+	cargo fmt
+
+.PHONY: clippy
+clippy:
+	cargo clippy
+
+.PHONY: fix
+fix:
+	cargo clippy --fix --bin "liatrio-dora-api"
+
+.PHONY: check
+check: fmt clippy build
+
+
