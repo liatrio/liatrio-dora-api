@@ -1,6 +1,19 @@
 # CHANGELOG
 
 
+## v1.3.0 (2025-04-01)
+
+### Features
+
+- Update instrumentation code, fix compilation, add makefile, qol improvements
+  ([#53](https://github.com/liatrio/liatrio-dora-api/pull/53),
+  [`962133a`](https://github.com/liatrio/liatrio-dora-api/commit/962133af6ca8abf28f7f407564164d033fad1c66))
+
+---------
+
+Co-authored-by: Eliot Eikenberry <eliote@liatrio.com>
+
+
 ## v1.2.5 (2025-03-28)
 
 ### Bug Fixes
