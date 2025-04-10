@@ -33,7 +33,7 @@ spec:
             - name: OTEL_SERVICE_NAME
               value: "liatrio-dora-api"
             - name: OTEL_EXPORTER_OTLP_ENDPOINT
-              value: "http://gateway-v2-collector.gateway-v2:4317"
+              value: "http://otelcol-collector:4318"
             - name: OTEL_RESOURCE_ATTRIBUTES
               value: "service.namespace=tag-devex"
             - name: PRODUCTION_ENVIRONMENT_NAMES

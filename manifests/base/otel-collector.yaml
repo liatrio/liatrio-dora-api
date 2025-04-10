@@ -1,0 +1,101 @@
+---
+apiVersion: opentelemetry.io/v1beta1
+kind: OpenTelemetryCollector
+metadata:
+  name: otelcol
+spec:
+  image: ghcr.io/liatrio/liatrio-otel-collector:0.89.0-amd64
+  mode: deployment
+  env:
+    - name: POD_IP
+      valueFrom:
+        fieldRef:
+          fieldPath: status.podIP
+
+  config:
+    extensions:
+      health_check:
+        endpoint: "[${env:POD_IP}]:13133"
+
+    receivers:
+      otlp:
+        protocols:
+          grpc:
+            endpoint: "[${env:POD_IP}]:4317"
+          http:
+            endpoint: "[${env:POD_IP}]:4318"
+
+    processors:
+      memory_limiter:
+        check_interval: 1s
+        limit_percentage: 75
+        spike_limit_percentage: 15
+
+      batch:
+        send_batch_size: 100
+        timeout: 10s
+
+      k8sattributes:
+        passthrough: true
+
+      filter/health:
+        error_mode: ignore
+        traces:
+          span:
+            - name == "*health*"
+
+    exporters:
+      debug:
+        verbosity: basic
+
+      otlp:
+        endpoint: gateway-v2-collector.gateway-v2:4317
+        tls:
+          insecure: true
+
+    service:
+      # telemetry:
+      #   resource:
+      #     service.name: otel-collector
+      #     service.namespace: dora-api
+      #   metrics:
+      #     readers:
+      #       - periodic:
+      #           exporter:
+      #             otlp:
+      #               endpoint: "[${env:POD_IP}]:4317"
+      #               protocol: grpc
+      extensions:
+        - health_check
+      pipelines:
+        traces:
+          receivers:
+            - otlp
+          processors:
+            - filter/health
+            - k8sattributes
+            - batch
+            - memory_limiter
+          exporters:
+            - debug
+            - otlp
+        metrics:
+          receivers:
+            - otlp
+          processors:
+            - k8sattributes
+            - batch
+            - memory_limiter
+          exporters:
+            - debug
+            - otlp
+        logs:
+          receivers:
+            - otlp
+          processors:
+            - k8sattributes
+            - batch
+            - memory_limiter
+          exporters:
+            - debug
+            - otlp
