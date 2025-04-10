@@ -37,7 +37,7 @@ spec:
             - name: OTEL_RESOURCE_ATTRIBUTES
               value: "service.namespace=tag-devex"
             - name: PRODUCTION_ENVIRONMENT_NAMES
-              value: "prod,production,tag-o11y"
+              value: "prod,production,tag-o11y,dev,development"
           readinessProbe:
             failureThreshold: 6
             httpGet:

@@ -31,6 +31,10 @@ template-env:
 fmt:
 	cargo fmt
 
+.PHONY: test
+test:
+	cargo test
+
 .PHONY: clippy
 clippy:
 	cargo clippy
@@ -40,6 +44,6 @@ fix:
 	cargo clippy --fix --bin "liatrio-dora-api"
 
 .PHONY: check
-check: fmt clippy build
+check: fmt clippy build test
 
 

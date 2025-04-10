@@ -276,6 +276,7 @@ async fn query(data: QueryParams) -> Result<QueryResponse> {
         }
         Err(e) => {
             tracing::error!("Loki Request Failed: {:?}", e);
+            tracing::debug!("query: {:?}", data);
             Err(e.into())
         }
     }
@@ -346,7 +347,7 @@ fn fill_query_params<T: AsRef<str> + std::fmt::Debug>(
     query: T,
     filter: Option<T>,
 ) -> QueryParams {
-    let service_name_var = env::var("SERVICE_NAME").unwrap_or("github".to_string());
+    let service_namespace = env::var("QUERY_SERVICE_NAMESPACE").unwrap_or("github".to_string());
 
     let team_query = match &request.team {
         Some(t) => format!(r#"team_name="{}", "#, t),
@@ -361,7 +362,7 @@ fn fill_query_params<T: AsRef<str> + std::fmt::Debug>(
     let query = match filter {
         Some(f) => format!(
             r#"{{service_namespace=`{}`}} | {}{}{} {}"#,
-            service_name_var,
+            service_namespace,
             team_query,
             repo_query,
             query.as_ref(),
@@ -369,7 +370,7 @@ fn fill_query_params<T: AsRef<str> + std::fmt::Debug>(
         ),
         None => format!(
             r#"{{service_namespace=`{}`}} | {}{}{}"#,
-            service_name_var,
+            service_namespace,
             team_query,
             repo_query,
             query.as_ref()
@@ -1124,7 +1125,7 @@ mod tests {
 
     #[test]
     fn test_fill_query_params_with_all_fields() {
-        env::set_var("SERVICE_NAME", "test_service");
+        env::set_var("QUERY_SERVICE_NAMESPACE", "test_service");
 
         let request = DataRequest {
             team: Some("test_team".to_string()),
@@ -1149,7 +1150,7 @@ mod tests {
 
     #[test]
     fn test_fill_query_params_without_optional_fields() {
-        env::set_var("SERVICE_NAME", "test_service");
+        env::set_var("QUERY_SERVICE_NAMESPACE", "test_service");
 
         let request = DataRequest {
             team: None,
