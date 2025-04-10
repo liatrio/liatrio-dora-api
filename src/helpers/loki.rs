@@ -1125,7 +1125,7 @@ mod tests {
 
     #[test]
     fn test_fill_query_params_with_all_fields() {
-        env::set_var("SERVICE_NAME", "test_service");
+        env::set_var("QUERY_SERVICE_NAMESPACE", "test_service");
 
         let request = DataRequest {
             team: Some("test_team".to_string()),
@@ -1150,7 +1150,7 @@ mod tests {
 
     #[test]
     fn test_fill_query_params_without_optional_fields() {
-        env::set_var("SERVICE_NAME", "test_service");
+        env::set_var("QUERY_SERVICE_NAMESPACE", "test_service");
 
         let request = DataRequest {
             team: None,
