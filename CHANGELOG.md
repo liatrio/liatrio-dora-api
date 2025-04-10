@@ -1,6 +1,15 @@
 # CHANGELOG
 
 
+## v1.3.1 (2025-04-10)
+
+### Bug Fixes
+
+- Update instrumentation code, env var for svc namespace on query
+  ([#56](https://github.com/liatrio/liatrio-dora-api/pull/56),
+  [`6cee752`](https://github.com/liatrio/liatrio-dora-api/commit/6cee752dcfec97eca7851f3f4ede6722922f1ba9))
+
+
 ## v1.3.0 (2025-04-01)
 
 ### Features
