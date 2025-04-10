@@ -1,6 +1,15 @@
 # CHANGELOG
 
 
+## v1.3.2 (2025-04-10)
+
+### Bug Fixes
+
+- Update exporter config, add otel collector
+  ([#57](https://github.com/liatrio/liatrio-dora-api/pull/57),
+  [`045c1dd`](https://github.com/liatrio/liatrio-dora-api/commit/045c1dd9dc7c84b51cc7e6d655569540c7272ebf))
+
+
 ## v1.3.1 (2025-04-10)
 
 ### Bug Fixes
